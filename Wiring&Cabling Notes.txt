@@ -53,6 +53,8 @@ SMC Fieldbus Power 4 Wire
 
 SMC Fieldbus Power 5 Wire (7/8" Connection)
 
+[add picture here]
+
 
 EP9224 Brad Harrison Power
 
@@ -122,7 +124,9 @@ Thermal Wiring (Inside Transformer)
 
 M8 Fieldbus Power 4 Wire
 
+[add picture here]
 
+[add picture here]
 
 
 Beckhoff ZK2030 Power Cable Pinout
@@ -132,6 +136,7 @@ Beckhoff ZK2030 Power Cable Pinout
 3 - Grey
 4 - Brown
 5 - White
+[add picture here]
 
 
 IFM Camera Power & I/O 8 Wire
@@ -245,7 +250,7 @@ OR
 
 
 
-
+[add picture here]
 
 
 Phoenix Contact 5 Pin Standard Wire Colour
@@ -257,6 +262,7 @@ Phoenix Contact 5 Pin Standard Wire Colour
 5 - Grey
 
 Kuka KR6/10 X41 Wiring (Gripper M12 8pin plug)
+[add picture here]
 
 
 ---
@@ -291,6 +297,7 @@ Red     - B to Pin 4
 !!! EL6731 (MASTER) CONNECTION WIRES INTO IN CONNECTION!!!
 Strip 55mm for wiring in ZB3100, 3mm of shielding
 
+[add picture here]
 
 
 Graco CAN/DeviceNET Connector 5Pin
