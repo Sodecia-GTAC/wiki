@@ -14,10 +14,10 @@ A Coded EtherNET 8 Wire (left to right)
 
 EtherCAT 4 Wire
 
-1 - Yellow OR White/Orange ( yellow)
-2 - White OR White/Blue (white)
-3 - Blue (orange)
-4 - Orange (blue)  (in brackets is a test- RJ)
+1 - Yellow OR White/Orange
+2 - White OR White/Blue
+3 - Blue
+4 - Orange
 
 EtherCAT 4 Wire to RJ45 8 Pin
 
