@@ -4,7 +4,7 @@ Start by ensuring you can ping the target:
 
 ![image](https://user-images.githubusercontent.com/56392095/203604416-f9856b37-e392-42a8-9813-6eb9430cb77a.png)
 
-Next, create a blank folder on our desk top for the pulled project to be placed into:
+Next, create a blank folder on your Desktop for the pulled project to be placed into:
 
 ![image](https://user-images.githubusercontent.com/56392095/203596346-6f1450de-20eb-49d8-85af-0c1dc5ba0db0.png)
 
