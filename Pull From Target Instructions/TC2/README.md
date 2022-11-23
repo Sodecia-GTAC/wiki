@@ -2,8 +2,33 @@
 
 Start by ensuring you can ping the target:
 
-![ping](https://user-images.githubusercontent.com/56392095/203578402-c30cf006-c494-4d3a-bc03-4a3427c20f00.jpg)
+![image](https://user-images.githubusercontent.com/56392095/203604416-f9856b37-e392-42a8-9813-6eb9430cb77a.png)
 
 Next, create a blank folder on our desk top for the pulled project to be placed into:
 
 ![image](https://user-images.githubusercontent.com/56392095/203596346-6f1450de-20eb-49d8-85af-0c1dc5ba0db0.png)
+
+Open the Edit Routes Dialog to create a new route to the target:
+
+![image](https://user-images.githubusercontent.com/56392095/203604721-672c63c6-8177-4ea8-9964-57defd68b290.png)
+
+Select to "Add" a new route, enter the IP Address of the target and then click the "Enter Host Name / IP. The new target should show up in the dialog (arrow in screen shot below):
+
+![image](https://user-images.githubusercontent.com/56392095/203605023-d999a64c-437b-4cf0-8601-ac16ab21aa3b.png)
+
+Click "Add Route", this launches the Add Remote Route dialog box, enter the administrator password for the target Addministrator account, check the "TwinCAT 2.x Password Format" check box and then click Okay:
+
+![image](https://user-images.githubusercontent.com/56392095/203605308-b6bda68b-3cdd-4e3a-8fc3-d9fb4bc68623.png)
+
+If all went well, there should be an X under connected of your new route:
+
+![image](https://user-images.githubusercontent.com/56392095/203605594-a4f56cff-030c-459c-a9df-42810abe26dc.png)
+
+Close out the routing dialog boxes and open TwinCat PLC Control (TC2), in PLC Control, select to Open from Target:
+
+![image](https://user-images.githubusercontent.com/56392095/203606088-04a20a31-e264-46f8-b0b3-e51acee65ab0.png)
+
+When PLC Control asks to choose the target system, choose the target that we just created the new route for, then click "OK":
+
+
+
