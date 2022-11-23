@@ -1,4 +1,4 @@
-# Pull From Target in TC2
+# Pull From Target in TC2 (instructions under development)
 
 Start by ensuring you can ping the target:
 
