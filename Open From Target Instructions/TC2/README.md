@@ -16,9 +16,10 @@ Select to "Add" a new route, enter the IP Address of the target and then click t
 
 ![image](https://user-images.githubusercontent.com/56392095/203605023-d999a64c-437b-4cf0-8601-ac16ab21aa3b.png)
 
-Click "Add Route", this launches the Add Remote Route dialog box, enter the administrator password for the target Addministrator account, check the "TwinCAT 2.x Password Format" check box and then click Okay:
+First, confirm that the IP Address Radio button (indicated below with the arrow) is selected. 
+Then, click "Add Route", this launches the Add Remote Route dialog box, enter the administrator password for the target Addministrator account and then click Okay:
 
-![image](https://user-images.githubusercontent.com/56392095/203605308-b6bda68b-3cdd-4e3a-8fc3-d9fb4bc68623.png)
+![image](https://user-images.githubusercontent.com/56392095/203632691-581cea5e-4bc9-46eb-9be3-a43a6add46f9.png)
 
 If all went well, there should be an X under connected of your new route:
 
