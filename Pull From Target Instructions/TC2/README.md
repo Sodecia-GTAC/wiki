@@ -12,7 +12,7 @@ Open the Edit Routes Dialog to create a new route to the target:
 
 ![image](https://user-images.githubusercontent.com/56392095/203604721-672c63c6-8177-4ea8-9964-57defd68b290.png)
 
-Select to "Add" a new route, enter the IP Address of the target and then click the "Enter Host Name / IP. The new target should show up in the dialog (arrow in screen shot below):
+Select to "Add" a new route, enter the IP Address of the target and then click the "Enter Host Name / IP". The new target should show up in the dialog (arrow in screen shot below):
 
 ![image](https://user-images.githubusercontent.com/56392095/203605023-d999a64c-437b-4cf0-8601-ac16ab21aa3b.png)
 
