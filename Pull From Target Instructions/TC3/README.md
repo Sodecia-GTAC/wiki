@@ -1,4 +1,4 @@
-# Pull From Target in TC3 (instructions under development)
+# Pull From Target in TC3
 
 Start by ensuring you can ping the target:
 
