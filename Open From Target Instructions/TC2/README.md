@@ -1,6 +1,6 @@
 # Pull From Target in TC2
 
-Start by ensuring you can ping the target:
+Start by ensuring you can ping the target (note: IP address below is an example from a test machine, GTAC IC01 is typically 172.16.1.101):
 
 ![image](https://user-images.githubusercontent.com/56392095/203604416-f9856b37-e392-42a8-9813-6eb9430cb77a.png)
 
