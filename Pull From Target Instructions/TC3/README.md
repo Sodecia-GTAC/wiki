@@ -28,8 +28,25 @@ Close out the routing dialog boxes and open XAE Shell, in XAE Shell, select to O
 
 ![image](https://user-images.githubusercontent.com/56392095/203598755-d5ebec73-db60-4220-84e5-9c36344c461f.png)
 
-When XAE asks to choose the target system, choose the target that we just created the new route for:
+When XAE asks to choose the target system, choose the target that we just created the new route for, then click "OK":
 
 ![image](https://user-images.githubusercontent.com/56392095/203599315-eb32c445-e49f-4676-aef3-ad38f4334e0f.png)
+
+XAE will attempt to gather the project information from the Target and then will ask you where you'd like to place this, select the new Blank folder we created on our desktop:
+
+![image](https://user-images.githubusercontent.com/56392095/203599780-612b8b24-8f59-4c06-8a53-7b4afaedfeb5.png)
+
+It will again take a bit for XAE to transfer all the files from the Target to the project but you should be left with something like this:
+
+![image](https://user-images.githubusercontent.com/56392095/203600187-57d8c4a4-63b2-4418-9b84-aea872820a33.png)
+
+Click Save all and you now have a backup copy of the PLC program from the Target.
+Great Work!
+
+
+
+
+
+
 
 
