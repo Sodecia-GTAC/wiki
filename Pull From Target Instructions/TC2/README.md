@@ -28,15 +28,27 @@ Close out the routing dialog boxes and open TwinCat PLC Control (TC2), in PLC Co
 
 ![image](https://user-images.githubusercontent.com/56392095/203606393-d37f2df8-8bea-4314-b0d5-decac4fb884a.png)
 
-First PLC Control will ask you to chose the target system type, for all GTAC machines we can leave it as PC or CX:
+First, PLC Control will ask you to chose the target system type, for all GTAC machines we can leave it as PC or CX:
 
 ![image](https://user-images.githubusercontent.com/56392095/203606701-e70432cd-44cb-4166-9eca-63922d6e848a.png)
 
+Next, PLC Control will ask to choose the target runt time system, choose Port 801 from the target that we just created the new route for, then click "OK":
 
-![image](https://user-images.githubusercontent.com/56392095/203606573-f86dfcfb-a89e-451d-bf17-3cb92ba55e13.png)
+![image](https://user-images.githubusercontent.com/56392095/203607021-33c215ec-4647-4611-9e91-bacb8880ae27.png)
+
+PLC Control will attempt to gather the project information from the Target, if successful you will be left with something like this:
+
+![image](https://user-images.githubusercontent.com/56392095/203607383-fff40f36-edb3-434e-8959-8aadccea0cc5.png)
+
+Now we can simply save the project to the blank folder we created on our desktop. To do so, select File -> Save As and then navigate to the blank folder. Give the project a name and then hit save:
+
+![image](https://user-images.githubusercontent.com/56392095/203608065-607bbdb8-0465-479c-9ba7-f9023bf22955.png)
 
 
-When PLC Control asks to choose the target system, choose the target that we just created the new route for, then click "OK":
+
+You now have a backup copy of the PLC program from the Target. Great Work!
+
+
 
 
 
