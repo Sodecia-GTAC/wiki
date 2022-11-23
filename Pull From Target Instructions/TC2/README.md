@@ -2,4 +2,4 @@
 
 Start by ensuring you can ping the target:
 
-![ping image](https://github.com/Sodecia-GTAC/wiki/tree/main/Pull%20From%20Target%20Instructions/TC2/Images/ping.jpg)
+![ping](https://user-images.githubusercontent.com/56392095/203578402-c30cf006-c494-4d3a-bc03-4a3427c20f00.jpg)
