@@ -26,7 +26,15 @@ If all went well, there should be an X under connected of your new route:
 
 Close out the routing dialog boxes and open TwinCat PLC Control (TC2), in PLC Control, select to Open from Target:
 
-![image](https://user-images.githubusercontent.com/56392095/203606088-04a20a31-e264-46f8-b0b3-e51acee65ab0.png)
+![image](https://user-images.githubusercontent.com/56392095/203606393-d37f2df8-8bea-4314-b0d5-decac4fb884a.png)
+
+First PLC Control will ask you to chose the target system type, for all GTAC machines we can leave it as PC or CX:
+
+![image](https://user-images.githubusercontent.com/56392095/203606701-e70432cd-44cb-4166-9eca-63922d6e848a.png)
+
+
+![image](https://user-images.githubusercontent.com/56392095/203606573-f86dfcfb-a89e-451d-bf17-3cb92ba55e13.png)
+
 
 When PLC Control asks to choose the target system, choose the target that we just created the new route for, then click "OK":
 
