@@ -347,10 +347,21 @@ ICxx
 	 []  2x 5m 8 Pin I/O Cable
 	 []  2x 10m 5 Pin I/O Cable
 	 []  2x 10m 8 Pin I/O Cable
-	
 
+4 Conductor Colour Coded Cable (Alternative to cabling where each wire is black with conductor numbers written on them + GND)
+	1 - Black
+	2 - White
+	3 - Red
+	4 - Green
 
-
+7 Conductor Colour Coded Cable (Alternative to cabling where each wire is black with conductor numbers written on them + GND)
+	1 - White/Black
+	2 - Black
+	3 - White
+	4 - Red
+	5 - Orange
+	6 - Blue
+	7 - Green
 
 
 
