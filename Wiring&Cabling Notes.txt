@@ -307,6 +307,16 @@ Graco CAN/DeviceNET Connector 5Pin
 4 - White (Can_H) 
 5 - Blue (Can_L)
 
+Sic laser DB37 wiring
+3  -  Brown (From PD) 
+4  -  Blue (From PD) 
+5  -  White (From PD) 
+6  -  Black (From PD) 
+7  -  Brown (From safety switch)
+8  -  Blue (From safety switch)
+9  -  Violet (From safety switch)
+10 -  Violet white (From safety switch)
+
 3 Phase into KUKA
 
 1 - Red
