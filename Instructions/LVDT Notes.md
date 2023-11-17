@@ -1,4 +1,5 @@
-LVDT Setup (Zero'd & Offset from Calibrated Zero)
+# LVDT Notes
+### LVDT Setup (Zero'd & Offset from Calibrated Zero)
 1. Get LVDT in measurement position of the “zero” using a measured work piece designated as such.
 2. Once in the “zero” measuring position - on the LVDT unit press the PRESET button to zero the LVDT to the current measuring position.  
 3. Now release the LVDT to it’s "no load" state (If the value on the LVDT is negative you must offset it from the LVDT unit to get it reading 0 and upwards)
@@ -7,13 +8,16 @@ LVDT Setup (Zero'd & Offset from Calibrated Zero)
 6. Bring the tool into the measurement position with the “zero” work piece, and the now LVDT values will display and measure their value equal to the ones on the LVDT.
 7. Then login to the PLC and verify the scaled values in each LVDT instance to match the minimum and maximum LVDT displayed values.
 
-LVDT Setup (Zero'd & Set from "No Load" Position)
+---
+
+### LVDT Setup (Zero'd & Set from "No Load" Position)
 1. Get LVDT in a "no load" condition where the probes are not measuring anything in their "free" state.
 2. Once in the "no load" state - on the LVDT unit press the PRESET button to zero the LVDT to the current position. 
 3. Verify the scale from the LVDT to the PLC by logging into the PLC and checking the scaled values in each LVDT instance are matching the minimum and maximum LVDT displayed values.
 
-LVDT Analog Output Range Adjustment
+---
 
+### LVDT Analog Output Range Adjustment
 The Output Range can be changed to alleviate fluctuation issues with measuring equipment.  Tightening the Output Range can increase the sensitivity and move the measurement fluctuation further down the decimal points to remove the fluctuation from the captured measurement.
 
 1. Open settings by holding "MODE" and "SET" for 2 seconds.

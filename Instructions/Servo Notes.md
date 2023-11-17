@@ -1,23 +1,25 @@
-Pulling Datasheet: to pull the Drive datasheet go to -> Drive in IO Tree > Drive Manager tab > Channel (A or B) > Configuration > Motor and Feedback > Motor > Datasheet, then select X1424 then click "Read Datasheet from EPROM"
+# Servo Notes
 
-Setting Parameters
+### Pulling Datasheet
+To pull the Drive datasheet go to -> Drive in IO Tree > Drive Manager tab > Channel (A or B) > Configuration > Motor and Feedback > Motor > Datasheet, then select X1424 then click "Read Datasheet from EPROM"
 
+### Setting Parameters
 In Drive Manager > Scaling and NC Parameters - there is a button labeled "Set NC Parameters," and this must be clicked before downloading to the drive as the parameters will not update without this step
 
 Linking the Axis in the NC configuration will automatically link all required connections
-
----
+```
 NC - Configuration > Axes > [specific axis # here] > [specific axis # here]_Enc
-
+```
 This directory leads to the Parameters tab to offset the servo position (position bias)
 
----
+
 Click [configured instance of servo in SysMan] > click Motor & Feedback > click "Scan feedback 1/Motor" 
 
 This directs to the location to scan in new Servo Drives
 
 ---
-Safety
+
+### Safety
 
 "Number of Axes" is not determined by number of connected motors, but simply how many motors the drive is configured to handle (second digit of the AX part number) 
 - [5805 Alias Device > Safety Parameter Tab > Index 2F00] (TwinCAT 3)
@@ -42,7 +44,8 @@ Create instance uses of the specific AX5805 in TwinSAFE Function Blocks and the 
 Changing AX5805 parameters requires downloading the associated EL6900 safety code (Usually PD)
 
 ---
-Diagnosis
+
+### Diagnosis
 
 Port A = X04 EtherCAT connection port
 Port B = X05 EtherCAT connection port
