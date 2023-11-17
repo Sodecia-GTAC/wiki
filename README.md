@@ -182,7 +182,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Input Node (S1)](./Instructions/Wiring&Cabling%20Notes.md#input-node--s1-)
       - [Output Node (S2)](./Instructions/Wiring&Cabling%20Notes.md#output-node--s2-)
     + [ifm Standard 8 Pin Connector](./Instructions/Wiring&Cabling%20Notes.md#ifm-standard-8-pin-connector)
-    + [Cognex Standard 12 Pin Wire Colour]./Instructions/Wiring&Cabling%20Notes.md(#cognex-standard-12-pin-wire-colour)
+    + [Cognex Standard 12 Pin Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#cognex-standard-12-pin-wire-colour)
     + [Murr Standard 12 Pin Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#murr-standard-12-pin-wire-colour)
     + [Leuze 8 Pin Standard Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#leuze-8-pin-standard-wire-colour)
     + [Phoenix Contact 8 Pin Standard Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#phoenix-contact-8-pin-standard-wire-colour)
