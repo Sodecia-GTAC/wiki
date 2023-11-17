@@ -13,6 +13,8 @@ Our I/O = PNP(Sourcing) NOT NPN(Sinking)
 7. Brown/White (Pair 7-8)
 8. Brown (Pair 7-8)
 
+![A Coded EtherNET 8 Wire](./Images/Wiring&Cabling%20Note%20Images/EtherNET%20Wire%20Colours.png)
+
 ---
 
 ### EtherCAT 4 Wire
@@ -143,8 +145,10 @@ Start = Green/Yellow
 ---
 
 ### M8 Fieldbus Power 4 Wire
-[add picture here]
-[add picture here]
+
+![M8 Field Wiring](./Images/Wiring&Cabling%20Note%20Images/M8%20FIELD%20ATTACHABLE%20WIRING.jpeg)  
+
+![M8 Screw Terminals](./Images/Wiring&Cabling%20Note%20Images/M8%20Field%20Connector%20Screw%20Terminal%20Numbers.jpg)  
 
 ---
 
@@ -154,7 +158,8 @@ Start = Green/Yellow
 3. Grey
 4. Brown
 5. White
-[add picture here]
+
+![Beckhoff ZK2030 Pinout](./Images/Wiring&Cabling%20Note%20Images/Beckhoff%20ZK2030%20Power%20Cable%20Pinout.png)  
 
 ---
 
@@ -273,7 +278,11 @@ OR
 7. Blue
 8. Red
 
-[add picture here]
+![Pheonix Contact 8 pin Standard wire 1](./Images/Wiring&Cabling%20Note%20Images/Phoenix%208pin%20Cable%20Pinout.png)  
+Female:  
+![Pheonix Contact 8 pin Standard wire female](./Images/Wiring&Cabling%20Note%20Images/Phoenix%208pin%20Female%20Pinout.png)  
+Male:  
+![Pheonix Contact 8 pin Standard wire male](./Images/Wiring&Cabling%20Note%20Images/Phoenix%208pin%20Male%20Pinout.jpg)  
 
 ---
 
@@ -287,7 +296,8 @@ OR
 ---
 
 ### Kuka KR6/10 X41 Wiring (Gripper M12 8pin plug)
-[add picture here]
+![Kuka X41](./Images/Wiring&Cabling%20Note%20Images/Kuka%20X41%20Wiring.png)  
+
 
 ---
 
@@ -326,7 +336,7 @@ Red    . B to Pin 4
 !!! EL6731 (MASTER) CONNECTION WIRES INTO IN CONNECTION!!!
 Strip 55mm for wiring in ZB3100, 3mm of shielding
 
-[add picture here]
+![Beckhoff Profibus Connector](./Images/Wiring&Cabling%20Note%20Images/Beckhoff%20ZB3100%20ProfiBUS%20Wiring%20Diagram.png)  
 
 ---
 
