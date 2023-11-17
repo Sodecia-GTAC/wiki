@@ -187,7 +187,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
     + [Leuze 8 Pin Standard Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#leuze-8-pin-standard-wire-colour)
     + [Phoenix Contact 8 Pin Standard Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#phoenix-contact-8-pin-standard-wire-colour)
     + [Phoenix Contact 5 Pin Standard Wire Colour](./Instructions/Wiring&Cabling%20Notes.md#phoenix-contact-5-pin-standard-wire-colour)
-    + [Kuka KR6/10 X41 Wiring (Gripper M12 8pin plug)](./Instructions/Wiring&Cabling%20Notes.md#kuka-kr6-10-x41-wiring--gripper-m12-8pin-plug-)
+    + [Kuka KR6/10 X41 Wiring (Gripper M12 8pin plug)](./Instructions/Wiring&Cabling%20Notes.d#kuka-kr6-10-x41-wiring--gripper-m12-8pin-plug-)
     + [Water Stands (Non-IO Link)](./Instructions/Wiring&Cabling%20Notes.md#water-stands--non-io-link-)
       - [Water Stand Turck Connections into 3174](./Instructions/Wiring&Cabling%20Notes.md#water-stand-turck-connections-into-3174)
       - [From Solenoid End Connection to 2028](./Instructions/Wiring&Cabling%20Notes.md#from-solenoid-end-connection-to-2028)
@@ -202,6 +202,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Fixture](./Instructions/Wiring&Cabling%20Notes.md#fixture)
       - [Stack Light, Cycle Starts, & Safety Gate](./Instructions/Wiring&Cabling%20Notes.md#stack-light--cycle-starts----safety-gate)
       - [Light Curtains](./Instructions/Wiring&Cabling%20Notes.md#light-curtains)
+
 
 
 
