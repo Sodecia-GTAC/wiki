@@ -8,7 +8,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 - [Auxiliary Equipment](#auxiliary-equipment)
   * [GRACO](#graco)
     + [Fluid Plate Setup (Lock Button to Access Setup Menus)](#fluid-plate-setup--lock-button-to-access-setup-menus-)
-      - [Controls Settings](#controls-settings)
+      - [Controls Settings](./Instructions/Auxiliary Equipment Notes.md#controls-settings)
       - [Mode Settings](#mode-settings)
       - [Delay Settings](#delay-settings)
       - [Control Loop Settings](#control-loop-settings)
