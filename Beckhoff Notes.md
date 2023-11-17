@@ -1,60 +1,69 @@
+# Beckhoff
 
----
-****Download To PLC****
-****Upload From PLC****
-
+###### Important Side-notes
+Download To PLC/Upload From PLC
 Our I/O = PNP(Sourcing) Not NPN(Sinking)
 
 ---
-		Addressing
+## Addressing
 
-ICxx Addressing
+### ICxx Addressing
 
+- (reference of EL1904 picture)
+- High Byte
+- Low Byte
+- Low Bit - High Bit
 
------
-(reference of EL1904 picture)
-High Byte
-Low Byte
-Low Bit - High Bit
------
-IC01.T02-T09, T11, T12 - 610-617, 618, 619
-IC02.T02-T09, T11, T12 - 620-627, 628, 629
-IC03.T02-T09, T11, T12 - 630-637, 638, 639
- -----  
+- IC01.T02-T09, T11, T12 - 610-617, 618, 619
+- IC02.T02-T09, T11, T12 - 620-627, 628, 629
+- IC03.T02-T09, T11, T12 - 630-637, 638, 639
 
-STxx Addressing
-S2 - x1 Value
-S3 - x10 Value
+---
 
-STxx Address Example
-S3 - 2 x10
-S2 - 3 x1
-Address = 23
+### STxx Addressing
+S2 - x1 Value  
+S3 - x10 Value  
+
+---  
+
+### STxx Address Example
+- S3 - 2 x10
+- S2 - 3 x1
+- Address = 23
 
 Navigate to (Profibus) Customer Interface on Emhart/Stanley/Tucker Welder
 Programming > System Configuration > Customer Interface Configuration > CI Configuration > Connection Parameter and Status > Profibus
 
+---
 
-Rxx Addressing
-Rxx.T02 = 10*(Robot #)
-Rxx.T03 = 10*(Robot #) + 1
-Rxx.T04 = 10*(Robot #) + 2
+### Rxx Addressing
+- Rxx.T02 = 10*(Robot #)
+- Rxx.T03 = 10*(Robot #) + 1
+- Rxx.T04 = 10*(Robot #) + 2
 
-Rxx Address Examples
-R01.T02 (EL6900) - 10
-R01.T03 (EL1904) - 11
-R02.T02 (EL6900) - 20
-R02.T03 (EL1904) - 21
-R09.T02 (EL6900) - 90
-R09.T03 (EL1904) - 91
-R21.T02 (EL6900) - 210
-R21.T03 (EL1904) - 211
+---
 
+### Rxx Address Examples
+- R01.T02 (EL6900) - 10
+- R01.T03 (EL1904) - 11
+- R02.T02 (EL6900) - 20
+- R02.T03 (EL1904) - 21
+- R09.T02 (EL6900) - 90
+- R09.T03 (EL1904) - 91
+- R21.T02 (EL6900) - 210
+- R21.T03 (EL1904) - 211
+
+---
+
+### EP Block Address Settings
 EP1908 (ESW) Address top dial as least significant bit (based on node being upright)
 !! Requires a power cycle to update!! 
 
+![EP Block Address Settings](./Images/EP%20Block%20Address%20Settings.png)
+
 ---
-		System Manager
+
+### System Manager
 
 Make habit a of re-building the PLC and re-scanning the PLC in TwinCAT System Manager(TSM)
 
@@ -74,18 +83,22 @@ On first connection to IC01 you must install the TwinCAT EtherCAT Driver
 7. Now your project should be in Run Mode on the IC
 8. After moving over to your development PC you must "Search" for the correct connection to get System Manager to go into Run Mode from development PC deployment
 
-Setup AUTO Run Config/Verify Load Boot Project
+#### Setup AUTO Run Config/Verify Load Boot Project
 For Configuration Auto Run go to: System - Configuration>Boot Settings(Target) and Enable Run Mode on Boot with the proper Administrator info then click apply (information provided in IC setup package)
 
 - Verify PLC Task auto load Boot Project IS SELECTED: PLC - Configuration>PLC Settings (Target)>Boot Project -- CHECK the box beside 1. Run-Time System (Port: 801) then click Apply
 - Verify PLC Task Load/Store Retain Data is NOT SELECTED: PLC - Configuration>PLC Settings (Target)>Load/Store Retain Data -- UNCHECK the box beside 1. Run-Time System (Port: 801) then click Apply
 
-SDxx Drive Notes:
+---
+
+### SDxx Drive Notes:
 - Drive Manager in SDxx tab menus will give diagnostic information about the error statuses of each channel on the drive (can also reset)
 - Drive Manager in SDxx tab can "pull" motor and feedback information through clicking the "Scan feedback [SD#] / motor (this information is collected from the drive connected to the Channel)
 - When getting servo drives running in safety, change the state of the STO_Mode_Active in the Safe Parameter tab (this may fix the status)
 
-System Manager Notes:
+---
+
+### System Manager Notes:
 - When unable to append certain types of devices, verify which connection you are adding it to - Eg. Connection A, B, C, D (Port definitions below)
 	- Also verify the correct XML files are within the lib folder for TwinCAT
 - If EL6695 Connection keeps getting deleted, the XML file for it may need to be added to the TwinCAT/IO/EtherCAT folder
@@ -96,7 +109,9 @@ System Manager Notes:
 - If "PLC Task (FPU) invalid operation" most likely an issue with the hardware mapping to the PLC, make sure System Manager is up to date and re-scan PLC and Activate Configuration
 - TwinCAT 3 - If System is not going into OP from SAFEOP without error, verify licensing
 
-Device State Errors
+---
+
+### Device State Errors
 - VPRS -- means the device at that connection point does not match the configured device (Check Log Viewer)
 	- VPRS = (Vendor ID/Product Code/Revision Number/Serial Number)
 - INIT_ERR - means configured device parameters do not match actual device
@@ -106,18 +121,21 @@ Device State Errors
 - LNK_ADD - means addition link has been made, but no connection detected
 - LNK_ERR - means the connection is made without communication detected
 
-Port Definitions
+---
+
+### Port Definitions
 Port A - Bus/Rail connection front/left
 Port B - Port connection X1/top RJ45
 Port C - Bus/Rail connection back/right
 Port D - Port connection X2/bottom RJ45
 
 ---
-		TwinSAFE
-TwinSafe Login
-User: Administrator
-Serial: [copied from TwinSAFE tab]
-Pass: TwinSAFE
+
+### TwinSAFE
+TwinSafe Login  
+User: Administrator  
+Serial: [copied from TwinSAFE tab]  
+Pass: TwinSAFE  
 
 !!!ALWAYS ACTIVATE CONFIGURATION AFTER DOWNLOAD TWINSAFE UPDATES!!!
 
@@ -129,7 +147,7 @@ TwinSAFE Connections are made automatically once I/O has been linked in TwinSAFE
 
 After TwinSAFE Connections are created, verify their Watchdog timers are set correctly
 
-Normally Closed Inputs on FBs show inverted signal to actual input
+#### Normally Closed Inputs on FBs show inverted signal to actual input
 
 1. Download safety FBs to each EL6900.
 2. Comment Safety Reset IF "All_Estops_Off" IF Statement and add a line below it like so:  SAFETY_RESET;
@@ -139,7 +157,7 @@ This is used only initially to reset the 6900s before getting all device working
 3. If Com Errors exist use the EL6900 documentation to diagnose the Binary Diagnosis Value and solve the issue.
 4. Clear all E-stops and EDM faults to get control power reset functioning and remove the SAFETY_RESET; line of code.
 
-SGs_COM_ERR - Connection Issue
+##### SGs_COM_ERR - Connection Issue
 - Decoupled Comm Error means a connection issue to another device
 - Function Block Comm Error means a connection issue within the local device
 SGs_FB_ERR - Function Block Issue
@@ -148,7 +166,8 @@ SGs_COM_ERR - FB Output Issue
 - Only on Safe Output Cards
 
 ---
-Generating Master/Slave Messages from Rxx to IC01 6900 Connections
+
+### Generating Master/Slave Messages from Rxx to IC01 6900 Connections
 1. Add TwinSAFE connections on the Master 6900 (IC01) as well as Master connection information in Robot Decouple Connection List, and then add TwinSAFE connections on Slave 6900 (Rxx) and Slave connection information in IC Decouple.
 	- It is critical not to click anywhere within the Slave TwinSAFE connections tab when developing the 6900 connection, as it will delete the connection UNTIL it has been linked to another Master 6900.
 2. Once the decouple connections are made on both ends, link the correct Message variable to link end to end (between IC01 Master and Rxx Slave) within Module 1 on the 6900s
@@ -156,13 +175,17 @@ Generating Master/Slave Messages from Rxx to IC01 6900 Connections
 3. Once the messages are linked the links can now be made within decouples on each 6900.
 In TC3 must be linked within the IO tree, NOT Safety
 
-FSoE Connection Info
+---
+
+### FSoE Connection Info
 - IC01 to R01 & R01 to IC01 FSoE Connection ID = 1xx + [10 x robot number] (same both ends)
 - IC01 to R01 FSoE Address = [10 x robot number]
 - R01 to IC01 FSoE Address = 6xx + [10 x robot number]
 - Watchdog Timer is set to 250ms on both ends
 
-TwinSAFE Notes:
+---
+
+### TwinSAFE Notes:
 - If EL6695 Connection keeps getting deleted, the XML file for it may need to be added to the TwinCAT/IO/EtherCAT folder
 - If TwinSAFE FBs aren't receiving bits from decouples, re-scan PLC and download config again.  Also re download TwinSAFE group
 - An Rxx 6695's FSoE address will always show 0 within the PLC CoE - Online tab, verify this setting on the Safety Configuration on the Kuka HMI
@@ -171,55 +194,52 @@ TwinSAFE Notes:
 - EL1904s only need Sensor Test set "FALSE" & Logic of Input Pairs set to "any pulse repetition OSSD, sensor test deactivated (2)" when using light curtains on those safety inputs
 	- These settings are found on each 1904 on the "Safe Parameter" tab
 - Connecting a EP1918/EP1957/EL6910 (new series TwinSAFE Card) with another TwinSAFE Connection requires using the same TwinSAFE Address, which must be unique to any other address TwinSAFE address
-       Do not connect them to each others addresses the old school method, this does not work
+    - Do not connect them to each others addresses the old school method, this does not work
 
-
-
-		
 ---
-		PLC
 
-Verify Source Code Download Implicit on Create Boot Project and All Files are checked in Project>Options>Source download
+## PLC
+- Verify Source Code Download Implicit on Create Boot Project and All Files are checked in Project>Options>Source download
+- Also Check Remind of boot project on exit in Project>Options>Load&Save
+- F2 key to add in Function Blocks 
+- Shift+F2 to add new FB/Variable in declaration and then F2 in PLC code to add the new FB/Var
+- Add libraries in PLC Control>Resources>Library Manager>(right click library window, and click additional library)>(Find library to add and click OK)
+- Everytime the PLC gets rescanned the System Config should also be re-activated
+- When performing math with REAL variables, all other data must also be REAL or decimal places will be lost
 
-Also Check Remind of boot project on exit in Project>Options>Load&Save
+---
 
-F2 key to add in Function Blocks 
+### Setup GTAC Config
 
-Shift+F2 to add new FB/Variable in declaration and then F2 in PLC code to add the new FB/Var
-
-Add libraries in PLC Control>Resources>Library Manager>(right click library window, and click additional library)>(Find library to add and click OK)
- 
-Everytime the PLC gets rescanned the System Config should also be re-activated
-
-When performing math with REAL variables, all other data must also be REAL or decimal places will be lost
-
-Setup GTAC Config
-
-Robot Setup
+##### Robot Setup
 - Remove unused robots
 - Set correct Robot Type
 - Configure accessories (Water Stand, MIG, EOAT, etc.)
 - Establish Robot Interferences (Interlock Map)
 
-I/O Linking
+##### I/O Linking
 - Input advanced and retracted sensors from I/O map into clamp Function Blocks, as well as valve outputs and clamp fault bits
 - Input sensor inputs into part present Function Blocks, and sensor fault bits
 
-Fixture Setup
+##### Fixture Setup
 - Add/Remove clamps, pins, slides, nut checks, and sensors
 - Create load, weld, unload, and sensor logic steps
 - Setup valve logic
 - Create robot to fixture re-positions
 
-Notes:
+---
+
+### Notes:
 - Unload_Complete ONLY used for Robots, human unload is taken care of within Cycle_Complete
 - PLC priority in unsafe order is a prompt that comes up on PLCs with two run-times.
 - If getting Error 4020: "Operand must have write access" -> make sure the variable is declared within the program attempting to write to the variable OR declared as a VAR INPUT in that Program/Action.
 - Using Bit 31 of ECAT Slave Cables Breaks causes all bit values TRUE and flashed every cable break
 - If getting Error "Variable [var name here] too large for address [address position here]" -> run a Clean All & allow the TwinCAT configuration to "clear," it will re-map the links and change the memory positions
-	- the specified variable has expanded in memory size but the current location does not have room to expand
+	- The specified variable has expanded in memory size but the current location does not have room to expand
 		 
-Logic Examples
+---
+
+### Logic Examples
 
 (*Load Complete w/ Repos*) 
 Load_Complete:= All_Sensors_On.2
@@ -233,6 +253,6 @@ OR Welding_Complete;
  
 (*Homing Unclamp Step*)
 Unclamp_Step.X:= NOT Dry_Cycle AND Cycle_Complete AND NOT Tool_At_Home AND All_Sensors_Off;
----
+
 
 ---

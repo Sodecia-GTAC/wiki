@@ -1,71 +1,79 @@
+## GRACO
 
-GRACO
+### Fluid Plate Setup (Lock Button to Access Setup Menus)
 
-Fluid Plate Setup (Lock Button to Access Setup Menus)
-- Controls Settings
-	- Dispense Trigger Source: Gateway
-	- Enable Valves: 1 - OFF, 2 - OFF, 3 - OFF, 4 - OFF
-	- Command Value Source: Display
-	- Job End Mode: Gateway
-	- Job End Delay: [only available with Job End Mode = Timer]
-	- Run Mode Bead Adjust: Enable
-	- End Job On Alarm: OFF
-	- Display Control Password: Disable
-- Mode Settings
-	- Mode = Full Open
-	- Bead Scale = 100%
-- Delay Settings
-	- Valves
-		- On (ms): 0
-		- Off (ms): 0
-	- Regulator
-		- On (ms): 0
-		- Off (ms): 0
-- Control Loop Settings
-	- Pressure
-		- Kp: 32
-		- Ki: 128
-		- Kd: 0
-	- Bead
-		- Kp: 32
-		- Ki: 128
-	- Meter Type: Volume
-	- K-Factor: 33000 pulses/Litre
-- Pressure Sensors
-	- Inlet Offset: (Offset until no pressure reads 0)
-	- Outlet Offset: (Offset until no pressure reads 0)
-	- Min Inlet: 2000 psi
-		- Error Type: Alarm
-	- Max Inlet: 5000 psi
-		- Error Type: Alarm
-	- Max Outlet: 5000 psi
-		- Error Type: Alarm
-- Error Type
-	- Low Pressure: Deviation
-	- High Pressure: Deviation
-	- Low Flow Rate: Deviation
-	- High Flow Rate: Deviation
-	- Low Material: Alarm
-	- High Material: Deviation
-	- Low Computed Target: Alarm
-	- High Computed Target: Deviation
-- Maintenance Advisory Limits
-	- Supply: 0
-	- V/P: 0
-	- Regulator: 0
-	- Flowmeter: 0
-	- Valves: 0
-- Style
-	- Style Name: (Application Specific)
-	- Volume: (Application Specific)
-	- Tolerances: -5% / +10%
-	- Pre Charge
-		- Mode: Display
-		- Pressure: 1000 psi
-	- Swirl Association (ONLY used with Swirl Head)
-	- Valves: None
-	- Motor Fault: Deviation
-System Setup
+#### Controls Settings
+- Dispense Trigger Source: Gateway
+- Enable Valves: 1 - OFF, 2 - OFF, 3 - OFF, 4 - OFF
+- Command Value Source: Display
+- Job End Mode: Gateway
+- Job End Delay: [only available with Job End Mode = Timer]
+- Run Mode Bead Adjust: Enable
+- End Job On Alarm: OFF
+- Display Control Password: Disable
+
+#### Mode Settings
+- Mode = Full Open
+- Bead Scale = 100%
+
+#### Delay Settings
+- Valves
+	- On (ms): 0
+	- Off (ms): 0
+- Regulator
+	- On (ms): 0
+	- Off (ms): 0
+
+#### Control Loop Settings
+- Pressure
+	- Kp: 32
+	- Ki: 128
+	- Kd: 0
+- Bead
+	- Kp: 32
+	- Ki: 128
+- Meter Type: Volume
+- K-Factor: 33000 pulses/Litre
+
+#### Pressure Sensors
+- Inlet Offset: (Offset until no pressure reads 0)
+- Outlet Offset: (Offset until no pressure reads 0)
+- Min Inlet: 2000 psi
+	- Error Type: Alarm
+- Max Inlet: 5000 psi
+	- Error Type: Alarm
+- Max Outlet: 5000 psi
+	- Error Type: Alarm
+
+#### Error Type
+- Low Pressure: Deviation
+- High Pressure: Deviation
+- Low Flow Rate: Deviation
+- High Flow Rate: Deviation
+- Low Material: Alarm
+- High Material: Deviation
+- Low Computed Target: Alarm
+- High Computed Target: Deviation
+
+#### Maintenance Advisory Limits
+- Supply: 0
+- V/P: 0
+- Regulator: 0
+- Flowmeter: 0
+- Valves: 0
+
+#### Style
+- Style Name: (Application Specific)
+- Volume: (Application Specific)
+- Tolerances: -5% / +10%
+- Pre Charge
+	- Mode: Display
+	- Pressure: 1000 psi
+- Swirl Association (ONLY used with Swirl Head)
+- Valves: None
+- Motor Fault: Deviation
+
+#### System Setup
 - Enable Quantity of dispensing heads and swirl orbiters here
 Gateway Setup
 - Set Profibus Address here.  Device Address
@@ -73,12 +81,12 @@ Advanced Setup
 - Setup Date/Time, Measurement Units, Backup Settings, and Verify/Update Software Version
 
 ---
-EMHART/STANLEY/TUCKER
+## EMHART/STANLEY/TUCKER
 
 - Verify all ferrous materials are at least 2 inches away from any drawn arc weld (prevents magnetism build up)
 
 ---
-NELSON
+## NELSON
 
 Step 3 after stud touch.
  
@@ -105,6 +113,7 @@ IF NIO Welds are consistent try the following:
 
 Notes:
 - Gun SYNC ETV delays or advances the plunge time after the lift/drawn arc
+
 ---
 Stud ARC goes toward MASS and away from GROUND.
  
@@ -120,15 +129,14 @@ Stud ARC goes toward MASS and away from GROUND.
 - AUSGTHY board determines gun that gets current SCR controlled.  This is
 where it confirms contact
  
----
-Fuses/Relays
+#### Fuses/Relays
  
 F11 should always be OFF, the rest should be always ON.
 K1 is main relay
 K2 is emergency relay
 
 ---
-BRANSON
+## BRANSON
 
 Plastic weld joint is created at the first point of contact for the mated plastic components (There should not be fusion in other areas besides this)
 
@@ -150,15 +158,14 @@ Welding by Time OR Energy are the best methods
 
 ---
 
-Tox
+## Tox
 
 Notes:
 - To Enable Window Measurement Output on PRofiBUS, must enable Final Values -- Menu > Supplement > Communication Parameters > Profibus Address >[check log final values on profibus]
 
 
 ---
-
-eWon VPN Setup
+## eWon VPN Setup
 
 
 Setup Steps
@@ -178,8 +185,8 @@ Setup Tag Parameters the same as below, leave other settings default
 
 Return Tag Mode to View after completing tag setup
 
----
-Script Setup
+
+### Script Setup
 
 Add below script line to INIT Section
 
