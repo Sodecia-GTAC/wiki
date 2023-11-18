@@ -205,7 +205,13 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 
 
+## Internal Github GTAC Links
 
+[Informal Q&A Sessions with Brent](https://github.com/orgs/Sodecia-GTAC/discussions/5)
+
+## External Links
+
+[Beckhoff Error Codes Link](https://infosys.beckhoff.com/english.php?content=../content/1033/devicemanager/263043211.html&id=)
 
 
 
