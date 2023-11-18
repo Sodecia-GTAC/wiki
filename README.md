@@ -203,15 +203,15 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Stack Light, Cycle Starts, & Safety Gate](./Instructions/Wiring&Cabling%20Notes.md#stack-light--cycle-starts----safety-gate)
       - [Light Curtains](./Instructions/Wiring&Cabling%20Notes.md#light-curtains)
 
-
+---
 
 ## Internal Github GTAC Links
+  - [Informal Q&A Sessions with Brent](https://github.com/orgs/Sodecia-GTAC/discussions/5)
+    + [November 2023](https://github.com/orgs/Sodecia-GTAC/discussions/5###November 2023 Session)
 
-[Informal Q&A Sessions with Brent](https://github.com/orgs/Sodecia-GTAC/discussions/5)
-
+---
 ## External Links
-
-[Beckhoff Error Codes Link](https://infosys.beckhoff.com/english.php?content=../content/1033/devicemanager/263043211.html&id=)
+  - [Beckhoff Error Codes Link](https://infosys.beckhoff.com/english.php?content=../content/1033/devicemanager/263043211.html&id=)
 
 
 
