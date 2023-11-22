@@ -10,8 +10,17 @@
 - Be sure the following are delselected (unchecked): C0195, C0196, C0197, C0198, C0327
 - All others should be left selected (checked)
 
-![Example](./Images/XAE%20Checkboxes.jpg)
+![XAE check box pic](./Images/XAE%20Checkboxes.jpg)
 
+### ADSParseSymbol no more unused handles error
+If you see this while Activating a PLC project:
+
+![Ads Errors pic](./Images/AdsParseSymbol%20no%20more%20unused%20handles%20error.jpg)
+
+Consider it a nuisance error, you can:
+- Ignore
+- Stop all instances of your IWS project(s) (stop CE Server) from running on the IPC while you activate
+The error is caused by your running Indusoft UI project still attempting to read / write to PLC variables even when the ADS server restarts during a PLC Activation
 ---
 ## Addressing
 
