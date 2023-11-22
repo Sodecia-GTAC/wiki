@@ -20,7 +20,7 @@ If you see this while Activating a PLC project:
 Consider it a nuisance error, you can:
 - Ignore
 - Stop all instances of your IWS project(s) (stop CE Server) from running on the IPC while you activate
-The error is caused by your running Indusoft UI project still attempting to read / write to PLC variables even when the ADS server restarts during a PLC Activation
+- The error is caused by your running Indusoft UI project still attempting to read / write to PLC variables even when the ADS server restarts during a PLC Activation
 ---
 ## Addressing
 
