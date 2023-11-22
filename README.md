@@ -29,6 +29,8 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 - [Beckhoff](./Instructions/Beckhoff%20Notes.md#beckhoff)
     + [Important Side-notes](./Instructions/Beckhoff%20Notes.md#important-side-notes)
+    + [XAE Compiler Check Boxes](./Instructions/Beckhoff%20Notes.md#XAE-compiler-checkboxes)
+    
   * [Addressing](./Instructions/Beckhoff%20Notes.md#addressing)
     + [ICxx Addressing](./Instructions/Beckhoff%20Notes.md#icxx-addressing)
     + [STxx Addressing](./Instructions/Beckhoff%20Notes.md#stxx-addressing)

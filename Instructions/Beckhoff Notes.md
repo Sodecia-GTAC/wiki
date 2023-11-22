@@ -1,8 +1,14 @@
 # Beckhoff
 
 ###### Important Side-notes
-Download To PLC/Upload From PLC
-Our I/O = PNP(Sourcing) Not NPN(Sinking)
+- Download To PLC/Upload From PLC
+- Our I/O = PNP(Sourcing) Not NPN(Sinking)
+
+### XAE compiler check boxes
+If you find you have unusual / unexpected erors / warnings during a build check the Compiler Warnings.
+you can find by right clicking the _PLC Project, then navigating to Compiler Wanrings.
+Be sure the following are delselected: C0195, C0196, C0197, C0198, C0327.
+All others should be left checked (selected).
 
 ---
 ## Addressing
