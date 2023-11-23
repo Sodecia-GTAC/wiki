@@ -6,8 +6,8 @@
 
 ### XAE compiler check boxes
 - If you find you have unusual / unexpected errors and / or warnings during a build check the Compiler Warnings
-- Find by right clicking the _PLC Project ("SODGxx_SSCC601_xxxxxxx_PLC Project" as example), then navigating to Compiler Wanrings
-- Be sure the following are delselected (unchecked): C0195, C0196, C0197, C0198, C0327
+- Find by right clicking the _PLC Project ("SODGxx_SSCC601_xxxxxxx_PLC Project" as example), then navigating to Compiler Warnings
+- Be sure the following are deselected (unchecked): C0195, C0196, C0197, C0198, C0327
 - All others should be left selected (checked)
 
 ![XAE check box pic](./Images/XAE%20Checkboxes.jpg)
