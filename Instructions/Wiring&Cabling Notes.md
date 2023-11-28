@@ -132,6 +132,15 @@ Our I/O = PNP(Sourcing) NOT NPN(Sinking)
 
 ---
 
+### Fortress Pod Access Wiring (Request to enter button)
+J - Brown (24V)
+K - Blue (0V)
+N - Black  (Return from 1st Push button)
+*Wires White & Grey Not Used
+![image](https://github.com/Sodecia-GTAC/wiki/assets/150950090/5a7499a6-e159-4b2b-9c7b-473d2a7033d3)
+
+---
+
 ### SIC Marker Start Stop Pod
 Stop = Brown/White
 Start = Green/Yellow
