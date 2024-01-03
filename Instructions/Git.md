@@ -113,6 +113,8 @@ So, open cmd.exe (windows command line), navigate to the Git Repos folder you ma
 
 ![](./Images/Git/Using/Git_Clone_cmd.jpg)
 
+Note: it is quite normal for a clone command to take a while to execute as a clone is creating a copy of the entire repo.
+Once cloned we will then interact with the repo thru push and pull commands, these will be much faster.
 You will now have a copy of the remote repo on your laptop / PC. this copy is called the local repo!
 You are now free to edit the files contained in your local repo.
 
