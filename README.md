@@ -206,10 +206,14 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Stack Light, Cycle Starts, & Safety Gate](./Instructions/Wiring&Cabling%20Notes.md#stack-light--cycle-starts----safety-gate)
       - [Light Curtains](./Instructions/Wiring&Cabling%20Notes.md#light-curtains)
 
- - [GIT](./Instructions/Git.md)
-      - [Installing](./Instructions/Git.md#Intalling)
+---
+
+
+-[GIT & GitHub](./Instructions/Git.md)
+     - [Installing](./Instructions/Git.md#Intalling)
     + [Using](./Instructions/Git.md#Using)
     + [Practice](./Instructions/Git.md#Practice)
+
 ---
 
 ## Internal Github GTAC Links
