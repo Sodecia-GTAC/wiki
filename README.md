@@ -208,8 +208,8 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 ---
 
-  -[GIT](./Instructions/Git.md)
-     - [Installing](./Instructions/Git.md#Installing)
+- [GIT](./Instructions/Git.md)
+    + [Installing](./Instructions/Git.md#Installing)
     + [Using](./Instructions/Git.md#Using)
     + [Practice](./Instructions/Git.md#Practice)
 
