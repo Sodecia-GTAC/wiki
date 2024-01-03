@@ -97,9 +97,9 @@ This is a copy of a remote repo local to your laptop
 
 The following are some examples of how you will use commands to work with Git + GitHub
 
-#### My Lead has assigned me to work on a machine, they have already created a Remote Repo fopr the machine and told me to clone it, how do I do this?
+#### My Lead has assigned me to work on a machine, they have already created a Remote Repo for the machine and told me to clone it, how do I do this?
 First, if you haven't already done so, make a Git Repos folder on your laptop, keep all your local repos in here.
-While this is not a mandatory step it is HIGHLY advised that you get into the pratcies of keeping things organzied.
+While this is not a mandatory step it is HIGHLY advised that you get into the practice of keeping things organzied.
 To clone a remote repo we will use the git clone command in cmd.exe (windows command line), it looks like this:
 
 git clone [url]
@@ -114,10 +114,45 @@ So, open cmd.exe (windows command line), navigate to the Git Repos folder you ma
 ![](./Images/Git/Using/Git_Clone_cmd.jpg)
 
 You will now have a copy of the remote repo on your laptop / PC. this copy is called the local repo!
+You are now free to edit the files contained in your local repo.
+
+#### I have edited some files in my local repo and am happy with the edits. I'm ready to send these changes to the remote repo, what do I do?
+This will be accomplished by using a sequence of commands, this entire sequence is not mandatory but IS a good sequence yo get into the habit of doing.
+1. Open cmd.exe (windows command line), navigate right into your repo base folder, then enter:
+
+git add -A
+
+This ensures that if you've added any new files to the loacl repo, they become part of what is tracked in the repo
+
+2. Now enter:
+
+git commit -a
+
+This tells git to commit (or take a snap shot of) all changes that have happened in the repo since the last time you commited
+At this point git will open notepad and ask you to enter commit notes. While your commit notes don't have to list out every detail of all changes you've made, it
+is a good idea to add enough detail that anyone reading your commit notes will be able to understand what you worked on in the general sense.
+Once you're done entering your commit notes, save then close notepad, you will be returned to the cmd window.
+
+3. Finally, enter:
+
+git push
+
+This will push all commited changes to the remote repo!
+
+Here are a couple of screen shot to show the above in action.
+
+Add and Commit (with notepad open and comit notes added):
+
+![](./Images/Git/Using/Git_Commit_Note.jpg)
+
+Final Push to remote repo:
+
+![](./Images/Git/Using/Git_Push.jpg)
 
 
+At this point, you can open GitHub and confirm your commit / push took place:
 
-
+![](./Images/Git/Using/GitHub_CommitNote.jpg)
 
 
 ---

@@ -210,7 +210,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 - [GIT](./Instructions/Git.md)
     + [Installing](./Instructions/Git.md#Installing)
-    + [Common Terms](./Instructions/Git.md#Common%20Terms)
+    + [Common Terms](./Instructions/Git.md#Common-Terms)
     + [Using](./Instructions/Git.md#Using)
     + [Practice](./Instructions/Git.md#Practice)
 
