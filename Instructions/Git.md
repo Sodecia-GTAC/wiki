@@ -124,7 +124,7 @@ This will be accomplished by using a sequence of commands, this entire sequence 
 
 git add -A
 
-This ensures that if you've added any new files to the loacl repo, they become part of what is tracked in the repo
+This ensures that if you've added any new files to the local repo, they become part of what is tracked in the repo
 
 2. Now enter:
 
