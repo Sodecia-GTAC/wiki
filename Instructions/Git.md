@@ -3,7 +3,7 @@
 
 ### Installing (shown as of Git version 2.43.0)
 
-Go to https://git-scm.com/download/win and grab the standalone installer, place a copy on to your dekstop:
+Go to https://git-scm.com/download/win and grab the standalone installer, place a copy on to your desktop:
 
 ![](./Images/Git/Install/0_Git%20Install%20download.png)
 
@@ -69,10 +69,55 @@ Leave the Experimental Options as default (all deselected):
 
 ---
 
+### Common Terms
+
+#### Git (Git and GitHub are NOT the same thing)
+https://en.wikipedia.org/wiki/Git
+
+#### GitHub (GitHub is NOT Git, Github uses Git)
+https://en.wikipedia.org/wiki/GitHub
+
+#### Repo (aka, repository)
+Although this is not a term specific to GTAC, you will hear the term "repo" often.
+A repository (or repo for short) is essentially just a grouped collection of stuff. 
+For us, we group our FW levels and other project work into separate repos. Each repo contains all of the code, files, guides etc associated with that FW level or Project.
+What makes a repo different then just say a group of stuff in a folder is that anything contained in the repos context is tracked, each files revision history can be seen. 
+You will also see we often contain discussions, issues and general project tracking items in each repo as well.
+You will be assigned different access levels to different repos as required by your manager / lead.
+
+#### Remote Repo
+This is the central copy of a repo, stored on GitHub
+
+#### Local Repo
+This is a copy of a remote repo local to your laptop
+
+---
+
 ### Using
 
-COMING SOON!!
-The following are some GIT commands you will use often while working with Git + GitHub
+The following are some examples of how you will use commands to work with Git + GitHub
+
+#### My Lead has assigned me to work on a machine, they have already created a Remote Repo fopr the machine and told me to clone it, how do I do this?
+First, if you haven't already done so, make a Git Repos folder on your laptop, keep all your local repos in here.
+While this is not a mandatory step it is HIGHLY advised that you get into the pratcies of keeping things organzied.
+To clone a remote repo we will use the git clone command in cmd.exe (windows command line), it looks like this:
+
+git clone [url]
+
+You will replace the [url] part with the url to the remote repo you want to clone.
+This url can be found on ANY remote repo by going to it and finding it here:
+
+![](./Images/Git/Using/Git_Clone_CopyURL.jpg)
+
+So, open cmd.exe (windows command line), navigate to the Git Repos folder you made above and type in git clone plus the url you copied above:
+
+![](./Images/Git/Using/Git_Clone_cmd.jpg)
+
+You will now have a copy of the remote repo on your laptop / PC. this copy is called the local repo!
+
+
+
+
 
 
 ---
@@ -81,10 +126,13 @@ The following are some GIT commands you will use often while working with Git + 
 We have a practice repo located here: https://github.com/Sodecia-GTAC/Practice-Repo
 
 
-Using what your learned in the "Using" section above and to help you get comfortable with Git, you may want to try the following (in order):
+Using what you read in the "Using" section above and to help you get comfortable with Git, you should try the following (in order):
 
 1. Clone the Practice Repo to create a local copy onto your laptop / PC
 2. Make some changes to any of the test.txt files in the newly created local repo
 3. Commit the changes. When Notepad opens to get your commit notes, add your name, date and some notes about what you changed
 4. Push the commit to the remote repo
 5. Check on Github that the commit was pushed successfully
+
+Pratice as many times as it takes for you to feel comfortable. If you can do the above without looking at any reminders then you're off to a good start!
+Have fun!!
