@@ -223,6 +223,7 @@ Bit 0 enables control of ASYPTP motions in the SPS
 2. Go to C:\KRC\ROBOTER\Config\System\Common, then OPEN cabctrl.xml
 3. After opening cabctrl.xml go to line ~59 and change OpModes T2="[off/on]," then save file. 
 4. Run a Cold Boot with Reload All Files to update the "boot files"
+5. Note you need to be logged in to use T2
 
 ---
 
