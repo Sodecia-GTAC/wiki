@@ -185,5 +185,5 @@ Using what you read in the "Using" section above and to help you get comfortable
 4. Push the commit to the remote repo
 5. Check on Github that the commit was pushed successfully
 
-Pratice as many times as it takes for you to feel comfortable. If you can do the above without looking at any reminders then you're off to a good start!
+Practice as many times as it takes for you to feel comfortable. If you can do the above without looking at any reminders then you're off to a good start!
 Have fun!!
