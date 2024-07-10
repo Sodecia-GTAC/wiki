@@ -350,6 +350,23 @@ EG_MOVE_DIST = 1
 - Delete All Job Programs in Sodecia Folder
 - Verify IF any additions were made during project, determine to remove OR keep
 
+
+---
+
+### ServoGun SG Init commands fail
+		
+Issue:
+Encountered an issue with 2 robots on project 19017-9 where SG.INIT commands would cause an error message stating "The command force is lower than the switch-on threshold for force control", and would fail. This is caused by the force set for servogun init motions (squeezing after new caps) is set lower than some minimum that exisits within the controller. Somehow this number was changed internally from 2000 to 900. 
+
+Solution:
+Two values must be changed within the ServoGun files.
+TP>ServoGun>SG_ConfigData_ServoGuns
+~Line 27, Servogun[1] ForceInitNew value must be change to the appropriate value (in my case 2000)
+
+TP>ServoGun>SG_Main
+~Line 197, SG_ForceInitNew must be change to the appropriate value (in my case 2000)
+
+
 ---
 
 ### Notes:
@@ -455,21 +472,6 @@ WTC DEP Con1 Size:  Program Mode Button -> EIP Mapping/EIP Configuration/F5/F5/ 
 #### Correcting Robot Name after changing robot type
 Using the variable monitor window, set
 $robtrafo[] = $trafoname[]
-
----
-
-### ServoGun SG Init commands fail
-		
-Issue:
-Encountered an issue with 2 robots on project 19017-9 where SG.INIT commands would cause an error message stating "The command force is lower than the switch-on threshold for force control", and would fail. This is caused by the force set for servogun init motions (squeezing after new caps) is set lower than some minimum that exisits within the controller. Somehow this number was changed internally from 2000 to 900. 
-
-Solution:
-Two values must be changed within the ServoGun files.
-TP>ServoGun>SG_ConfigData_ServoGuns
-~Line 27, Servogun[1] ForceInitNew value must be change to the appropriate value (in my case 2000)
-
-TP>ServoGun>SG_Main
-~Line 197, SG_ForceInitNew must be change to the appropriate value (in my case 2000)
 
 
 ---
