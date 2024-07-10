@@ -113,6 +113,8 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Example of Jumps in a Motion Program](./Instructions/Robotic%20Notes.md#example-of-jumps-in-a-motion-program)
       - [Gun Open Distance Setting](./Instructions/Robotic%20Notes.md#gun-open-distance-setting)
       - [Preparing Kuka WoV Package for Robot Commission](./Instructions/Robotic%20Notes.md#preparing-kuka-wov-package-for-robot-commission)
+      - [ServoGun SG.INIT commands fail](./Instructions/Robotic%20Notes.md#ServoGun-SG-Init-commands-fail)
+      
     + [Notes:](./Instructions/Robotic%20Notes.md#notes-)
     + [WTC/RAFT](./Instructions/Robotic%20Notes.md#wtc-raft)
       - [Increasing Weld Schedule Timeout](./Instructions/Robotic%20Notes.md#increasing-weld-schedule-timeout-1)
