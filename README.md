@@ -22,9 +22,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Fuses/Relays](./Instructions/Auxiliary%20Equipment%20Notes.md#fuses-relays)
   * [BRANSON](./Instructions/Auxiliary%20Equipment%20Notes.md#branson)
   * [Tox](./Instructions/Auxiliary%20Equipment%20Notes.md#tox)
-  * [eWon VPN Setup](./Instructions/Auxiliary%20Equipment%20Notes.md#ewon-vpn-setup)
-    + [Script Setup](./Instructions/Auxiliary%20Equipment%20Notes.md#script-setup)
-
+  
 ---
 
 - [Beckhoff](./Instructions/Beckhoff%20Notes.md#beckhoff)
