@@ -15,7 +15,7 @@ Leave the Select Destination Location as default:
 
 ![](./Images/Git/Install/2_Git%20Install%20location.jpg)
 
-Leave the Select Components selections as default:
+Set Select Components as per the screen shot below (Scalar at the bottom is de-selected):
 
 ![](./Images/Git/Install/3_Git%20Install%20select%20components.jpg)
 
