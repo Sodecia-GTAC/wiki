@@ -366,6 +366,10 @@ TP>ServoGun>SG_ConfigData_ServoGuns
 TP>ServoGun>SG_Main
 ~Line 197, SG_ForceInitNew must be change to the appropriate value (in my case 2000)
 
+### KRC4 Servo XM Connector Including Brake
+		
+Taken from....:
+
 
 ---
 

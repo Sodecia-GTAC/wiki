@@ -112,6 +112,8 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
       - [Gun Open Distance Setting](./Instructions/Robotic%20Notes.md#gun-open-distance-setting)
       - [Preparing Kuka WoV Package for Robot Commission](./Instructions/Robotic%20Notes.md#preparing-kuka-wov-package-for-robot-commission)
       - [ServoGun SG.INIT commands fail](./Instructions/Robotic%20Notes.md#ServoGun-SG-Init-commands-fail)
+      - [KRC4 Servo XM Connector (including brake wiring)](./Instructions/Robotic%20Notes.md#KRC4-Servo-XM-Connector-Including-Brake)
+      
       
     + [Notes:](./Instructions/Robotic%20Notes.md#notes-)
     + [WTC/RAFT](./Instructions/Robotic%20Notes.md#wtc-raft)
