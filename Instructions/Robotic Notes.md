@@ -369,6 +369,7 @@ TP>ServoGun>SG_Main
 ### KRC4 Servo XM Connector Including Brake
 		
 Taken from....:
+![KRC4 Servo XM Connector Pinout](./Images/Wiring&Cabling%20Note%20Images/Kuka%20KRC4%20Servo%20Connection.jpg)
 
 
 ---
