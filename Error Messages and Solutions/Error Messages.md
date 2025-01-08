@@ -25,6 +25,7 @@ Place "Kuka_EL6695sec.xml" and "Kuka_EL6695prim.xml" into "C:\TwinCAT\Io\EtherCA
 
 ### PC Load Letter
 ![PC_Load_Letter](https://github.com/user-attachments/assets/b6e1f7e3-fc94-4285-ae78-0e8283ebff96)
+
 "PC LOAD LETTER? The f*** does that mean!?"
 
 ##### Solution:
