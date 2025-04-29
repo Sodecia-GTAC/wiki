@@ -19,11 +19,11 @@ However this method required IT intervention as the Change AMS NetID option is g
 ![Change AMS Pic1](./Images/Change_AMS_1.jpg)
 
 Luckily there is another method that can be used that does not require IT intervention. Open XAE, navigate to the "Routes" section, then
-select the "netID Management" tab. You can change your local AMS NetID in the Local NetID text box and then hit change.
+select the "NetID Management" tab. You can change your local AMS NetID in the Local NetID text box and then hit change.
 
 ![Change AMS Pic2](./Images/Change_AMS_2.jpg)
 
-Note: You will have to reboot your PC after this in oirder for the change to take place.
+Note: You will have to reboot your PC after this in order for the change to take place.
 
 
 
