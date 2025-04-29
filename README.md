@@ -28,6 +28,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 - [Beckhoff](./Instructions/Beckhoff%20Notes.md#beckhoff)
     + [Important Side-notes](./Instructions/Beckhoff%20Notes.md#important-side-notes)
     + [XAE Compiler Check Boxes](./Instructions/Beckhoff%20Notes.md#XAE-compiler-checkboxes)
+    + [Change PC's AMS Net ID without IT](./Instructions/Beckhoff%20Notes.md#Change-AMS-NetID)
     + [ADSParseSymbol no more unused handles error](./Instructions/Beckhoff%20Notes.md#ADSParseSymbol-no-more-unused-handles-error)
     
   * [Addressing](./Instructions/Beckhoff%20Notes.md#addressing)

@@ -12,6 +12,21 @@
 
 ![XAE check box pic](./Images/XAE%20Checkboxes.jpg)
 
+### Change AMS NetID
+Occasionally you may require to change your development laptop's AMS Net ID. Traditionally we have done so through the Windows system tray.
+However this method required IT intervention as the Change AMS NetID option is greyed out when not logged in as an administrator.
+
+![Change AMS Pic1](./Images/Change_AMS_1.jpg)
+
+Luckily there is another method that can be used that does not require IT intervention. Open XAE, navigate to the "Routes" section, then
+select the "netID Management" tab. You can change your local AMS NetID in the Local NetID text box and then hit change.
+
+![Change AMS Pic2](./Images/Change_AMS_2.jpg)
+
+Note: You will have to reboot your PC after this in oirder for the change to take place.
+
+
+
 ### ADSParseSymbol no more unused handles error
 If you see this while Activating a PLC project:
 
