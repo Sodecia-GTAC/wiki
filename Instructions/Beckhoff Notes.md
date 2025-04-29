@@ -13,7 +13,7 @@
 ![XAE check box pic](./Images/XAE%20Checkboxes.jpg)
 
 ### Change AMS NetID
-Occasionally you may require to change your development laptop's AMS Net ID. Traditionally we have done so through the Windows system tray.
+Occasionally you may have to change your development laptop's AMS Net ID. Traditionally we have done so through the Windows system tray.
 However this method required IT intervention as the Change AMS NetID option is greyed out when not logged in as an administrator.
 
 ![Change AMS Pic1](./Images/Change_AMS_1.jpg)
