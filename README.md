@@ -30,7 +30,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
     + [XAE Compiler Check Boxes](./Instructions/Beckhoff%20Notes.md#XAE-compiler-checkboxes)
     + [Change PC's AMS Net ID without IT](./Instructions/Beckhoff%20Notes.md#Change-AMS-NetID)
     + [ADSParseSymbol no more unused handles error](./Instructions/Beckhoff%20Notes.md#ADSParseSymbol-no-more-unused-handles-error)
-    + [TcHmi Merging](./Instructions/Sodecia%20GTAC%20-%20TcHmi%20merging%20how%20to.docx)
+    + [TcHmi Merging (click "View Raw" to download)](./Instructions/Sodecia%20GTAC%20-%20TcHmi%20merging%20how%20to.docx)
     
     
   * [Addressing](./Instructions/Beckhoff%20Notes.md#addressing)
