@@ -62,6 +62,10 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 ---
 
+- [Process Simulation](./Process-Simulation/Process-Sim-Cheat-Sheet.md)
+
+---
+
 - [Indusoft Notes](./Instructions/Indusoft%20Notes.md#indusoft-notes)
     + [Indusoft/HMI Startup](./Instructions/Indusoft%20Notes.md#indusoft-hmi-startup)
     + [Generating Tag into Symbol File and Import Into Indusoft](./Instructions/Indusoft%20Notes.md#generating-tag-into-symbol-file-and-import-into-indusoft)
