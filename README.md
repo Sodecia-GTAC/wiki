@@ -63,7 +63,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 ---
 
 - [Process Simulation](/Process-Simulation)
-  - [Cheat Sheet](/Process-Simulation/Process-Sim-Cheat-Sheet)
+  - [Cheat Sheet](/Process-Simulation/Process-Sim-Cheat-Sheet.md)
 
 ---
 
