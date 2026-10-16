@@ -5,6 +5,9 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 ## Table of Contents
 
+- [GTAC VC Tools](./GTAC%20VC%20Tools.md)
+
+
 - [Auxiliary Equipment](./Instructions/Auxiliary%20Equipment%20Notes.md#auxiliary-equipment)
   * [GRACO](./Instructions/Auxiliary%20Equipment%20Notes.md#graco)
     + [Fluid Plate Setup (Lock Button to Access Setup Menus)](./Instructions/Auxiliary%20Equipment%20Notes.md#fluid-plate-setup--lock-button-to-access-setup-menus-)
