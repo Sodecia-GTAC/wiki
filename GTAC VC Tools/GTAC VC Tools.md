@@ -70,7 +70,8 @@ Cables lists every link the tabs describe. The connectors are already known from
 
 ### Topology PDF
 
-![Cell 26013 EtherCAT topology](./images/topology-26013.jpg)
+![Cell 26013 EtherCAT topology](./images/topology.jpg)
+<!-- topology-drawing-v3 -->
 PDF draws the EtherCAT trunk, starting at IC01, with the drops beside it. When the row hits the right side it continues on the left as another row. Download PDF puts that drawing on the first page and the cable list after it. TC Forge reads the marks that end in -ECAT.
 
 A cell PDF from GitHub can open here or in TC Forge.
