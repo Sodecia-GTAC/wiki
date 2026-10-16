@@ -5,7 +5,7 @@ Full of lots of informal notes created over the years, tips, tricks etc that may
 
 ## Table of Contents
 
-- [GTAC VC Tools](./GTAC%20VC%20Tools.md)
+- [GTAC VC Tools](./GTAC%20VC%20Tools/GTAC%20VC%20Tools.md)
 
 
 - [Auxiliary Equipment](./Instructions/Auxiliary%20Equipment%20Notes.md#auxiliary-equipment)
