@@ -54,7 +54,7 @@ The drop-down shows the section and the tool you are in, such as ROBOT, Weld Spl
 
 - **Guide**: Weld tools, Fixture Forge, TC Forge, and Controls Forge each have their own Guide. Click it again to close it.
 - **Sample data**: The weld tools have Sample Project on the left. It loads the Front Bumper programs and that weld map. Click it again to clear it. Loading your own .src or zip turns the sample off. Fixture Forge has Load sample cell and Controls Forge has Load sample.
-- **Change log**: Weld tools and Fixture Forge list what changed and when. It asks for the change-log password.
+- **Change log**: Weld tools and Fixture Forge list what changed and when. It opens without a password.
 - **Saved work**: Work is saved in this browser only. It is still there after a refresh, but not on another PC or in another browser. Clear saved work resets that tool in this browser and cannot be undone.
 
 ## Robot
@@ -316,7 +316,7 @@ Saving uses your classic GitHub token (repo scope), since the Wiki edit token fi
 
 ## Local Server
 
-Run a copy on Ubuntu 24.04 Desktop or Windows 11. Local Server asks for its password, then shows the download, vc-tools-local.zip, and the install steps for each system. A publish does not change a Local Server that is already running. Download the zip again and follow When the app changes.
+Run a copy on Ubuntu 24.04 Desktop or Windows 11. Local Server shows the download, vc-tools-local.zip, and the install steps for each system. It needs no password. A publish does not change a Local Server that is already running. Download the zip again and follow When the app changes.
 
 ## Framework trim
 
