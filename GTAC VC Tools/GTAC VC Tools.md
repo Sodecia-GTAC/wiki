@@ -200,6 +200,10 @@ The board reads the VC_Project_Board list from the private VC-Project-Board repo
 
 ![Project Board without GitHub connected](./images/board-not-connected.png)
 
+![Project Board data age warning](./images/board-data-old.png)
+
+The board CSV only changes on GitHub when the SharePoint list changed, so a quiet hour is normal. If it has not changed for more than 4 working hours (Monday to Friday, 7:00 to 18:00), a grey note under Last updated says when it last changed and that the export may have stopped if the list was edited since. Nights and weekends do not count. After more than 3 days, at any time, it is an amber warning: "Board data is N days old. The SharePoint export may have stopped." If you see it and the list did change, check the Power Automate flow. On a phone the note shows under the header without opening Info. A dropped export shows no note.
+
 Without a GitHub token, an amber line under the header says the board is not connected and whether it is showing the last copy read in this browser, with a Connect GitHub button. Once the token is saved the board reads the live list by itself. While a dropped export is showing, the line says so, with Back to live.
 
 Search, PM, Assigned and Assigned to me narrow the jobs. The chips are Needs attention, At risk, Tight, On track, No date, Completed and All.
@@ -231,6 +235,10 @@ When the PM Hub customer list can be read, the panel also has a read-only Custom
 
 For the production managers. Open PM Hub on Home, next to Project Board, or go to ?app=pmhub. It uses the same jobs and the same GitHub token as the Project Board.
 
+The line under the tabs says when the board CSV was saved. The same data age note as on the Project Board shows under it: grey after 4 working hours without a change, amber after 3 days.
+
+On a phone, the status line under the tabs and the Customers search each get their own full-width row.
+
 ### Projects
 
 Jobs grouped by customer, with No customer set last. Each job shows its customer, status, PM, due date, days left or late, a small start-to-due bar with milestone markers, and the next milestone. Filter by PM, customer, search and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days.
@@ -247,7 +255,11 @@ Every milestone in the filters, by date: Overdue, Due soon, Upcoming, No date, a
 
 ### Customers
 
-The shared customer list. Each customer's card or row shows its logo on a small white tile; a customer without a logo shows its initials. Add customer, or click one to edit it: name, short code, main contact (name, email, phone) and notes. The edit panel shows the logo next to the name. A customer is deactivated rather than deleted. Delete is only offered when it has no jobs.
+The shared customer list. Each customer's card or row shows its logo on a small white tile; a customer without a logo shows its initials. Add customer, or click one to edit it: name, short code, main contact (name, email, phone) and notes. The edit panel shows the logo next to the name. A customer is deactivated rather than deleted.
+
+![PM Hub customer at a glance](./images/pmhub-customer-glance.png)
+
+The top of the panel is the customer at a glance: its logo, how many jobs are open, overdue, due soon and done, the open jobs (late first, then by due date) with status and due date, and the next milestones that are late or due in the next 2 weeks. Click a job to open its details; Back returns to the customer. A link to a customer (?view=customers&customer=) opens it filled in, even before the list has loaded. Delete is only offered when it has no jobs.
 
 Link jobs to a customer in three ways:
 
@@ -274,6 +286,12 @@ When the Timeline has nothing to show, it says why (the No date filter, complete
 Status emails (?view=email) writes a plain-text update to send to a customer. Choose One customer and pick the customer, or Pick jobs and tick them. The text has a subject, a greeting with the customer's main contact, and one line per job: its status (Done, Behind schedule, At risk, Due soon or On track), due date, days left or late, % complete and the next milestone. Done jobs are left out unless Include done jobs is ticked.
 
 Copy puts the text on the clipboard. Open in email app opens your own email program with it, addressed to the customer's contact email; a very long update opens with the subject only, so copy the text in. Read it before you send. Nothing is sent or saved from PM Hub.
+
+#### Weekly summary
+
+![PM Hub weekly summary](./images/pmhub-weekly-summary.png)
+
+Weekly summary, the third choice in Status emails, is a short status for the PMs themselves, customer by customer: how many jobs are open, the overdue jobs and why (due date passed or a milestone late), the jobs due in the next 7 days, and the milestones in the next 2 weeks. Customers are in name order with No customer set last; done jobs are left out. Pick Every PM or one PM (your own name is picked when you chose it on the board), and Plain text or Markdown. Copy puts it on the clipboard; .txt and .md download it as pm-weekly-summary-<date>. It has no email link and contacts no one.
 
 ### Access
 
