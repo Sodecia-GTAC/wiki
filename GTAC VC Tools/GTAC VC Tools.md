@@ -176,30 +176,29 @@ There is no app login, name picker, or app 2FA code anymore. Your own GitHub tok
 
 ### Token
 
-Make one of these on GitHub. Either kind works.
+Make one classic token on GitHub. It covers Sodecia-GTAC-Machines and the Sodecia-GTAC wiki.
 
-- **Classic token (simplest, one token for both)**: Settings, Developer settings, Personal access tokens, Tokens (classic). Generate a new token (classic).
-  - Tick the repo scope only. Set an expiry of 30 days or less.
-  - One classic token covers Sodecia-GTAC-Machines and the Sodecia-GTAC wiki.
-  - It can reach every repo you can, so keep it short-lived.
-  - If an organization uses SSO, click Configure SSO next to the token and authorize it for that organization.
-  - If an organization blocks classic tokens, use a fine-grained token instead.
-- **Fine-grained token**: Settings, Developer settings, Personal access tokens, Fine-grained tokens, Generate new token.
-  - Resource owner Sodecia-GTAC-Machines, 30 days or less, only the repositories you need.
-  - Contents read-only, or read and write only if you save files back.
-  - Nothing else.
+1. On GitHub open Settings, Developer settings, Personal access tokens, Tokens (classic), then Generate new token (classic).
+2. Give it a note, such as GTAC VC Tools.
+3. Tick only the repo scope.
+4. Set an expiry of 30 days or less.
+5. Click Generate token and copy it. The value is shown once. It starts with ghp_.
+6. If an organization uses SSO, click Configure SSO next to the token and Authorize it for Sodecia-GTAC-Machines and Sodecia-GTAC.
 
-The value is shown once. A classic token starts with ghp_ and a fine-grained one with github_pat_.
+The token can reach every repo you can, so keep it short-lived and never share it. A fine-grained token also works if you already use one.
 
 ### Connect
 
-Click GitHub. Paste https://github.com/Sodecia-GTAC-Machines and the token, then Connect. The address has to be real text in the box, not the gray hint.
+1. Click GitHub.
+2. Paste https://github.com/Sodecia-GTAC-Machines in Repository. The address has to be real text in the box, not the gray hint.
+3. Paste the token in GitHub token (classic).
+4. Leave Wiki edit token empty. The same token is used for the wiki.
+5. Optional: tick Remember on this computer, only on your own PC.
+6. Click Connect.
 
-Wiki edit token is optional. Leave it empty and the token above is used for the wiki too. With a classic token, leave it empty. With fine-grained tokens, paste a second one there: resource owner Sodecia-GTAC, only the wiki repository, Contents read and write, 30 days or less. One fine-grained token cannot cover both organizations.
+Tokens stay only in that browser tab and are forgotten when the tab closes, unless you ticked Remember on this computer. Forget token clears them sooner.
 
-Tokens stay only in that browser tab. They are forgotten when the tab closes. Forget token clears them sooner.
-
-If GitHub refuses the token, the panel says why. For SSO, authorize the token with Configure SSO. If the organization does not allow classic tokens, make a fine-grained one.
+If GitHub refuses the token, the panel says why. For SSO, authorize the token with Configure SSO.
 
 ### Projects
 
@@ -217,7 +216,7 @@ Wiki opens this repository, Sodecia-GTAC/wiki, full screen. It starts on the REA
 
 Edit opens the markdown for the page you are on. Save commits it to main. New page asks for a path, such as Instructions/New note.md, then commits that file. Cancel throws the change away.
 
-Saving uses the Wiki edit token, or the GitHub token when that field is empty. A classic token needs the repo scope. A fine-grained one needs Contents read and write on Sodecia-GTAC/wiki.
+Saving uses your classic GitHub token (repo scope), since the Wiki edit token field is left empty.
 
 ## Local Server
 
