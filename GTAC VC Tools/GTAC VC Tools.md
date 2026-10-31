@@ -174,6 +174,15 @@ There is no app login, name picker, or app 2FA code anymore. Your own GitHub tok
 
 ![GitHub connect panel](./images/github-connect.png)
 
+### No GitHub account yet?
+
+1. Go to https://github.com/signup. Enter your work email, a password and a username your teammates will recognise, then solve the check.
+2. Enter the code GitHub emails you to verify your email.
+3. Turn on two-factor authentication: profile picture, Settings, Password and authentication, Enable two-factor authentication. The organizations may require it before you can join.
+4. Send your GitHub username to Dave Bergman or your team lead and ask to be invited to the Sodecia-GTAC-Machines and Sodecia-GTAC organizations, and to the VC-Project-Board repository for the Project Board.
+5. Accept each invitation from the email, or at https://github.com/orgs/Sodecia-GTAC-Machines/invitation and https://github.com/orgs/Sodecia-GTAC/invitation. Invitations expire after 7 days.
+6. Then make your classic token below.
+
 ### Token
 
 Make one classic token on GitHub. It covers Sodecia-GTAC-Machines and the Sodecia-GTAC wiki.
