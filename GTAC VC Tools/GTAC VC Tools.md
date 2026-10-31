@@ -4,10 +4,11 @@ GTAC VC Tools is the shop app for laying out a cell, trimming the SSCC61x framew
 
 Designed and built by Brandon, Dave, Mikey, and Richard, the guy that is never here.
 
-Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. Project Board, GitHub, Wiki, and Local Server sit in the row underneath.
+Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. Project Board, PM Hub, GitHub, Wiki, and Local Server sit in the row underneath.
 
 ![Home with the Robot and PLC sections](./images/home-sections.png)
 
+- [What's new](#whats-new)
 - [Home](#home)
 - [Inside a tool](#inside-a-tool)
 - [Robot](#robot)
@@ -22,16 +23,26 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
   - [TC Forge](#tc-forge)
   - [Controls Forge](#controls-forge)
 - [Project Board](#project-board)
+- [PM Hub](#pm-hub)
 - [GitHub](#github)
 - [Wiki](#wiki)
 - [Local Server](#local-server)
 - [Framework trim](#framework-trim)
 
+## What's new
+
+**Oct 30 to 31, 2026**
+
+- **Project Board**: new Workload and Data quality screens, a job details panel, Print / PDF and Download CSV. The help notes moved under Info, and SharePoint list, Drop export and Drop OneNote moved under More. Workload has an Overdue column. See [Project Board](#project-board).
+- **PM Hub**: a new tool for the production managers, next to Project Board. Jobs by customer, milestones, a timeline and a shared customer list. See [PM Hub](#pm-hub).
+- **Weld Point Plotting**: the uploaded part is now kept per project in this browser and comes back after a reload. A part uploaded before Oct 29 has to be uploaded once more. See [Weld Point Plotting](#weld-point-plotting).
+- **GitHub sign-in**: one classic token, with steps for people who have no GitHub account yet. See [GitHub](#github).
+
 ## Home
 
 - **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, and Zone Forge. Click the Robot heading to open Weld Splitter.
 - **PLC** (TwinCAT theme): Fixture Forge, TC Forge, and Controls Forge. Click the PLC heading to open Fixture Forge.
-- **Bottom row**: Project Board, GitHub, Wiki, and Local Server.
+- **Bottom row**: Project Board, PM Hub, GitHub, Wiki, and Local Server.
 
 Each tool name is a link, so it can open in a new tab. Guide at the top right says which tool fits the job. Click it again to close it.
 
@@ -76,7 +87,19 @@ After you fix points in simulation, Upload Fixed Job from PRS takes the Process 
 
 ### Weld Point Plotting
 
+![Weld Point Plotting with a test part](./images/weld-plot-part.png)
+
 Plot the weld points onto the part each weld belongs to. Upload part CAD takes a STEP, IGES, STL, or OBJ. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
+
+The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part can be up to 200 MB. A bigger file still shows, but has to be uploaded again after a reload. Like other saved work, it is not on another PC or in another browser.
+
+A part uploaded before Oct 29 was not kept. Upload it again once.
+
+- **Part file not saved in this browser, upload it again.** No part is saved for this project. Click Upload part CAD in the message. If a part is saved for another project, a Use button offers it.
+- **The part could not be shown.** The file did not load. Try a STEP (AP214 or AP242) or STL export and upload it again. A file that does not load is not saved, so a good part saved earlier is kept.
+- **Weld points are not on the part.** Their X Y Z come from the robot program. Upload the weld XML to place them on the part.
+
+The view frames the part and the weld points together. Clear saved work also clears the saved parts. STEP and IGES parts now load on the Local Server too.
 
 ### ArcTech Converter
 
@@ -162,9 +185,78 @@ A cell PDF from GitHub can open here or in TC Forge.
 
 ## Project Board
 
-Which cell is late, and its GitHub repo. Red is late or has less time left than work left. Yellow is due within 14 days. Blue still has room.
+Which cell is late, who is loaded, and its GitHub repo. Red (At risk) is late or has less time left than work left. Yellow (Tight) is due within 14 days. Blue (On track) still has room.
 
-The board starts with the built-in VC_Project_Board export. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Live refresh from Planner waits on IT. A GitHub name on a job opens that repository, once GitHub is connected in this browser.
+The board reads the VC_Project_Board list from the private VC-Project-Board repository on GitHub, using the GitHub token connected in this browser. Refresh reads it again. If GitHub cannot be read, the last copy stays on screen, and Drop export under More still works.
+
+Search, PM, Assigned and Assigned to me narrow the jobs. The chips are Needs attention, At risk, Tight, On track, No date, Completed and All.
+
+### Screens
+
+- **Board**: cards, or a compact list with one row per job.
+- **Timeline**: a bar per job from Start to Due, filled to % complete, with a line for today. Group by none, PM or assigned person. Jobs with no due date are not on it.
+- **Workload** (?view=workload): VC days still to do for the next 8 weeks, per person or per PM. Capacity is 5 days a week. Over 5 is red, 4 to 5 is amber. Late jobs are in an Overdue column before the first week, and Total includes them. A week under 1 day shows as a faint dot. It still counts and can still be clicked. Click a number to list that week's jobs. Jobs with no due date or no VC days cannot be placed; the count links to Data quality.
+- **What changed**: new and removed jobs, moved dates, status and % changes, and jobs newly overdue or at risk, since your last visit, or 7 or 30 days ago.
+- **Data quality** (?view=quality): every job with a data problem, grouped by PM, each with a Fix in Planner or Fix in SharePoint line. It shrinks as the list is cleaned up.
+
+### Job details
+
+Click a job name on a card, list row, timeline bar, Data quality entry or Workload week. A panel opens with every field, the Plan, GitHub and SharePoint links, the job's data problems with the fix, and its last changes. The address gets ?job=. Close, Esc or Back returns to the view. On a phone it opens full screen.
+
+The repository name, Save repository and Open GitHub are only in this panel. A card shows a GitHub button when the job has a repository.
+
+When the PM Hub customer list can be read, the panel also has a read-only Customer line. The name opens that customer in PM Hub.
+
+### Buttons
+
+- **Print / PDF** prints the current view. Save as PDF works. The header names the view, the filters and the data time.
+- **Download CSV** saves the jobs shown, with the columns the board shows.
+- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board still works.
+- **Info** holds the notes about where the data comes from, the fixture reviews, and GitHub not being connected. A dot on Info means there is a notice.
+
+## PM Hub
+
+For the production managers. Open PM Hub on Home, next to Project Board, or go to ?app=pmhub. It uses the same jobs and the same GitHub token as the Project Board.
+
+### Projects
+
+Jobs grouped by customer, with No customer set last. Each job shows its customer, status, PM, due date, days left or late, a small start-to-due bar with milestone markers, and the next milestone. Filter by PM, customer, search and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days.
+
+Click a job to open its details. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
+
+### Timeline
+
+Looks and works like the board's Timeline. Group by Customer, PM or None. PM milestones show as diamonds on the bars: red overdue, amber due soon, filled done.
+
+### Milestones
+
+Every milestone in the filters, by date: Overdue, Due soon, Upcoming, No date, and Done (folded).
+
+### Customers
+
+The shared customer list. Add customer, or click one to edit it: name, short code, main contact (name, email, phone) and notes. A customer is deactivated rather than deleted. Delete is only offered when it has no jobs.
+
+Link jobs to a customer in three ways:
+
+- pick the jobs from the list;
+- by job number. A base number covers every job with it, and a full number covers that one job;
+- by keyword in the job name or machine description.
+
+A picked job wins over a job number, and a job number wins over a keyword. A job that matches two customers shows an amber Also matches warning. Fix it in one of the customers.
+
+Each job in PM Hub also has a Customer picker: assign or change it for this job only or all jobs with that number, clear it, or make a new customer.
+
+The list is saved to pm-hub/customers.json in the private Sodecia-GTAC/VC-Project-Board repository, so both PMs see the same list. Others see a change after Refresh. If someone else saved first, PM Hub reloads the list, keeps what you typed, and asks you to Save again.
+
+### Kept in this browser
+
+Milestones, ticks and PM notes stay in this browser only. Export saves them (and a copy of the customer list) to a file. Import puts them back, on another PC for example.
+
+Status emails says coming later. Nothing is sent from there yet.
+
+### Access
+
+You need your classic GitHub token (repo scope), authorized for SSO; see [GitHub](#github). To save customers you also need Write access to VC-Project-Board. Ask Dave. Without it, the Customers tab is read-only.
 
 ## GitHub
 
@@ -179,7 +271,7 @@ There is no app login, name picker, or app 2FA code anymore. Your own GitHub tok
 1. Go to https://github.com/signup. Enter your work email, a password and a username your teammates will recognise, then solve the check.
 2. Enter the code GitHub emails you to verify your email.
 3. Turn on two-factor authentication: profile picture, Settings, Password and authentication, Enable two-factor authentication. The organizations may require it before you can join.
-4. Send your GitHub username to Dave Bergman or your team lead and ask to be invited to the Sodecia-GTAC-Machines and Sodecia-GTAC organizations, and to the VC-Project-Board repository for the Project Board.
+4. Send your GitHub username to Dave Bergman or your team lead and ask to be invited to the Sodecia-GTAC-Machines and Sodecia-GTAC organizations, and to the VC-Project-Board repository for the Project Board and PM Hub. Dave is an admin of both organizations, so the invitation comes from him or your team lead.
 5. Accept each invitation from the email, or at https://github.com/orgs/Sodecia-GTAC-Machines/invitation and https://github.com/orgs/Sodecia-GTAC/invitation. Invitations expire after 7 days.
 6. Then make your classic token below.
 
