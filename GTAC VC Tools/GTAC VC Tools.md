@@ -2,7 +2,7 @@
 
 GTAC VC Tools is the shop app for laying out a cell, trimming the SSCC61x framework, drawing the EtherCAT trunk, and generating fixture and weld outputs.
 
-Designed and built by Brandon, Dave, Mikey, and Richard, the guy that is never here.
+Designed and built by Brandon, Dave, Mark, Mikey, and Richard, the guy that is never here.
 
 Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. Project Board, PM Hub, GitHub, Wiki, and Local Server sit in the row underneath.
 
@@ -52,9 +52,9 @@ The drop-down shows the section and the tool you are in, such as ROBOT, Weld Spl
 
 ![PLC drop-down](./images/plc-menu.png)
 
-- **Guide**: Weld tools, Fixture Forge, TC Forge, and Controls Forge each have their own Guide. Click it again to close it.
-- **Sample data**: The weld tools have Sample Project on the left. It loads the Front Bumper programs and that weld map. Click it again to clear it. Loading your own .src or zip turns the sample off. Fixture Forge has Load sample cell and Controls Forge has Load sample.
-- **Change log**: Weld tools and Fixture Forge list what changed and when. It opens without a password.
+- **Guide**: Weld tools, Zone Forge, Fixture Forge, TC Forge, and Controls Forge each have their own Guide. Click it again to close it.
+- **Sample data**: The weld tools have Sample Project on the left. It loads the Front Bumper programs and that weld map. Click it again to clear it. Loading your own .src or zip turns the sample off. On Weld Point Plotting the sample also shows a made-up part. Zone Forge has its own Sample Project, a made-up two-robot cell. Fixture Forge has Load sample cell and Controls Forge has Load sample. The weld and Zone Forge samples are made up, not a real job.
+- **Change log**: the clock button lists what changed in that tool and when: Robot tools, Fixture Forge, Project Board, PM Hub and Zone Forge each have one. It opens without a password.
 - **Saved work**: Work is saved in this browser only. It is still there after a refresh, but not on another PC or in another browser. Clear saved work resets that tool in this browser and cannot be undone.
 
 ## Robot
@@ -77,9 +77,9 @@ After you fix points in simulation, Upload Fixed Job from PRS takes the Process 
 
 ### Weld Point Plotting
 
-![Weld Point Plotting with a test part](./images/weld-plot-part.png)
+![Weld Point Plotting with the sample part](./images/weld-plot-part.png)
 
-Plot the weld points onto the part each weld belongs to. Upload part CAD takes a STEP, IGES, STL, or OBJ. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
+Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, or OBJ. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
 
 The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part can be up to 200 MB. A bigger file still shows, but has to be uploaded again after a reload. Like other saved work, it is not on another PC or in another browser.
 
@@ -89,8 +89,8 @@ The weld dots show only on a part that has loaded. A weld XML on its own does no
 
 ![Weld Point Plotting with no part saved](./images/weld-plot-no-part.png)
 
-- **No part:** the plot area says Upload the part CAD to see the N weld points on it. The banner says Part file not saved in this browser, upload it again, with an Upload part CAD button. If a part is saved for another project, a Use button offers it.
-- **Loading:** the plot area says Loading the saved part… until the part is read.
+- **No part:** the plot area says Upload the part CAD to see the N weld points on it. The banner says what is missing: Load a program first, No part uploaded yet for the program, or that a part uploaded before is no longer in this browser (or was too big to keep), with an Upload part CAD button. Without the weld XML it adds that the dots use robot coordinates. If a part is saved for another project, a Use button offers it.
+- **Loading:** the plot area says Loading the saved part… until the part is read. A STEP or IGES file is read in the background with a progress line (Downloading the STEP reader… the first time, then Reading the STEP file…), so the page stays usable.
 - **The part could not be shown:** the plot area stays empty and the banner gives the reason, with no dots. Try a STEP (AP214 or AP242) or STL export and upload it again. A file that does not load is not saved, so a good part saved earlier is kept.
 - **Weld points are not on the part:** their X Y Z come from the robot program. Upload the weld XML to place them on the part.
 
@@ -100,6 +100,8 @@ The view frames the part and the weld points together. Clear saved work also cle
 
 Turn a Process Simulate download into ArcTech. Load one job, or Upload jobs for a zip or several .src files. UNKNOWN MOTION FOLD comes back as ArcOn, ArcSwi, and ArcOff. The .dat is not changed.
 
+Before Download, each program's changed lines show, removed in red and added in green, with the count under Download, such as 320 lines added. Open a program's section to see its lines; long lists show the first 30 changes and Show all.
+
 ### Cycle Time Analysis
 
 Seam and travel time from the weld map and the programs. Upload weld map and choose the PowerPoint. The seam time uses the millimetres on each weld label, such as 6041_96-25mm, divided by the weld speed. Load the program and the .dat on the left for a second table that adds travel between the points. Download analysis saves the tables as an Excel file. Blending and acceleration are not included, so a real cycle runs a bit longer.
@@ -108,11 +110,19 @@ Seam and travel time from the weld map and the programs. Upload weld map and cho
 
 Turn ArcOn, ArcOff, and ArcSwi into LIN moves. Load one .src and .dat, or Upload jobs zip for several. ArcOn and ArcOff become a fine LIN at 0.01 m/s. ArcSwi stays a LIN with C_DIS. A comment such as ; was ARCON WDAT1 marks each line so the arc can be taught again on the robot. The .dat files are not changed.
 
+![Strip Arc to LIN with the changed lines](./images/strip-diff.png)
+
+Before Download, each program's changed lines show, removed in red and added in green, and the count shows under Download, such as 572 lines removed, 225 added. If nothing changes it says so: Download would give back the same files.
+
 ### Zone Forge
 
 Fill in the interference-zone handshakes. Drop the KUKA programs and their .dat files, with the same name for both, such as R01_Fix01.src and R01_Fix01.dat. Process Simulate marks the last point before an interference volume and the first point after it.
 
 Pick PLC bits or OLP sync. With PLC bits, assign one bit per pair of robots. 106 is the first pair, and robot interference uses 106 to 112. Bit 105 is the trunnion, or table, turn. Change a number to match the zone on the fixture, check What gets added, then Download the programs.
+
+![Zone Forge with the Sample Project](./images/zone-forge.png)
+
+Sample Project loads a made-up two-robot cell (R01_Fix01 and R02_Fix01) to try it; dropping your own programs replaces it. Guide lists the steps. The trunnion settings show only when the programs have trunnion comments; otherwise a line says there are none. When the programs already have every handshake, it says Nothing to change. Download would give back the same files.
 
 ## PLC
 
@@ -134,7 +144,7 @@ Workbook columns the generator reads:
 
 Sequence packs as part present, then clamps, pins, slides, and nut checks. Each new device type starts on port 0 of the next node. If a group ends on ports 0–6, the rest of that node is spare. Unused hardware is tagged Node Not Used.
 
-On the TcHMI page, the layout can take the whole window. The left panel and the top band slide away. Click the arrow to bring them back. A screen you added can be deleted. The objects that were placed on it clear, so they can be placed again.
+On the TcHMI page, the Layout tab is where devices are placed on the fixture picture: Sample fixture or Upload image, then click where each arrow points. On a phone the text sits above the buttons. For the code files, Preview and Source switch between the drawn screen and the code. The layout can take the whole window. The left panel and the top band slide away. Click the arrow to bring them back. A screen you added can be deleted. The objects that were placed on it clear, so they can be placed again.
 
 A fixture workbook from GitHub opens in this app.
 
@@ -183,6 +193,10 @@ A cell PDF from GitHub can open here or in TC Forge.
 Which cell is late, who is loaded, and its GitHub repo. Red (At risk) is late or has less time left than work left. Yellow (Tight) is due within 14 days. Blue (On track) still has room.
 
 The board reads the VC_Project_Board list from the private VC-Project-Board repository on GitHub, using the GitHub token connected in this browser. Refresh reads it again. If GitHub cannot be read, the last copy stays on screen, and Drop export under More works too.
+
+![Project Board without GitHub connected](./images/board-not-connected.png)
+
+Without a GitHub token, an amber line under the header says the board is not connected and whether it is showing the last copy read in this browser, with a Connect GitHub button. Once the token is saved the board reads the live list by itself. While a dropped export is showing, the line says so, with Back to live.
 
 Search, PM, Assigned and Assigned to me narrow the jobs. The chips are Needs attention, At risk, Tight, On track, No date, Completed and All.
 
@@ -243,15 +257,23 @@ Each job in PM Hub also has a Customer picker: assign or change it for this job 
 
 The list is saved to pm-hub/customers.json in the private Sodecia-GTAC/VC-Project-Board repository, so both PMs see the same list. Others see a change after Refresh. If someone else saved first, PM Hub reloads the list, keeps what you typed, and asks you to Save again.
 
-### Kept in this browser
+### Shared milestones and notes
 
-Milestones, ticks and PM notes stay in this browser only. Export saves them (and a copy of the customer list) to a file. Import puts them back, on another PC for example.
+Milestones, ticks and PM notes are shared with the team in pm-hub/milestones.json in the same repository. They are saved a few seconds after a change, or with Save. If two people change the same job, PM Hub merges what it can and asks you to Save again. Without Write access they stay in this browser until they can be saved. Export saves them (and a copy of the customer list) to a file. Import puts them back.
 
-Status emails says coming later. Nothing is sent from there yet.
+When the Timeline has nothing to show, it says why (the No date filter, completed jobs hidden, or no dated jobs) with Show open jobs or Clear filters.
+
+### Status emails
+
+![PM Hub Status emails](./images/pmhub-status-email.png)
+
+Status emails (?view=email) writes a plain-text update to send to a customer. Choose One customer and pick the customer, or Pick jobs and tick them. The text has a subject, a greeting with the customer's main contact, and one line per job: its status (Done, Behind schedule, At risk, Due soon or On track), due date, days left or late, % complete and the next milestone. Done jobs are left out unless Include done jobs is ticked.
+
+Copy puts the text on the clipboard. Open in email app opens your own email program with it, addressed to the customer's contact email; a very long update opens with the subject only, so copy the text in. Read it before you send. Nothing is sent or saved from PM Hub.
 
 ### Access
 
-You need your classic GitHub token (repo scope), authorized for SSO; see [GitHub](#github). To save customers you also need Write access to VC-Project-Board. Ask Dave. Without it, the Customers tab is read-only.
+You need your classic GitHub token (repo scope), authorized for SSO; see [GitHub](#github). To save customers, milestones and notes for everyone you also need Write access to VC-Project-Board. Ask Dave. Without it, the Customers tab is read-only and milestones stay in your browser.
 
 ## GitHub
 
