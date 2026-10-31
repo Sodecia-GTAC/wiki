@@ -79,7 +79,7 @@ After you fix points in simulation, Upload Fixed Job from PRS takes the Process 
 
 ![Weld Point Plotting with the sample part](./images/weld-plot-part.png)
 
-Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, or OBJ. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
+Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, OBJ, or JT. JT is read in the browser and takes a moment the first time; Process Simulate JT 10 meshes are supported, and if one fails, save it as STL. A Parasolid .prt or .x_t has to be exported as STEP first. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
 
 The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part can be up to 200 MB. A bigger file still shows, but has to be uploaded again after a reload. Like other saved work, it is not on another PC or in another browser.
 
@@ -120,6 +120,8 @@ Fill in the interference-zone handshakes. Drop the KUKA programs and their .dat 
 
 Pick PLC bits or OLP sync. With PLC bits, assign one bit per pair of robots. 106 is the first pair, and robot interference uses 106 to 112. Bit 105 is the trunnion, or table, turn. Change a number to match the zone on the fixture, check What gets added, then Download the programs.
 
+Each download is named for the style you picked: R01_Fix01.src comes back as R01_Fix01_plc.src or R01_Fix01_olp.src, with its .dat to match. A name that already ends in _plc or _olp is rewritten for the style, so converting again does not stack the endings. DEF, DEFDAT and the Program header inside the files are changed to the new name.
+
 ![Zone Forge with the Sample Project](./images/zone-forge.png)
 
 Sample Project loads a made-up two-robot cell (R01_Fix01 and R02_Fix01) to try it; dropping your own programs replaces it. Guide lists the steps. The trunnion settings show only when the programs have trunnion comments; otherwise a line says there are none. When the programs already have every handshake, it says Nothing to change. Download would give back the same files.
@@ -144,6 +146,8 @@ Workbook columns the generator reads:
 
 Sequence packs as part present, then clamps, pins, slides, and nut checks. Each new device type starts on port 0 of the next node. If a group ends on ports 0–6, the rest of that node is spare. Unused hardware is tagged Node Not Used.
 
+A nut check with only one input is a sensor: it is labeled Nut Check# and comes after the other part presents as the next Part_Present. A nut check with home and work inputs and both valve solenoids stays a cylinder. Anything else is left for you to name. A Slide # Lock on one solenoid, with the other side spare, has no feedback and turns on before that slide moves.
+
 On the TcHMI page, the Layout tab is where devices are placed on the fixture picture: Sample fixture or Upload image, then click where each arrow points. On a phone the text sits above the buttons. For the code files, Preview and Source switch between the drawn screen and the code. The layout can take the whole window. The left panel and the top band slide away. Click the arrow to bring them back. A screen you added can be deleted. The objects that were placed on it clear, so they can be placed again.
 
 A fixture workbook from GitHub opens in this app.
@@ -154,7 +158,7 @@ A fixture workbook from GitHub opens in this app.
 
 Open this when you already have the cable schedule, from Controls Forge or from a cell PDF. It draws the trunk, starting at IC01, and the cables that leave it.
 
-Upload the cell PDF. The topology always starts at IC01. Download the drawing when you need a copy.
+Upload the cell PDF, or drop it anywhere on the page. The topology always starts at IC01. Download the drawing when you need a copy.
 
 ### Controls Forge
 
@@ -164,7 +168,7 @@ Open this when you are laying out the cell. Cabinets, robots, options, and cable
 
 #### Start a cell
 
-Pick a project in the sample list and click Load sample. That fills the tabs from a real cell. Upload PDF does the same from a cable schedule: marks that end in -ECAT become the devices, the links, and the lengths. Clear puts the form back to empty.
+Pick a project in the sample list and click Load sample. That fills the tabs from a real cell. Upload PDF does the same from a cable schedule: marks that end in -ECAT become the devices, the links, and the lengths. A PDF dropped anywhere on the tool does the same as Upload PDF. Until the cell has a cable, the page and the PDF tab show a card to drop or pick the PDF. Clear puts the form back to empty.
 
 If the PDF or the sample has no cell number on the end, the app asks for it before the serial is finished.
 
