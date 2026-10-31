@@ -8,7 +8,6 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 ![Home with the Robot and PLC sections](./images/home-sections.png)
 
-- [What's new](#whats-new)
 - [Home](#home)
 - [Inside a tool](#inside-a-tool)
 - [Robot](#robot)
@@ -29,15 +28,6 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 - [Local Server](#local-server)
 - [Framework trim](#framework-trim)
 
-## What's new
-
-**Oct 30 to 31, 2026**
-
-- **Project Board**: new Workload and Data quality screens, a job details panel, Print / PDF and Download CSV. The help notes moved under Info, and SharePoint list, Drop export and Drop OneNote moved under More. Workload has an Overdue column. See [Project Board](#project-board).
-- **PM Hub**: a new tool for the production managers, next to Project Board. Jobs by customer, milestones, a timeline and a shared customer list. See [PM Hub](#pm-hub).
-- **Weld Point Plotting**: the uploaded part is now kept per project in this browser and comes back after a reload. A part uploaded before Oct 29 has to be uploaded once more. See [Weld Point Plotting](#weld-point-plotting).
-- **GitHub sign-in**: one classic token, with steps for people who have no GitHub account yet. See [GitHub](#github).
-
 ## Home
 
 - **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, and Zone Forge. Click the Robot heading to open Weld Splitter.
@@ -48,9 +38,9 @@ Each tool name is a link, so it can open in a new tab. Guide at the top right sa
 
 ![Home Guide](./images/home-guide.png)
 
-There is no Weld Cell Forge start page anymore. Opening the weld app lands on Weld Splitter.
+Opening the weld app lands on Weld Splitter.
 
-Old links still work. A bookmark such as ?app=weld, ?app=fixture, ?app=network, ?app=controls, ?app=zones, or ?app=board opens the same tool as before. ?app=weld without a screen, or with the old home screen, opens Weld Splitter.
+A bookmark such as ?app=weld, ?app=fixture, ?app=network, ?app=controls, ?app=zones, or ?app=board opens that tool. ?app=weld without a screen opens Weld Splitter.
 
 ## Inside a tool
 
@@ -93,13 +83,18 @@ Plot the weld points onto the part each weld belongs to. Upload part CAD takes a
 
 The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part can be up to 200 MB. A bigger file still shows, but has to be uploaded again after a reload. Like other saved work, it is not on another PC or in another browser.
 
-A part uploaded before Oct 29 was not kept. Upload it again once.
+If you uploaded a part before Oct 29, upload it again once.
 
-- **Part file not saved in this browser, upload it again.** No part is saved for this project. Click Upload part CAD in the message. If a part is saved for another project, a Use button offers it.
-- **The part could not be shown.** The file did not load. Try a STEP (AP214 or AP242) or STL export and upload it again. A file that does not load is not saved, so a good part saved earlier is kept.
-- **Weld points are not on the part.** Their X Y Z come from the robot program. Upload the weld XML to place them on the part.
+The weld dots show only on a part that has loaded. A weld XML on its own does not show dots until the part is loaded.
 
-The view frames the part and the weld points together. Clear saved work also clears the saved parts. STEP and IGES parts now load on the Local Server too.
+![Weld Point Plotting with no part saved](./images/weld-plot-no-part.png)
+
+- **No part:** the plot area says Upload the part CAD to see the N weld points on it. The banner says Part file not saved in this browser, upload it again, with an Upload part CAD button. If a part is saved for another project, a Use button offers it.
+- **Loading:** the plot area says Loading the saved part… until the part is read.
+- **The part could not be shown:** the plot area stays empty and the banner gives the reason, with no dots. Try a STEP (AP214 or AP242) or STL export and upload it again. A file that does not load is not saved, so a good part saved earlier is kept.
+- **Weld points are not on the part:** their X Y Z come from the robot program. Upload the weld XML to place them on the part.
+
+The view frames the part and the weld points together. Clear saved work also clears the saved parts. STEP and IGES parts load on the Local Server too.
 
 ### ArcTech Converter
 
@@ -187,7 +182,7 @@ A cell PDF from GitHub can open here or in TC Forge.
 
 Which cell is late, who is loaded, and its GitHub repo. Red (At risk) is late or has less time left than work left. Yellow (Tight) is due within 14 days. Blue (On track) still has room.
 
-The board reads the VC_Project_Board list from the private VC-Project-Board repository on GitHub, using the GitHub token connected in this browser. Refresh reads it again. If GitHub cannot be read, the last copy stays on screen, and Drop export under More still works.
+The board reads the VC_Project_Board list from the private VC-Project-Board repository on GitHub, using the GitHub token connected in this browser. Refresh reads it again. If GitHub cannot be read, the last copy stays on screen, and Drop export under More works too.
 
 Search, PM, Assigned and Assigned to me narrow the jobs. The chips are Needs attention, At risk, Tight, On track, No date, Completed and All.
 
@@ -195,7 +190,7 @@ Search, PM, Assigned and Assigned to me narrow the jobs. The chips are Needs att
 
 - **Board**: cards, or a compact list with one row per job.
 - **Timeline**: a bar per job from Start to Due, filled to % complete, with a line for today. Group by none, PM or assigned person. Jobs with no due date are not on it.
-- **Workload** (?view=workload): VC days still to do for the next 8 weeks, per person or per PM. Capacity is 5 days a week. Over 5 is red, 4 to 5 is amber. Late jobs are in an Overdue column before the first week, and Total includes them. A week under 1 day shows as a faint dot. It still counts and can still be clicked. Click a number to list that week's jobs. Jobs with no due date or no VC days cannot be placed; the count links to Data quality.
+- **Workload** (?view=workload): VC days still to do for the next 8 weeks, per person or per PM. Capacity is 5 days a week. Over 5 is red, 4 to 5 is amber. Late jobs are in an Overdue column before the first week, and Total includes them. A week under 1 day shows as a faint dot. It counts in Total and can be clicked. Click a number to list that week's jobs. Jobs with no due date or no VC days cannot be placed; the count links to Data quality.
 - **What changed**: new and removed jobs, moved dates, status and % changes, and jobs newly overdue or at risk, since your last visit, or 7 or 30 days ago.
 - **Data quality** (?view=quality): every job with a data problem, grouped by PM, each with a Fix in Planner or Fix in SharePoint line. It shrinks as the list is cleaned up.
 
@@ -211,7 +206,7 @@ When the PM Hub customer list can be read, the panel also has a read-only Custom
 
 - **Print / PDF** prints the current view. Save as PDF works. The header names the view, the filters and the data time.
 - **Download CSV** saves the jobs shown, with the columns the board shows.
-- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board still works.
+- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board works too.
 - **Info** holds the notes about where the data comes from, the fixture reviews, and GitHub not being connected. A dot on Info means there is a notice.
 
 ## PM Hub
@@ -262,7 +257,7 @@ You need your classic GitHub token (repo scope), authorized for SSO; see [GitHub
 
 GitHub is how a project gets into the app. The cell projects live in the organization https://github.com/Sodecia-GTAC-Machines.
 
-There is no app login, name picker, or app 2FA code anymore. Your own GitHub token is the key, and GitHub decides what it can see.
+There is no app login, name picker, or app 2FA code. Your own GitHub token is the key, and GitHub decides what it can see.
 
 ![GitHub connect panel](./images/github-connect.png)
 
