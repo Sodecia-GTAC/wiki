@@ -218,7 +218,7 @@ Click a job name on a card, list row, timeline bar, Data quality entry or Worklo
 
 The repository name, Save repository and Open GitHub are only in this panel. A card shows a GitHub button when the job has a repository.
 
-When the PM Hub customer list can be read, the panel also has a read-only Customer line. The name opens that customer in PM Hub.
+When the PM Hub customer list can be read, the panel also has a read-only Customer line with the customer's small logo. The name opens that customer in PM Hub.
 
 ### Buttons
 
@@ -247,7 +247,7 @@ Every milestone in the filters, by date: Overdue, Due soon, Upcoming, No date, a
 
 ### Customers
 
-The shared customer list. Add customer, or click one to edit it: name, short code, main contact (name, email, phone) and notes. A customer is deactivated rather than deleted. Delete is only offered when it has no jobs.
+The shared customer list. Each customer's card or row shows its logo on a small white tile; a customer without a logo shows its initials. Add customer, or click one to edit it: name, short code, main contact (name, email, phone) and notes. The edit panel shows the logo next to the name. A customer is deactivated rather than deleted. Delete is only offered when it has no jobs.
 
 Link jobs to a customer in three ways:
 
