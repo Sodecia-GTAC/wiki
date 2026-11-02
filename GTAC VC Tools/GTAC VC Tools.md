@@ -237,7 +237,7 @@ For the production managers. Open PM Hub on Home, next to Project Board, or go t
 
 The line under the tabs says when the board CSV was saved. The same data age note as on the Project Board shows under it: grey after 4 working hours without a change, amber after 3 days.
 
-On a phone, the status line under the tabs and the Customers search each get their own full-width row.
+On a phone, the tabs wrap onto two rows, and the status line under the tabs and the Customers search each get their own full-width row.
 
 ### Projects
 
@@ -292,6 +292,18 @@ Copy puts the text on the clipboard. Open in email app opens your own email prog
 ![PM Hub weekly summary](./images/pmhub-weekly-summary.png)
 
 Weekly summary, the third choice in Status emails, is a short status for the PMs themselves, customer by customer: how many jobs are open, the overdue jobs and why (due date passed or a milestone late), the jobs due in the next 7 days, and the milestones in the next 2 weeks. Customers are in name order with No customer set last; done jobs are left out. Pick Every PM or one PM (your own name is picked when you chose it on the board), and Plain text or Markdown. Copy puts it on the clipboard; .txt and .md download it as pm-weekly-summary-<date>. It has no email link and contacts no one.
+
+### Fixture reviews
+
+Fixture reviews (?view=reviews) shows the team's fixture design review task list. It is read-only: the list lives in OneNote, on the page Review Task List-<year> in the Engineering Notebook (Engineering SharePoint site, Site Assets), and you edit it there.
+
+Every hour a Power Automate flow reads that page and sends it to the private Sodecia-GTAC/VC-Project-Board repository. A GitHub workflow there reads the page's table and saves it as fixture-reviews/fixture_reviews.csv, only when something changed. Blank spacer rows are left out and dates are written as yyyy-mm-dd. The table needs its headers, in order: PROJECT-CELL, FIX #. TOOL#, CAD-REV, CAD REC'D ON, REVIEW STARTED BY, COMPLETED ON, SIM STARTED BY, COMPLETED ON, QUALITY STARTED BY, COMPLETED ON, SENT ON, NO. OF CUSTOMER REVIEWS, BUILD APPROVAL, and NOTES (optional). Each January the flow is pointed at the new year's tab and page.
+
+Fixtures are grouped by project-cell in the page's order, highest priority first. Each shows its fixture or tool number, CAD revision and the date the CAD came in, the people and dates for each step, and a stage: Waiting (nothing started), Review, Sim or Quality (in progress or done, from its COMPLETED ON), Sent, or Approved (BUILD APPROVAL filled in, or the row highlighted orange). A green highlight shows as New revision. Search by job, fixture, initials or notes, or filter by stage. Refresh reloads it.
+
+The line above the list says when the list was last saved. A grey note after 4 working hours without a change is normal when nobody edited the page; if someone did, the flow may have stopped.
+
+If the flow could read the page but not the table, an amber box says "The last OneNote page could not be read, so the list below was not updated." with the reason, and the last good list stays below it. Usually a table header was renamed, removed or added, or the flow is reading the wrong page; put the header back and the next hourly run fixes it. "The flow sent no page content" means OneNote returned nothing or the page was too big for the direct send. "No fixture review list yet" means the flow has not saved the list once.
 
 ### Access
 
