@@ -34,7 +34,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 - **PLC** (TwinCAT theme): Fixture Forge, TC Forge, and Controls Forge. Click the PLC heading to open Fixture Forge.
 - **Bottom row**: Project Board, PM Hub, GitHub, Wiki, and Local Server.
 
-Each tool name is a link, so it can open in a new tab. Guide at the top right says which tool fits the job. Click it again to close it.
+The top of Home reads GTAC VC Tools and the heading Choose an app, with nothing else under it. Each tool name is a link, so it can open in a new tab. Guide at the top right says which tool fits the job. Click it again to close it.
 
 ![Home Guide](./images/home-guide.png)
 
@@ -204,7 +204,14 @@ The SharePoint export runs every hour but only changes the board CSV on GitHub w
 
 Without a GitHub token, an amber line under the header says the board is not connected and whether it is showing the last copy read in this browser, with a Connect GitHub button. Once the token is saved the board reads the live list by itself. While a dropped export is showing, the line says so, with Back to live.
 
-Search, PM, Assigned and Assigned to me narrow the jobs. The chips are Needs attention, At risk, Tight, On track, No date, Completed and All.
+Search (job number or name, placeholder Job # or name), PM, Assigned and Assigned to me narrow the jobs. The chips are Needs attention, At risk, Tight, On track, No date, Completed and All.
+
+After those come the shared list filters, the same on the Board, PM Hub Projects and Fixture reviews:
+- **Sort**: Usual order (the board's own order), Latest (newest start date first), Due date (soonest due first) or Oldest (oldest start date first). Jobs without that date go last.
+- **Start from / to**: only jobs whose start date is in the range (both days included). A job with no start date is left out while a range is set.
+- **Overdue only**: open jobs past their due date, the same jobs that carry the Overdue attention flag.
+
+These are kept in this browser with the other board filters, Clear filters resets them, and the CSV and printout summary lists them. On a phone they sit under the Filters button with PM and Assigned.
 
 ### Screens
 
@@ -239,7 +246,7 @@ On a phone, the tabs wrap onto two rows, and the status line under the tabs and 
 
 ### Projects
 
-Jobs grouped by customer, with No customer set last. Each job shows its customer, status, PM, due date, days left or late, a small start-to-due bar with milestone markers, and the next milestone. Filter by PM, customer, search and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days.
+Jobs grouped by customer, with No customer set last. Each job shows its customer, status, PM, due date, days left or late, a small start-to-due bar with milestone markers, and the next milestone. Filter by PM, customer, search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
 
 Click a job to open its details. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
 
@@ -297,7 +304,9 @@ Fixture reviews (?view=reviews) shows the team's fixture design review task list
 
 Every hour a Power Automate flow reads the table on that page and sends it to the private Sodecia-GTAC/VC-Project-Board repository in parts, because one message to GitHub can carry only 64 KB. A GitHub workflow there waits until every part has arrived, then reads the table and saves it as fixture-reviews/fixture_reviews.csv, only when something changed. Blank spacer rows are left out and dates are written as yyyy-mm-dd. The table needs its headers, in order: PROJECT-CELL, FIX #. TOOL#, CAD-REV, CAD REC'D ON, REVIEW STARTED BY, COMPLETED ON, SIM STARTED BY, COMPLETED ON, QUALITY STARTED BY, COMPLETED ON, SENT ON, NO. OF CUSTOMER REVIEWS, BUILD APPROVAL, and NOTES (optional). Each January the flow is pointed at the new year's tab and page.
 
-Fixtures are grouped by project-cell in the same order as the page. Each shows its fixture or tool number, CAD revision and the date the CAD came in, the people and dates for each step, and badges saying what it is still waiting for. CAD design review (REVIEW STARTED BY / COMPLETED ON) and simulation (SIM STARTED BY / COMPLETED ON) each stay open until their COMPLETED ON is filled: the badge says Waiting on CAD design review or Waiting on simulation, with who started it or not started, and a fixture waiting on both shows both. Once both are complete it shows Waiting on quality until quality's COMPLETED ON, then Ready to send until SENT ON, then Sent with the date. BUILD APPROVAL filled in, or the row highlighted orange, shows Approved. A green highlight shows as New revision. Search by job, fixture, initials or notes, or pick a Status (Waiting on CAD review, Waiting on simulation, Waiting on quality, Ready to send, Sent, Approved); a fixture waiting on both reviews is in both. Refresh reloads it.
+Fixtures are grouped by project-cell in the same order as the page. Each shows its fixture or tool number, CAD revision and the date the CAD came in, the people and dates for each step, and badges saying what it is still waiting for. CAD design review (REVIEW STARTED BY / COMPLETED ON) and simulation (SIM STARTED BY / COMPLETED ON) each stay open until their COMPLETED ON is filled: the badge says Waiting on CAD design review or Waiting on simulation, with who started it or not started, and a fixture waiting on both shows both. Once both are complete it shows Waiting on quality until quality's COMPLETED ON, then Ready to send until SENT ON, then Sent with the date. BUILD APPROVAL filled in, or the row highlighted orange, shows Approved. A green highlight shows as New revision. Search by job (project-cell), fixture, initials or notes, or pick a Status (Waiting on CAD review, Waiting on simulation, Waiting on quality, Ready to send, Sent, Approved); a fixture waiting on both reviews is in both. The shared list filters sit next to them: Sort (Usual order keeps the page's order; Latest and Oldest go by CAD rec'd on; Due date goes by the review due date below, soonest first), CAD rec'd from / to, and Overdue only. These last for the visit only.
+
+A fixture is **overdue** when its CAD design review or simulation is still open (no COMPLETED ON) more than 10 working days (Monday to Friday, holidays not counted) after CAD REC'D ON, and it is not sent or approved. Its review due date is CAD REC'D ON plus 10 working days; after that day it shows a red Overdue (review due <date>) badge. The 10 is `FIXTURE_OVERDUE_WORKING_DAYS` in `src/lib/pmhub/fixture-reviews.ts`. Refresh reloads it.
 
 The line above the list says when the list was last saved. A grey note after 4 working hours without a change is normal when nobody edited the page; if someone did, the flow may have stopped.
 
