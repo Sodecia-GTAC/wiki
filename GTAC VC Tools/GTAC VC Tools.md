@@ -200,9 +200,7 @@ The board reads the VC_Project_Board list from the private VC-Project-Board repo
 
 ![Project Board without GitHub connected](./images/board-not-connected.png)
 
-![Project Board data age warning](./images/board-data-old.png)
-
-The board CSV only changes on GitHub when the SharePoint list changed, so a quiet hour is normal. If it has not changed for more than 4 working hours (Monday to Friday, 7:00 to 18:00), a grey note under Last updated says when it last changed and that the export may have stopped if the list was edited since. Nights and weekends do not count. After more than 3 days, at any time, it is an amber warning: "Board data is N days old. The SharePoint export may have stopped." If you see it and the list did change, check the Power Automate flow. On a phone the note shows under the header without opening Info. A dropped export shows no note.
+The SharePoint export runs every hour but only changes the board CSV on GitHub when the SharePoint list changed, so an old CSV is normal. The note under Last updated goes by when the export last ran, read from the export's GitHub Actions runs in VC-Project-Board: "Export checked hourly · last run 1:10 PM · no changes since Oct 30, 2:00 PM" in grey. It turns into an amber warning, "… The SharePoint export may have stopped.", only when the newest export run failed or no run has succeeded for 3 hours; then check the Power Automate flow and the repository's Actions tab. If your token cannot read the Actions runs (see [Token](#token)), there is never a warning: after 4 working hours without a change (Monday to Friday, 7:00 to 18:00) a grey note says when the data last changed and that this is normal if nobody edited the list. On a phone the note shows under the header without opening Info. A dropped export shows no note.
 
 Without a GitHub token, an amber line under the header says the board is not connected and whether it is showing the last copy read in this browser, with a Connect GitHub button. Once the token is saved the board reads the live list by itself. While a dropped export is showing, the line says so, with Back to live.
 
@@ -235,7 +233,7 @@ When the PM Hub customer list can be read, the panel also has a read-only Custom
 
 For the production managers. Open PM Hub on Home, next to Project Board, or go to ?app=pmhub. It uses the same jobs and the same GitHub token as the Project Board.
 
-The line under the tabs says when the board CSV was saved. The same data age note as on the Project Board shows under it: grey after 4 working hours without a change, amber after 3 days.
+The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the hourly export last ran, amber only if the export failed or has not run for 3 hours.
 
 On a phone, the tabs wrap onto two rows, and the status line under the tabs and the Customers search each get their own full-width row.
 
@@ -337,7 +335,7 @@ Make one classic token on GitHub. It covers Sodecia-GTAC-Machines and the Sodeci
 5. Click Generate token and copy it. The value is shown once. It starts with ghp_.
 6. If an organization uses SSO, click Configure SSO next to the token and Authorize it for Sodecia-GTAC-Machines and Sodecia-GTAC.
 
-The token can reach every repo you can, so keep it short-lived and never share it. A fine-grained token also works if you already use one.
+The token can reach every repo you can, so keep it short-lived and never share it. A fine-grained token also works if you already use one; give it Contents: Read and write and Actions: Read on VC-Project-Board. Without Actions: Read the board and PM Hub still work, but the data note cannot tell whether the hourly export is running, so it only says when the data last changed.
 
 ### Connect
 
