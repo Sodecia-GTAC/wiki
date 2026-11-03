@@ -240,9 +240,22 @@ When the PM Hub customer list can be read, the panel also has a read-only Custom
 
 For the production managers. Open PM Hub on Home, next to Project Board, or go to ?app=pmhub. It uses the same jobs and the same GitHub token as the Project Board.
 
-The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the hourly export last ran, amber only if the export failed or has not run for 3 hours.
+The line under the tabs names the data source and says when its files were saved. With Project Board, the same data note as on the Project Board shows under it: when the hourly export last ran, amber only if the export failed or has not run for 3 hours.
 
 On a phone, the tabs wrap onto two rows, and the status line under the tabs and the Customers search each get their own full-width row.
+
+### Data source: Project Board or Planner
+
+The Data select next to Refresh picks where PM Hub's jobs come from. PM Hub remembers the choice in this browser; ?app=pmhub&source=planner (or source=board) picks it for one visit.
+
+- **Project Board** (the default): the SharePoint board CSV, as described below.
+- **Planner**: only the Planner plans of the Engineering group, saved by an hourly Power Automate flow (standard connectors: Planner, Office 365 Users, GitHub). The flow reads every plan with all its buckets, tasks and task checklists and sends them in parts to the private Sodecia-GTAC/VC-Project-Board repository. A GitHub workflow (.github/workflows/save-planner-progress.yml) puts the parts back together and saves planner/planner_plans.csv (one row per plan), planner/planner_tasks.csv (one row per task) and planner/status.json, only when something changed. Each run replaces the whole set, so a deleted plan or task drops out. The flow is described in the click guide vc-planner-progress-flow-guide.md.
+
+In Planner mode each plan whose title starts with a job number (for example "25023 - Rear rail") is one job; the job number and name come from the title, and other plans such as Template are left out. % complete is the checklist of the plan's Process Simulation task (a task whose title starts with "Process Simulation"), shown with the count, such as 10/20. A plan without that task uses the checklist items of all its tasks; a plan without any checklist uses the share of tasks done. Priority, start, due and people come from the Process Simulation task; without it, start and due are the earliest start and latest due of the plan's tasks. The status is Not started, In progress or Done, and overdue when past due and not done. Planner has no estimated VC work, complexity, robots or PM, so those stay blank. Customers, milestones and notes go by job number and work in both modes.
+
+A job's details in Planner mode show the Process Simulation checklist with its open items, then every bucket with its tasks: status, priority, due date, checklist x/y, people, completed date, and the open checklist items folded under each task. It is read-only; change tasks in Planner. Planner priorities are Urgent, Important, Medium and Low.
+
+"No Planner data yet" means the flow has not saved the files once. If the last export could not be read, an amber note says so and the last good copy stays.
 
 ### Projects
 
