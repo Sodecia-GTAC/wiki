@@ -246,9 +246,9 @@ On a phone, the tabs wrap onto two rows, and the status line under the tabs and 
 
 ### Projects
 
-Jobs grouped by customer, with No customer set last. Each job shows its customer, status, PM, due date, days left or late, a small start-to-due bar with milestone markers, and the next milestone. Filter by PM, customer, search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
+Jobs grouped by customer, with No customer set last. Each job shows its customer, status, Planner priority, PM, due date, days left or late, % complete, a small start-to-due bar with milestone markers, and the next milestone. The priority comes from PlannerPriority in the board CSV and shows as a coloured tag: Urgent (red), Important (amber), Medium (blue) or Low (grey); a job with no priority has no tag. % complete comes from PercentComplete and shows as a short green bar with the number, the same value as on the Project Board card. Filter by PM, customer, Priority (Any priority, the priorities the jobs have, most urgent first, and No priority), search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The status chip counts follow the PM, customer, priority and search filters. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first, plus Priority with Urgent first and jobs without a priority last, and % complete with the most complete first; ties keep the board's order), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
 
-Click a job to open its details. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
+Click a job to open its details. The top of the details shows the status, PM, people, priority tag, % complete bar and schedule. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
 
 ### Timeline
 
@@ -264,7 +264,7 @@ The shared customer list. Each customer's card or row shows its logo on a small 
 
 ![PM Hub customer at a glance](./images/pmhub-customer-glance.png)
 
-The top of the panel is the customer at a glance: its logo, how many jobs are open, overdue, due soon and done, the open jobs (late first, then by due date) with status and due date, and the next milestones that are late or due in the next 2 weeks. Click a job to open its details; Back returns to the customer. A link to a customer (?view=customers&customer=) opens it filled in, even before the list has loaded. Delete is only offered when it has no jobs.
+The top of the panel is the customer at a glance: its logo, how many jobs are open, overdue, due soon and done, the open jobs (late first, then by due date) with status, priority, % complete and due date, and the next milestones that are late or due in the next 2 weeks. Click a job to open its details; Back returns to the customer. A link to a customer (?view=customers&customer=) opens it filled in, even before the list has loaded. Delete is only offered when it has no jobs.
 
 Link jobs to a customer in three ways:
 
