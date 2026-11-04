@@ -227,7 +227,7 @@ Click a job name on a card, list row, timeline bar, Data quality entry or Worklo
 
 The repository name, Save repository and Open GitHub are only in this panel. A card shows a GitHub button when the job has a repository.
 
-When the PM Hub customer list can be read, the panel also has a read-only Customer line with the customer's small logo. The name opens that customer in PM Hub.
+When the PM Hub customer list can be read, the panel also has read-only Business unit and Customer lines. Business unit shows the job's Sodecia business unit with its code, division and country; Customer shows the external customer with its small logo and contact. Each name opens that record in PM Hub, and Not set links to the job in PM Hub to pick one.
 
 ### Buttons
 
@@ -246,9 +246,9 @@ On a phone, the tabs wrap onto two rows, and the status line under the tabs and 
 
 ### Projects
 
-Jobs grouped by customer, with No customer set last. Each job shows its customer, status, Planner priority, PM, due date, days left or late, % complete, a small start-to-due bar with milestone markers, and the next milestone. The priority comes from PlannerPriority in the board CSV and shows as a coloured tag: Urgent (red), Important (amber), Medium (blue) or Low (grey); a job with no priority has no tag. % complete comes from PercentComplete and shows as a short green bar with the number, the same value as on the Project Board card. Filter by PM, customer, Priority (Any priority, the priorities the jobs have, most urgent first, and No priority), search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The status chip counts follow the PM, customer, priority and search filters. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first, plus Priority with Urgent first and jobs without a priority last, and % complete with the most complete first; ties keep the board's order), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
+Jobs grouped by customer, with No customer set last. Each job shows its business unit (the Sodecia business unit's code, or No business unit) and its customer, each with its own Assign or Change button, then status, Planner priority, PM, due date, days left or late, % complete, a small start-to-due bar with milestone markers, and the next milestone. The priority comes from PlannerPriority in the board CSV and shows as a coloured tag: Urgent (red), Important (amber), Medium (blue) or Low (grey); a job with no priority has no tag. % complete comes from PercentComplete and shows as a short green bar with the number, the same value as on the Project Board card. Filter by PM, customer (the Customer list has the customers first and the Sodecia business units in their own group; picking a business unit shows its jobs), Priority (Any priority, the priorities the jobs have, most urgent first, and No priority), search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The status chip counts follow the PM, customer, priority and search filters. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first, plus Priority with Urgent first and jobs without a priority last, and % complete with the most complete first; ties keep the board's order), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
 
-Click a job to open its details. The top of the details shows the status, PM, people, priority tag, % complete bar and schedule. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
+Click a job to open its details. The top of the details shows the status, PM, people, priority tag, % complete bar and schedule, then the job's Business unit and Customer, each with its own picker. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
 
 ### Timeline
 
@@ -260,21 +260,28 @@ Every milestone in the filters, by date: Overdue, Due soon, Upcoming, No date, a
 
 ### Customers
 
-The shared customer list. Each customer's card or row shows its logo on a small white tile; a customer without a logo shows its initials. Add customer, or click one to edit it: name, short code, main contact (name, email, phone) and notes. The edit panel shows the logo next to the name. A customer is deactivated rather than deleted.
+The shared customer list holds two kinds of record:
+
+- **Customers**: the external customers we build for.
+- **Business units**: Sodecia's own business units and holdings (internal). Each has its code (for example SGTAC), country, division (Corporate, Automotive, Safety & Mobility, Technology, Access & Authorization) and level (BU, Regional Holding, Division Holding or Sectorial Holding).
+
+Every job has one business unit and one customer. They are picked separately: choosing a business unit never changes the job's customer, and the other way round.
+
+The list shows Customers and Business units in their own groups, with an All / Customers / Business units filter; search also finds a code, country or division. Each card or row shows its logo on a small white tile, or its initials. Add customer, or click one to edit it: Type (Customer or Sodecia business unit), name, short code, for a business unit its country, division and level, main contact (name, email, phone) and notes. The edit panel shows the logo next to the name. A record is deactivated rather than deleted.
 
 ![PM Hub customer at a glance](./images/pmhub-customer-glance.png)
 
-The top of the panel is the customer at a glance: its logo, how many jobs are open, overdue, due soon and done, the open jobs (late first, then by due date) with status, priority, % complete and due date, and the next milestones that are late or due in the next 2 weeks. Click a job to open its details; Back returns to the customer. A link to a customer (?view=customers&customer=) opens it filled in, even before the list has loaded. Delete is only offered when it has no jobs.
+The top of the panel is the customer (or business unit) at a glance: its logo, how many jobs are open, overdue, due soon and done, the open jobs (late first, then by due date) with status, priority, % complete and due date, and the next milestones that are late or due in the next 2 weeks. Click a job to open its details; Back returns to the customer. A link to a customer (?view=customers&customer=) opens it filled in, even before the list has loaded. Delete is only offered when it has no jobs.
 
-Link jobs to a customer in three ways:
+Link jobs to a customer or a business unit in three ways:
 
 - pick the jobs from the list;
 - by job number. A base number covers every job with it, and a full number covers that one job;
 - by keyword in the job name or machine description.
 
-A picked job wins over a job number, and a job number wins over a keyword. A job that matches two customers shows an amber Also matches warning. Fix it in one of the customers.
+A picked job wins over a job number, and a job number wins over a keyword. Customers and business units are worked out separately, so the same job number can link a job to one customer and one business unit. A job that matches two customers, or two business units, shows an amber Also matches warning. Fix it in one of them.
 
-Each job in PM Hub also has a Customer picker: assign or change it for this job only or all jobs with that number, clear it, or make a new customer.
+Each job in PM Hub also has a Business unit picker and a Customer picker. Assign or change either one for this job only or all jobs with that number, or clear it. The Business unit picker lists the active business units by division and searches name, code, country and division; the Customer picker can also make a new customer.
 
 The list is saved to pm-hub/customers.json in the private Sodecia-GTAC/VC-Project-Board repository, so both PMs see the same list. Others see a change after Refresh. If someone else saved first, PM Hub reloads the list, keeps what you typed, and asks you to Save again.
 
