@@ -200,7 +200,7 @@ The board reads the VC_Project_Board list from the private VC-Project-Board repo
 
 ![Project Board without GitHub connected](./images/board-not-connected.png)
 
-The SharePoint export runs every hour but only changes the board CSV on GitHub when the SharePoint list changed, so an old CSV is normal. The note under Last updated goes by when the export last ran, read from the export's GitHub Actions runs in VC-Project-Board: "Export checked hourly · last run 1:10 PM · no changes since Oct 30, 2:00 PM" in grey. It turns into an amber warning, "… The SharePoint export may have stopped.", only when the newest export run failed or no run has succeeded for 3 hours; then check the Power Automate flow and the repository's Actions tab. If your token cannot read the Actions runs (see [Token](#token)), there is never a warning: after 4 working hours without a change (Monday to Friday, 7:00 to 18:00) a grey note says when the data last changed and that this is normal if nobody edited the list. On a phone the note shows under the header without opening Info. A dropped export shows no note.
+The SharePoint export runs on weekdays at 7 AM, 12 PM and 4 PM Eastern but only changes the board CSV on GitHub when the SharePoint list changed, so an old CSV is normal. The note under Last updated goes by when the export last ran, read from the export's GitHub Actions runs in VC-Project-Board: "Export checked weekdays at 7 AM, 12 PM and 4 PM Eastern · last run 7:00 AM · no changes since Nov 4, 4:00 PM" in grey. It turns into an amber warning, "… The SharePoint export may have stopped.", only when the newest export run failed or no run has succeeded for 18 hours (long enough for the overnight gap between 4 PM and 7 AM; over a weekend the note may stay amber until Monday's first run); then check the Power Automate flow and the repository's Actions tab. If your token cannot read the Actions runs (see [Token](#token)), there is never a warning: after 4 working hours without a change (Monday to Friday, 7:00 to 18:00) a grey note says when the data last changed and that this is normal if nobody edited the list. On a phone the note shows under the header without opening Info. A dropped export shows no note.
 
 Without a GitHub token, an amber line under the header says the board is not connected and whether it is showing the last copy read in this browser, with a Connect GitHub button. Once the token is saved the board reads the live list by itself. While a dropped export is showing, the line says so, with Back to live.
 
@@ -240,7 +240,7 @@ When the PM Hub customer list can be read, the panel also has read-only Business
 
 For the production managers. Open PM Hub on Home, next to Project Board, or go to ?app=pmhub. It uses the same jobs and the same GitHub token as the Project Board.
 
-The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the hourly export last ran, amber only if the export failed or has not run for 3 hours.
+The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the weekday export last ran (7 AM, 12 PM and 4 PM Eastern), amber only if the export failed or has not run for 18 hours.
 
 On a phone, the tabs wrap onto two rows, and the status line under the tabs and the Customers search each get their own full-width row.
 
@@ -309,7 +309,7 @@ Weekly summary, the third choice in Status emails, is a short status for the PMs
 
 Fixture reviews (?view=reviews) shows the team's fixture design review task list. It is read-only: the list lives in OneNote, on the page Review Task List-<year> in the Engineering Notebook (Engineering SharePoint site, Site Assets), and you edit it there.
 
-Every hour a Power Automate flow reads the table on that page and sends it to the private Sodecia-GTAC/VC-Project-Board repository in parts, because one message to GitHub can carry only 64 KB. A GitHub workflow there waits until every part has arrived, then reads the table and saves it as fixture-reviews/fixture_reviews.csv, only when something changed. Blank spacer rows are left out and dates are written as yyyy-mm-dd. The table needs its headers, in order: PROJECT-CELL, FIX #. TOOL#, CAD-REV, CAD REC'D ON, REVIEW STARTED BY, COMPLETED ON, SIM STARTED BY, COMPLETED ON, QUALITY STARTED BY, COMPLETED ON, SENT ON, NO. OF CUSTOMER REVIEWS, BUILD APPROVAL, and NOTES (optional). Each January the flow is pointed at the new year's tab and page.
+On weekdays at 7 AM, 12 PM and 4 PM Eastern a Power Automate flow reads the table on that page and sends it to the private Sodecia-GTAC/VC-Project-Board repository in parts, because one message to GitHub can carry only 64 KB. A GitHub workflow there waits until every part has arrived, then reads the table and saves it as fixture-reviews/fixture_reviews.csv, only when something changed. Blank spacer rows are left out and dates are written as yyyy-mm-dd. The table needs its headers, in order: PROJECT-CELL, FIX #. TOOL#, CAD-REV, CAD REC'D ON, REVIEW STARTED BY, COMPLETED ON, SIM STARTED BY, COMPLETED ON, QUALITY STARTED BY, COMPLETED ON, SENT ON, NO. OF CUSTOMER REVIEWS, BUILD APPROVAL, and NOTES (optional). Each January the flow is pointed at the new year's tab and page.
 
 On a computer screen (wider than 760 px) the list is one table with the columns Job, Fixture, CAD rev, CAD rec'd, CAD design review, Simulation and Next step, so every job's fixtures line up under the same headings; the heading row stays at the top while you scroll. Fixtures are grouped by project-cell in the same order as the page: a thin row with the project-cell and how many fixtures it has, then one row per fixture. The Fixture cell shows the fixture or tool number, a New revision tag when the row is highlighted green, the number of customer reviews and the notes.
 
@@ -326,9 +326,9 @@ On a phone or narrow window each fixture is a card instead, under its project-ce
 
 Search by job (project-cell), fixture, initials or notes, or pick a Status. Status goes by what the fixture is still waiting for: Needs review (a review older than CAD rec'd), Waiting on CAD review and Waiting on simulation while their COMPLETED ON is empty (a fixture waiting on both is in both), then Waiting on quality until quality's COMPLETED ON, Ready to send until SENT ON, Sent, and Approved (BUILD APPROVAL filled in or the row highlighted orange). Next to them: Sort (Usual order keeps the page's order; Latest and Oldest go by CAD rec'd on), CAD rec'd from / to, and Needs review only. These last for the visit only. A count shows how many fixtures match. Refresh reloads the list.
 
-The line above the list says when the list was last saved. A grey note after 4 working hours without a change is normal when nobody edited the page; if someone did, the flow may have stopped.
+The line above the list says when the list was last saved, and that Power Automate saves it on weekdays at 7 AM, 12 PM and 4 PM Eastern. A grey note after 4 working hours without a change is normal when nobody edited the page; if someone did, the weekday Power Automate flow may have stopped.
 
-If the flow could read the page but not the table, an amber box says "The last OneNote page could not be read, so the list below was not updated." with the reason, and the last good list stays below it. Usually a table header was renamed, removed or added, or the flow is reading the wrong page; put the header back and the next hourly run fixes it. "The flow sent no page content" means OneNote returned nothing or the parts could not be put back together. If a part never arrives, nothing changes until the next hourly run, and the leftover parts are cleared after a day. "No fixture review list yet" means the flow has not saved the list once.
+If the flow could read the page but not the table, an amber box says "The last OneNote page could not be read, so the list below was not updated." with the reason, and the last good list stays below it. Usually a table header was renamed, removed or added, or the flow is reading the wrong page; put the header back and the next weekday run fixes it. "The flow sent no page content" means OneNote returned nothing or the parts could not be put back together. If a part never arrives, nothing changes until the next weekday run, and the leftover parts are cleared after a day. "No fixture review list yet" means the flow has not saved the list once.
 
 ### Access
 
@@ -362,7 +362,7 @@ Make one classic token on GitHub. It covers Sodecia-GTAC-Machines and the Sodeci
 5. Click Generate token and copy it. The value is shown once. It starts with ghp_.
 6. If an organization uses SSO, click Configure SSO next to the token and Authorize it for Sodecia-GTAC-Machines and Sodecia-GTAC.
 
-The token can reach every repo you can, so keep it short-lived and never share it. A fine-grained token also works if you already use one; give it Contents: Read and write and Actions: Read on VC-Project-Board. Without Actions: Read the board and PM Hub still work, but the data note cannot tell whether the hourly export is running, so it only says when the data last changed.
+The token can reach every repo you can, so keep it short-lived and never share it. A fine-grained token also works if you already use one; give it Contents: Read and write and Actions: Read on VC-Project-Board. Without Actions: Read the board and PM Hub still work, but the data note cannot tell whether the weekday export is running, so it only says when the data last changed.
 
 ### Connect
 
