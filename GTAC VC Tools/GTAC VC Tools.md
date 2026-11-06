@@ -138,6 +138,8 @@ Open this when you have a fixture IO workbook. It writes the TwinCAT actions, th
 
 Drop the Excel map, or click Drop IO map and browse. Pick the fixture sheet. Copy the output into the matching POU or editor.
 
+A workbook (.xlsx or .xlsm) or a saved .forge project can be up to 128 MB. Inside it, at most 10,000 files, 128 MB for any one file once unpacked, and 512 MB unpacked in total; a file that unpacks to far more than its packed size (a zip bomb) is refused too. A refused file shows the reason in the workbook panel, ending "Nothing was changed.", and the workbook that was open stays as it was. A real IO map is far under these limits; if a workbook with many large pictures is refused, save a copy without the pictures or sheets you do not need and drop that.
+
 Workbook columns the generator reads:
 
 - J / K — node (N01–N24) and port 0–7
