@@ -69,7 +69,7 @@ The weld tools share the panel on the left (Sample Project, Guide, Program, and 
 
 Group welds into modules and download the KUKA programs.
 
-Drop the program .src and the positions .dat on Program. Both can go in at once. All robots takes one or more controller backup zips. If a zip has Sodecia/Weld_Jobs, only the programs in that folder are used.
+Drop the program .src and the positions .dat on Program. Both can go in at once. All robots takes one or more controller backup zips. If a zip has Sodecia/Weld_Jobs, only the programs in that folder are used. While a zip unpacks, a line under All robots shows how far it is, with Cancel. A zip can be up to 250 MB with up to 20,000 files and 512 MB unpacked; a bigger one, or one that unpacks to far more than its size (a zip bomb), is refused with a message, and the programs already loaded stay as they were.
 
 My map is one module per line. Import map reads a weld-map PowerPoint or a JSON file you exported earlier. By part number skips the map and makes one module per weld family, plus All. Split job, then Download zip. Best cycle time keeps the order with the shortest travel between welds. Click Trunnion when the cell has a KP1 or KP3.
 
@@ -81,7 +81,7 @@ After you fix points in simulation, Upload Fixed Job from PRS takes the Process 
 
 Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, OBJ, or JT. JT is read in the browser and takes a moment the first time; Process Simulate JT 10 meshes are supported, and if one fails, save it as STL. A Parasolid .prt or .x_t has to be exported as STEP first. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
 
-The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part can be up to 200 MB. A bigger file still shows, but has to be uploaded again after a reload. Like other saved work, it is not on another PC or in another browser.
+The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part file can be up to 200 MB. A bigger file is refused with a message, and a part saved earlier is kept. Like other saved work, it is not on another PC or in another browser.
 
 If you uploaded a part before Oct 29, upload it again once.
 
@@ -90,7 +90,7 @@ The weld dots show only on a part that has loaded. A weld XML on its own does no
 ![Weld Point Plotting with no part saved](./images/weld-plot-no-part.png)
 
 - **No part:** the plot area says Upload the part CAD to see the N weld points on it. The banner says what is missing: Load a program first, No part uploaded yet for the program, or that a part uploaded before is no longer in this browser (or was too big to keep), with an Upload part CAD button. Without the weld XML it adds that the dots use robot coordinates. If a part is saved for another project, a Use button offers it.
-- **Loading:** the plot area says Loading the saved part… until the part is read. A STEP or IGES file is read in the background with a progress line (Downloading the STEP reader… the first time, then Reading the STEP file…), so the page stays usable.
+- **Loading:** the plot area says Loading the saved part… until the part is read. A STEP or IGES file is read in the background with a progress line (Downloading the STEP reader… the first time, then Reading the STEP file…) and a Cancel button, so the page stays usable. The reader stops on its own if a file takes far too long (2 minutes plus 6 seconds per MB, at most 15 minutes). In a browser that cannot read in the background, only parts up to 8 MB are read; use an up-to-date Edge, Chrome or Firefox for bigger ones.
 - **The part could not be shown:** the plot area stays empty and the banner gives the reason, with no dots. Try a STEP (AP214 or AP242) or STL export and upload it again. A file that does not load is not saved, so a good part saved earlier is kept.
 - **Weld points are not on the part:** their X Y Z come from the robot program. Upload the weld XML to place them on the part.
 
@@ -200,7 +200,9 @@ The board reads the VC_Project_Board list from the private VC-Project-Board repo
 
 ![Project Board without GitHub connected](./images/board-not-connected.png)
 
-The SharePoint export runs on weekdays at 7 AM, 12 PM and 4 PM Eastern but only changes the board CSV on GitHub when the SharePoint list changed, so an old CSV is normal. The note under Last updated goes by when the export last ran, read from the export's GitHub Actions runs in VC-Project-Board: "Export checked weekdays at 7 AM, 12 PM and 4 PM Eastern · last run 7:00 AM · no changes since Nov 4, 4:00 PM" in grey. It turns into an amber warning, "… The SharePoint export may have stopped.", only when the newest export run failed or no run has succeeded for 18 hours (long enough for the overnight gap between 4 PM and 7 AM; over a weekend the note may stay amber until Monday's first run); then check the Power Automate flow and the repository's Actions tab. If your token cannot read the Actions runs (see [Token](#token)), there is never a warning: after 4 working hours without a change (Monday to Friday, 7:00 to 18:00) a grey note says when the data last changed and that this is normal if nobody edited the list. On a phone the note shows under the header without opening Info. A dropped export shows no note.
+The SharePoint export runs on weekdays at 7 AM, 12 PM and 4 PM Eastern but only changes the board CSV on GitHub when the SharePoint list changed, so an old CSV is normal. The note under Last updated goes by when the export last ran, read from the export's GitHub Actions runs in VC-Project-Board: "Export checked weekdays at 7 AM, 12 PM and 4 PM Eastern · last run 7:00 AM · no changes since Nov 4, 4:00 PM" in grey. It turns into an amber warning, "… The SharePoint export may have stopped.", only when the newest export run failed, or when the last scheduled weekday run (7 AM, 12 PM or 4 PM Eastern) plus 2 hours has passed with no successful run since it. Evenings, nights and weekends are covered by the last weekday run, so they never show the warning, and the clock changes in spring and fall are handled. When it does show, check the Power Automate flow and the repository's Actions tab. If your token cannot read the Actions runs (see [Token](#token)), there is never a warning: after 4 working hours without a change (Monday to Friday, 7:00 to 18:00) a grey note says when the data last changed and that this is normal if nobody edited the list. On a phone the note shows under the header without opening Info. A dropped export shows no note.
+
+When you come back to the board's browser tab, it checks GitHub (at most every 2 minutes) for a newer board CSV. If there is one, a blue line says New board data is available, with Refresh and Not now. Nothing reloads by itself.
 
 Without a GitHub token, an amber line under the header says the board is not connected and whether it is showing the last copy read in this browser, with a Connect GitHub button. Once the token is saved the board reads the live list by itself. While a dropped export is showing, the line says so, with Back to live.
 
@@ -233,22 +235,24 @@ When the PM Hub customer list can be read, the panel also has read-only Business
 
 - **Print / PDF** prints the current view. Save as PDF works. The header names the view, the filters and the data time.
 - **Download CSV** saves the jobs shown, with the columns the board shows.
-- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board works too.
+- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board works too. A file over 100 MB, or an Excel file that unpacks to far too much, is refused with a message and the board keeps what it showed.
 - **Info** holds the notes about where the data comes from, the fixture reviews, and GitHub not being connected. A dot on Info means there is a notice.
 
 ## PM Hub
 
 For the production managers. Open PM Hub on Home, next to Project Board, or go to ?app=pmhub. It uses the same jobs and the same GitHub token as the Project Board.
 
-The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the weekday export last ran (7 AM, 12 PM and 4 PM Eastern), amber only if the export failed or has not run for 18 hours.
+The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the weekday export last ran (7 AM, 12 PM and 4 PM Eastern), amber only if the export failed or the last scheduled weekday run is more than 2 hours overdue. Coming back to the tab offers New board data is available with Refresh, as on the board.
 
 On a phone, the tabs wrap onto two rows, and the status line under the tabs and the Customers search each get their own full-width row.
 
 ### Projects
 
-Jobs grouped by customer, with No customer set last. Each job shows its business unit (the Sodecia business unit's code, or No business unit) and its customer, each with its own Assign or Change button, then status, Planner priority, PM, due date, days left or late, % complete, a small start-to-due bar with milestone markers, and the next milestone. The priority comes from PlannerPriority in the board CSV and shows as a coloured tag: Urgent (red), Important (amber), Medium (blue) or Low (grey); a job with no priority has no tag. % complete comes from PercentComplete and shows as a short green bar with the number, the same value as on the Project Board card. Filter by PM, customer (the Customer list has the customers first and the Sodecia business units in their own group; picking a business unit shows its jobs), Priority (Any priority, the priorities the jobs have, most urgent first, and No priority), search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The status chip counts follow the PM, customer, priority and search filters. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first, plus Priority with Urgent first and jobs without a priority last, and % complete with the most complete first; ties keep the board's order), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
+Jobs grouped by customer, with No customer set last. Each job shows its business unit (the Sodecia business unit's code, or No business unit) and its customer, each with its own Assign or Change button, then status, Planner priority, PM, due date, days left or late, % complete, a small start-to-due bar with milestone markers, and the next milestone. The priority comes from PlannerPriority in the board CSV and shows as a coloured tag: Urgent (red), Important (amber), Medium (blue) or Low (grey); a job with no priority has no tag. % complete comes from PercentComplete and shows as a short green bar with the number, the same value as on the Project Board card. Filter by PM, customer (the Customer list has the customers first and the Sodecia business units in their own group; picking a business unit shows its jobs; at the end, No customer set, No business unit set, and Customer or business unit missing), Priority (Any priority, the priorities the jobs have, most urgent first, and No priority), search (job number or name) and status (Open, Overdue, Due soon, At risk, No date, Completed, All). Due soon can be 7, 14 or 30 days. The status chip counts follow the PM, customer, priority and search filters. The shared list filters follow the status chips: Sort (Usual order, Latest and Oldest by start date, Due date soonest first, plus Priority with Urgent first and jobs without a priority last, and % complete with the most complete first; ties keep the board's order), Start from / to, and Overdue only, which turns on the Overdue status (open jobs past their due date or with an overdue milestone) and back to Open when turned off. They also apply to Timeline and Milestones, and are kept in this browser with the other PM Hub filters.
 
 Click a job to open its details. The top of the details shows the status, PM, people, priority tag, % complete bar and schedule, then the job's Business unit and Customer, each with its own picker. Start and Due come from SharePoint; change those dates there. Add milestone adds your own, such as Design review, Fixture buy-off or Ship. Tick a milestone when it is done. The PM note is also here. Open in Project Board opens the same job on the board.
+
+When the customer list has been read and open jobs are missing a customer or a business unit, an amber button next to the Customer filter says how many ("3 open jobs are missing a customer or business unit"). Click it to list just those jobs, then use Assign on each.
 
 ### Timeline
 
@@ -373,7 +377,9 @@ The token can reach every repo you can, so keep it short-lived and never share i
 5. Optional: tick Remember on this computer, only on your own PC.
 6. Click Connect.
 
-Tokens stay only in that browser tab and are forgotten when the tab closes, unless you ticked Remember on this computer. Forget token clears them sooner.
+Tokens stay only in that browser tab and are forgotten when the tab closes, unless you ticked Remember on this computer. Forget token clears them sooner. Forgetting a token, connecting a different one, or changing it in another tab clears every copy the app holds, so nothing is saved later with an old token.
+
+What this browser keeps, in the panel, lists what stays on this PC: the token (only with Remember on this computer), the last board data and its history, the fixture reviews, the cached customer list, your tool work and your preferences. Forget token and clear this PC's cached data forgets the token and removes the board data, history, fixture reviews and cached customer list from this browser, then reloads. Tool work, PM Hub milestones and notes not yet saved to GitHub, and preferences stay. Use it on a shared PC.
 
 If GitHub refuses the token, the panel says why. For SSO, authorize the token with Configure SSO.
 
@@ -391,13 +397,17 @@ Open a repository, then a folder. Software is listed with Documentation, Hardwar
 
 Wiki opens this repository, Sodecia-GTAC/wiki, full screen. It starts on the README table of contents. Folders still lists the drawers. Search needs at least two letters and matches notes and headings. Reading needs no token.
 
-Edit opens the markdown for the page you are on. Save commits it to main. New page asks for a path, such as Instructions/New note.md, then commits that file. Cancel throws the change away.
+Edit opens the markdown for the page you are on. Save commits it to main. New page asks for a path, such as Instructions/New note.md, then commits that file; if a page with that name already exists, it says so and changes nothing. Cancel throws the change away.
+
+If someone else saves the same page while you are editing, Save does not overwrite their change. A message says Someone else saved this page after you started editing, with Compare with their version, Copy my text and Open their version. Copy your text, open their version, and add your change to it.
 
 Saving uses your classic GitHub token (repo scope), since the Wiki edit token field is left empty.
 
 ## Local Server
 
 Run a copy on Ubuntu 24.04 Desktop or Windows 11. Local Server shows the download, vc-tools-local.zip, and the install steps for each system. It needs no password. A publish does not change a Local Server that is already running. Download the zip again and follow When the app changes.
+
+The install script installs the exact package versions in the zip and builds the app; if a step fails it stops with a message. The start script serves that build at http://localhost:8080, and only that PC can open it. To let other PCs on the plant network open it, start it with bash start-ubuntu.sh --lan on Ubuntu, or add -Lan to the Windows start command. It has no sign-in and uses plain HTTP, so share it only on the plant network, allow port 8080 from the plant subnet only, and never open it to the internet or guest Wi-Fi. INSTALL.txt in the zip has the firewall steps.
 
 ## Framework trim
 
