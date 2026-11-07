@@ -241,7 +241,7 @@ When the PM Hub customer list can be read, the panel also has read-only Business
 
 - **Print / PDF** prints the current view. Save as PDF works. The header names the view, the filters and the data time.
 - **Download CSV** saves the jobs shown, with the columns the board shows.
-- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board works too. A file over 100 MB, or an Excel file that unpacks to far too much, is refused with a message and the board keeps what it showed.
+- **More** holds SharePoint list, Drop export and Drop OneNote. Drop export takes a newer CSV or Excel export. Drop OneNote updates the fixture reviews. Dropping a file anywhere on the board works too. A file over 100 MB is refused. An Excel export is checked while it unpacks, with the same limits as other zips (up to 20,000 files and 512 MB unpacked); one that unpacks to far more than its size (a zip bomb) is refused with a message, and the board keeps what it showed.
 - **Info** holds the notes about where the data comes from, the fixture reviews, and GitHub not being connected. A dot on Info means there is a notice.
 
 ## PM Hub
@@ -405,7 +405,7 @@ Open a repository, then a folder. Software is listed with Documentation, Hardwar
 
 Wiki opens this repository, Sodecia-GTAC/wiki, full screen. It starts on the README table of contents. Folders still lists the drawers. Search needs at least two letters and matches notes and headings. Reading needs no token.
 
-Edit opens the markdown for the page you are on. Save commits it to main. New page asks for a path, such as Instructions/New note.md, then commits that file; if a page with that name already exists, it says so and changes nothing. Cancel throws the change away.
+Edit opens the markdown for the page you are on. Save commits it to main. New page asks for a path, such as Instructions/New note.md, then commits that file; if a page with that name already exists, it says so and changes nothing. The path can have folders, spaces, brackets, & and dots inside a name. A path with an empty folder (// or a / at the start or end), a . or .. folder, a backslash, an encoded slash or a control character is refused with a message, and nothing is sent to GitHub, so a page always lands in the wiki. Cancel throws the change away.
 
 If someone else saves the same page while you are editing, Save does not overwrite their change. A message says Someone else saved this page after you started editing, with Compare with their version, Copy my text and Open their version. Copy your text, open their version, and add your change to it.
 
