@@ -36,7 +36,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 The top of Home reads GTAC VC Tools and the heading Choose an app, with nothing else under it. Each tool name is a link, so it can open in a new tab. Guide at the top right says which tool fits the job. Click it again to close it.
 
-Home and PM Hub share one look: dark grey panels over a dimmed shop photo, and one colour code. Blue marks the main button and the option that is picked (Guide turns blue while it is open, Local Server gets a blue outline). Teal is finished work, amber needs attention, and red is only for overdue, Urgent and errors; everything else is grey. Each status also says what it is in words, and At risk, Complete and Needs review have an icon too. The keyboard focus outline is blue on these two screens. The tools themselves keep their own colours.
+Home and PM Hub share one look: the shop photo shows clearly behind dark, see-through panels with bright text, and one colour code. Blue marks the main button and the option that is picked (Guide turns blue while it is open, Local Server gets a blue outline). Teal is finished work, amber needs attention, and red is only for overdue, Urgent and errors; everything else is grey. Each status also says what it is in words, and At risk, Complete and Needs review have an icon too. The keyboard focus outline is blue on these two screens. The tools themselves keep their own colours.
 
 ![Home Guide](./images/home-guide.png)
 
