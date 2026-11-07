@@ -36,7 +36,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 The top of Home reads GTAC VC Tools and the heading Choose an app, with nothing else under it. Each tool name is a link, so it can open in a new tab. Guide at the top right says which tool fits the job. Click it again to close it.
 
-Home and PM Hub share one look: the shop photo shows clearly behind dark, see-through panels with bright text, and one colour code. Blue marks the main button and the option that is picked (Guide turns blue while it is open, Local Server gets a blue outline). Teal is finished work, amber needs attention, and red is only for overdue, Urgent and errors; everything else is grey. Each status also says what it is in words, and At risk, Complete and Needs review have an icon too. The keyboard focus outline is blue on these two screens. The tools themselves keep their own colours.
+Every screen shares one look: the shop photo shows clearly behind dark, see-through panels with bright text, and one colour code. Blue marks the main button (Refresh, Choose CSV, Connect GitHub, Download, Run, Convert, Create page…) and the option that is picked (Guide turns blue while it is open, Local Server gets a blue outline). Teal is finished work, amber needs attention, and red is for errors and the most urgent states (overdue and Urgent in PM Hub, At risk on the Project Board); everything else is grey. Each status also says what it is in words, and At risk, Complete and Needs review have an icon too. Inside the Robot and PLC tools the section's own colour (amber for Robot, steel blue for PLC) still marks the open tool, tab and picked toggles, and the keyboard focus outline follows it; on Home and PM Hub the focus outline is blue. While a tool opens, a small panel with a spinner says Opening and the tool's name. If a tool cannot load or hits a problem, the same panel says so, with Try again in blue, Reload page and Back to apps.
 
 ![Home Guide](./images/home-guide.png)
 
@@ -200,7 +200,7 @@ A cell PDF from GitHub can open here or in TC Forge.
 
 ## Project Board
 
-Which cell is late, who is loaded, and its GitHub repo. Red (At risk) is late or has less time left than work left. Yellow (Tight) is due within 14 days. Blue (On track) still has room.
+Which cell is late, who is loaded, and its GitHub repo. Red (At risk) is late or has less time left than work left. Amber (Tight) is due within 14 days. On track (grey) still has room. A finished job shows Complete in teal.
 
 The board reads the VC_Project_Board list from the private VC-Project-Board repository on GitHub, using the GitHub token connected in this browser. Refresh reads it again. If GitHub cannot be read, the last copy stays on screen, and Drop export under More works too.
 
