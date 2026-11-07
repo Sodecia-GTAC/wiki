@@ -140,6 +140,8 @@ Drop the Excel map, or click Drop IO map and browse. Pick the fixture sheet. Cop
 
 A workbook (.xlsx or .xlsm) or a saved .forge project can be up to 128 MB. Inside it, at most 10,000 files, 128 MB for any one file once unpacked, and 512 MB unpacked in total; a file that unpacks to far more than its packed size (a zip bomb) is refused too. A refused file shows the reason in the workbook panel, ending "Nothing was changed.", and the workbook that was open stays as it was. A real IO map is far under these limits; if a workbook with many large pictures is refused, save a copy without the pictures or sheets you do not need and drop that.
 
+While a workbook or project opens, a line at the top of Fixture Forge says what it is doing: Reading the file, Opening project, Unpacking N of M files, then Reading sheets N of M, with a bar that follows those counts. Cancel stops the import and says "Import cancelled. Nothing was changed."; the workbook that was open keeps its sheets, name and settings. Dropping another file or clicking Load sample cell during an import replaces it, and the earlier one never changes the open workbook. Cancel takes effect between files and sheets, so a very large sheet finishes the step it is on first.
+
 Workbook columns the generator reads:
 
 - J / K — node (N01–N24) and port 0–7
@@ -287,7 +289,7 @@ Link jobs to a customer or a business unit in three ways:
 
 A picked job wins over a job number, and a job number wins over a keyword. Customers and business units are worked out separately, so the same job number can link a job to one customer and one business unit. A job that matches two customers, or two business units, shows an amber Also matches warning. Fix it in one of them.
 
-Each job in PM Hub also has a Business unit picker and a Customer picker. Assign or change either one for this job only or all jobs with that number, or clear it. The Business unit picker lists the active business units by division and searches name, code, country and division; the Customer picker can also make a new customer.
+Each job in PM Hub also has a Business unit picker and a Customer picker. Assign or change either one for this job only or all jobs with that number, or clear it. The Business unit picker lists the active business units by division and searches name, code, country and division; the Customer picker can also make a new customer. A long customer name or business-unit code ends in … on the job, with Inactive still shown, and wraps onto a second line in the Customers list.
 
 The list is saved to pm-hub/customers.json in the private Sodecia-GTAC/VC-Project-Board repository, so both PMs see the same list. Others see a change after Refresh. If someone else saved first, PM Hub reloads the list, keeps what you typed, and asks you to Save again.
 
