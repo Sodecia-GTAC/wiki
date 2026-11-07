@@ -299,7 +299,7 @@ The list is saved to pm-hub/customers.json in the private Sodecia-GTAC/VC-Projec
 
 ### Shared milestones and notes
 
-Milestones, ticks and PM notes are shared with the team in pm-hub/milestones.json in the same repository. They are saved a few seconds after a change, or with Save. If two people change the same job, PM Hub merges what it can and asks you to Save again. Without Write access they stay in this browser until they can be saved. Export saves them (and a copy of the customer list) to a file. Import puts them back.
+Milestones, ticks and PM notes are shared with the team in pm-hub/milestones.json in the same repository. They are saved a few seconds after a change, or with Save. If two people change the same job, PM Hub merges what it can and asks you to Save again. Without Write access they stay in this browser until they can be saved. If GitHub cannot be reached, the bar says so and they stay in this browser until GitHub answers. A job's details always show the newest saved PM note and milestone text, and closing the details or leaving a box without typing never changes them. Export saves them (and a copy of the customer list) to a file. Import puts them back.
 
 When the Timeline has nothing to show, it says why (the No date filter, completed jobs hidden, or no dated jobs) with Show open jobs or Clear filters.
 
