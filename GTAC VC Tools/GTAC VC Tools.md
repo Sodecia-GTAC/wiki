@@ -36,6 +36,8 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 The top of Home reads GTAC VC Tools and the heading Choose an app, with nothing else under it. Each tool name is a link, so it can open in a new tab. Guide at the top right says which tool fits the job. Click it again to close it.
 
+Home and PM Hub share one look: dark grey panels over a dimmed shop photo, and one colour code. Blue marks the main button and the option that is picked (Guide turns blue while it is open, Local Server gets a blue outline). Teal is finished work, amber needs attention, and red is only for overdue, Urgent and errors; everything else is grey. Each status also says what it is in words, and At risk, Complete and Needs review have an icon too. The keyboard focus outline is blue on these two screens. The tools themselves keep their own colours.
+
 ![Home Guide](./images/home-guide.png)
 
 Opening the weld app lands on Weld Splitter.
@@ -249,6 +251,8 @@ For the production managers. Open PM Hub on Home, next to Project Board, or go t
 The line under the tabs says when the board CSV was saved. The same data note as on the Project Board shows under it: when the weekday export last ran (7 AM, 12 PM and 4 PM Eastern), amber only if the export failed or the last scheduled weekday run is more than 2 hours overdue. Coming back to the tab offers New board data is available with Refresh, as on the board.
 
 On a phone, the tabs wrap onto two rows, and the status line under the tabs and the Customers search each get their own full-width row.
+
+The screen tab that is open is blue. Buttons look the same on every screen: grey, with the main one blue (Add customer, Save, Copy, Connect GitHub). The status filters get a blue outline when picked. In Projects each customer is a card with a shaded header showing its open, overdue (red), due soon (amber) and done (teal) counts, and the jobs sit in even rows under a Job heading lined up with the timeline. Customers is a table with the job counts right-aligned and overdue jobs as a red tag; Fixture reviews has shaded column heads, grey stages in progress, teal Done and Approved, and amber Needs review.
 
 ### Projects
 
