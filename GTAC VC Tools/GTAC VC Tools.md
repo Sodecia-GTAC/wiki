@@ -405,6 +405,8 @@ Open a repository, then a folder. Software is listed with Documentation, Hardwar
 
 Wiki opens this repository, Sodecia-GTAC/wiki, full screen. It starts on the README table of contents. Folders still lists the drawers. Search needs at least two letters and matches notes and headings. Reading needs no token.
 
+Close shuts the wiki and the GitHub panel. Escape closes only the wiki and shows the GitHub panel underneath; Escape again closes that. In the search box, the first Escape clears the search. While a page is being edited, Escape does nothing, so a stray key does not lose the edit. On a phone, Close stays at the top right and the search box has its own full-width row.
+
 Edit opens the markdown for the page you are on. Save commits it to main. New page asks for a path, such as Instructions/New note.md, then commits that file; if a page with that name already exists, it says so and changes nothing. The path can have folders, spaces, brackets, & and dots inside a name. A path with an empty folder (// or a / at the start or end), a . or .. folder, a backslash, an encoded slash or a control character is refused with a message, and nothing is sent to GitHub, so a page always lands in the wiki. Cancel throws the change away.
 
 If someone else saves the same page while you are editing, Save does not overwrite their change. A message says Someone else saved this page after you started editing, with Compare with their version, Copy my text and Open their version. Copy your text, open their version, and add your change to it.
