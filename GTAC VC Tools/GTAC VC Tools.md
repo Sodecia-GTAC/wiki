@@ -16,6 +16,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
   - [ArcTech Converter](#arctech-converter)
   - [Cycle Time Analysis](#cycle-time-analysis)
   - [Strip Arc to LIN](#strip-arc-to-lin)
+  - [Seam Approach](#seam-approach)
   - [Zone Forge](#zone-forge)
 - [PLC](#plc)
   - [Fixture Forge](#fixture-forge)
@@ -30,7 +31,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 ## Home
 
-- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, and Zone Forge. Click the Robot heading to open Weld Splitter.
+- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Seam Approach, and Zone Forge. Click the Robot heading to open Weld Splitter.
 - **PLC** (TwinCAT theme): Fixture Forge, TC Forge, and Controls Forge. Click the PLC heading to open Fixture Forge.
 - **Bottom row**: Project Board, PM Hub, GitHub, Wiki, and Local Server.
 
@@ -63,7 +64,7 @@ The drop-down shows the section and the tool you are in, such as ROBOT, Weld Spl
 
 KUKA weld programs: split, plot, convert, time, and zone them. A weld program from GitHub (src, dat, zip, or pptx) opens in Weld Splitter.
 
-The weld tools share the panel on the left (Sample Project, Guide, Program, and All robots) and one saved work. Weld Point Plotting does not use Program or All robots.
+The weld tools share the panel on the left (Sample Project, Guide, Program, and All robots) and one saved work. Weld Point Plotting does not use Program or All robots. Seam Approach has its own Program box on its page.
 
 ### Weld Splitter
 
@@ -115,6 +116,21 @@ Turn ArcOn, ArcOff, and ArcSwi into LIN moves. Load one .src and .dat, or Upload
 ![Strip Arc to LIN with the changed lines](./images/strip-diff.png)
 
 Before Download, each program's changed lines show, removed in red and added in green, and the count shows under Download, such as 572 lines removed, 225 added. If nothing changes it says so: Download would give back the same files.
+
+### Seam Approach
+
+![Seam Approach with a made-up job](./images/seam-approach.png)
+
+Add a PTP approach before and a PTP retract after each weld seam of a Process Simulate job. Choose or drop the .src and its .dat together on Program on the page. A seam is a run of LIN points whose names share a start and end _ls1, _ls2 and so on; the program's own order is kept, so a seam can run ls2 then ls1.
+
+- The approach is the first seam point moved back 20 mm along its own tool Z, and the retract is the last seam point moved back 50 mm, as the frame product point : {X 0,Y 0,Z -20,A 0,B 0,C 0}. Both are PTP at 100 %. Approach (mm), Retract (mm) and PTP Vel (%) change them.
+- Each new point keeps the seam point's orientation, S and T, external axes, FDAT (tool, base and IPO_FRAME, #TCP for an external TCP) and the Tool and Base text of its fold. The fold is a full PTP inline form in the style of the program's own PTP vias, including CONT and C_DIS.
+- When a seam point has no S and T, the nearest earlier point that has them is used and an amber note says which. With none at all, the point has no S and T and the note says so.
+- New points are named from the next free viaNNN after the highest one in the files. Their E6POS, FDAT and PDAT go at the end of the .dat, before ENDDAT, in program order. KRL names are at most 24 characters.
+- When the point just before a seam is already within 0.5 mm of the approach, or the point just after it is within 0.5 mm of the retract, the preview shows already present (in teal) and nothing is added there. Running the tool again on its own output adds nothing.
+- The preview lists each seam, its points, and each approach and retract with its name, X Y Z, and S and T. Every other line downloads byte for byte with the same line endings (CRLF stays CRLF). Download both (.zip) saves the pair; the two buttons beside it save the .src or the .dat with its own file name.
+- A .dat that belongs to another program (its DEFDAT does not match the DEF), a seam point missing from the .dat, or folds that do not close stop the change with a red note, and nothing is saved.
+- Step through every new motion in T1 before running in Auto.
 
 ### Zone Forge
 
