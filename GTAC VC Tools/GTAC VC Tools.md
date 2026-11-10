@@ -83,7 +83,7 @@ After you fix points in simulation, Upload Fixed Job from PRS takes the Process 
 
 ![Weld Point Plotting with the sample part](./images/weld-plot-part.png)
 
-Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, OBJ, or JT. JT is read in the browser and takes a moment the first time; Process Simulate JT 10 meshes are supported, and if one fails, save it as STL. A Parasolid .prt or .x_t has to be exported as STEP first. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
+Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, OBJ, or JT (see JT parts below). A Parasolid .prt or .x_t has to be exported as STEP first. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
 
 The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part file can be up to 200 MB. A bigger file is refused with a message, and a part saved earlier is kept. Like other saved work, it is not on another PC or in another browser.
 
@@ -99,6 +99,21 @@ The weld dots show only on a part that has loaded. A weld XML on its own does no
 - **Weld points are not on the part:** their X Y Z come from the robot program. Upload the weld XML to place them on the part.
 
 The view frames the part and the weld points together. Clear saved work also clears the saved parts. STEP and IGES parts load on the Local Server too.
+
+#### JT parts
+
+![A made-up JT assembly in the Process Simulate cell frame](./images/weld-plot-jt.png)
+
+A JT is read in the browser; the JT reader (about 10 MB) downloads only when a JT is opened, so the first one takes a few seconds. Process Simulate JT 10 meshes are supported. Each part in the JT shows as its own part, with its name as stored in the JT and its placement from the JT. A part used more than once shows once per use, each in its own place.
+
+A Process Simulate JT also stores where the whole assembly sits in the cell (the top-level placement). Two buttons choose the frame:
+
+- **Process Simulate cell frame** (the default): the top-level placement is applied, so the part sits where it is in the cell. Use it with a weld XML from Process Simulate, whose points are in cell (world) coordinates.
+- **Assembly frame:** the top-level placement is left out, so the part sits at the assembly's own origin.
+
+The line under the buttons says which frame is shown and how many parts there are, or that both frames are the same when the JT has no top-level placement. The browser remembers the choice. If the weld points are not on the part, the hint says to try the other frame.
+
+A JT that has only exact geometry and no mesh shows a red message: This JT has no mesh – export STEP from NX, Teamcenter or Process Simulate. JT files from NX, Teamcenter or older JT versions are not tested; if one fails, export STEP or STL instead. The JT reader licences (JTReader and SharpCompress, MIT) open from the JT reader licences link under the buttons.
 
 ### ArcTech Converter
 
