@@ -17,6 +17,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
   - [Cycle Time Analysis](#cycle-time-analysis)
   - [Strip Arc to LIN](#strip-arc-to-lin)
   - [Seam Approach](#seam-approach)
+  - [Fix S/T](#fix-st)
   - [Zone Forge](#zone-forge)
 - [PLC](#plc)
   - [Fixture Forge](#fixture-forge)
@@ -31,7 +32,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 ## Home
 
-- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Seam Approach, and Zone Forge. Click the Robot heading to open Weld Splitter.
+- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Seam Approach, Fix S/T, and Zone Forge. Click the Robot heading to open Weld Splitter.
 - **PLC** (TwinCAT theme): Fixture Forge, TC Forge, and Controls Forge. Click the PLC heading to open Fixture Forge.
 - **Bottom row**: Project Board, PM Hub, GitHub, Wiki, and Local Server.
 
@@ -64,7 +65,7 @@ The drop-down shows the section and the tool you are in, such as ROBOT, Weld Spl
 
 KUKA weld programs: split, plot, convert, time, and zone them. A weld program from GitHub (src, dat, zip, or pptx) opens in Weld Splitter.
 
-The weld tools share the panel on the left (Sample Project, Guide, Program, and All robots) and one saved work. Weld Point Plotting does not use Program or All robots. Seam Approach has its own Program box on its page.
+The weld tools share the panel on the left (Sample Project, Guide, Program, and All robots) and one saved work. Weld Point Plotting does not use Program or All robots. Seam Approach and Fix S/T each have their own Program box on their page.
 
 ### Weld Splitter
 
@@ -131,6 +132,20 @@ Add a PTP approach before and a PTP retract after each weld seam of a Process Si
 - The preview lists each seam, its points, and each approach and retract with its name, X Y Z, and S and T. Every other line downloads byte for byte with the same line endings (CRLF stays CRLF). Download both (.zip) saves the pair; the two buttons beside it save the .src or the .dat with its own file name.
 - A .dat that belongs to another program (its DEFDAT does not match the DEF), a seam point missing from the .dat, or folds that do not close stop the change with a red note, and nothing is saved.
 - Step through every new motion in T1 before running in Auto.
+
+### Fix S/T
+
+![Fix S/T with a made-up job and cell](./images/fix-st.png)
+
+Work out the S (Status) and T (Turn) of every point of a Process Simulate KUKA job again from the robot's own kinematics, so each PTP reaches its point with joints inside the software limits. Use it when a job stops at a PTP with a software-limit or axis-limit error although the point itself is reachable. Choose or drop the .src and its .dat together on Program on the page.
+
+- **Robot**: the KR 16 R2010-2 (C4) is built in: its arm lengths, axis directions and the software limits A1 ±185°, A2 −185° to 65°, A3 −138° to 175°, A4 ±350°, A5 ±130°, A6 ±350°. **Add robot** takes another robot's $machine.dat and $robcor.dat and keeps the robot in this browser. Only standard central-wrist 6-axis KUKA arms are accepted ($KINCLASS #STANDARD, $MAIN_AXIS #NR, $WRIST_AXIS #ZEH, six rotary axes); anything else is refused with the reason, and so is a $robcor.dat from another robot.
+- **Bases and tools**: for each BASE_NO and TOOL_NO the program uses, type X, Y, Z, A, B and C as in the Process Simulate cell (bases in the world frame, tools on the flange), or fill them with **From $config.dat**, which also reads the global HOME points. Base 0 is the world and tool 0 the flange. Robot root is $ROBROOT, zero when the robot is the world. **Save cell** keeps the values under the cell name in this browser; **Export cells** and **Import cells** move them as a JSON file. A file that is not a Fix S/T cell file, or has a frame that is not six numbers, imports nothing.
+- **How S and T are chosen**: the program is walked in order from its HOME (an E6AXIS point in the .dat or from $config.dat). For each point every joint solution inside the software limits is found. The point's own S is kept, and of those solutions the one closest to the previous joints is used; A4 and A6 stay within ±180° whenever a solution allows. Its S and T replace the old ones. When no solution keeps the S, a wrist flip with the same arm configuration is used and marked; when not even that exists, the point is left as is. LIN and CIRC points are included unless the checkbox is cleared, because the next PTP to them uses their S and T.
+- **Preview**: each point shows its motion, base and tool, the old and new S and T with the bits spelled out (basic area or overhead, A3 against φ, A5 sign, and the sign of A1 to A6), the joint angles, and its state. Teal is unchanged, blue is fixed, amber is fixed or kept but worth a look (a joint within 5° of its limit, A5 near 0, an A4 or A6 turn other than the shortest path, a wrist flip, or an old S and T that also worked), and red is left as is (out of reach, outside the limits, a base or tool with no values, or a fixed tool, IPO_FRAME #TCP).
+- **Download**: only the S and T numbers inside the existing E6POS lines change, in the form they were written. Positions, orientations, E axes and every other byte of the .dat stay as they were, with the same line endings, and the .src is not changed. The blue button saves the .dat with its own name; Both (.zip) saves the unchanged .src with it. A .dat that belongs to another program, or a point without X, Y, Z, A, B and C, stops the change with a red note.
+- External axes do not move the bases here: bases are fixed in the world. A base that rides on a positioner is not worked out from E1 to E6.
+- When an A6 turn is chosen, check the torch cable for wrap. Step through every changed point in T1 before running in Auto.
 
 ### Zone Forge
 
