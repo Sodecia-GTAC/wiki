@@ -419,7 +419,7 @@ If the flow could read the page but not the table, an amber box says "The last O
 
 ### Access
 
-You need your classic GitHub token (repo scope), authorized for SSO; see [GitHub](#github). To save customers, milestones and notes for everyone you also need Write access to VC-Project-Board. Ask Dave. Without it, the Customers tab is read-only and milestones stay in your browser.
+You need your GTAC token (fine-grained, Sodecia-GTAC, Contents: Read and write on VC-Project-Board); see [GitHub](#github). To save customers, milestones and notes for everyone you also need Write access to VC-Project-Board. Ask a Manager. Without it, the Customers tab is read-only and milestones stay in your browser.
 
 ## GitHub
 
@@ -434,29 +434,31 @@ There is no app login, name picker, or app 2FA code. Your own GitHub token is th
 1. Go to https://github.com/signup. Enter your work email, a password and a username your teammates will recognise, then solve the check.
 2. Enter the code GitHub emails you to verify your email.
 3. Turn on two-factor authentication: profile picture, Settings, Password and authentication, Enable two-factor authentication. The organizations may require it before you can join.
-4. Send your GitHub username to Dave Bergman or your team lead and ask to be invited to the Sodecia-GTAC-Machines and Sodecia-GTAC organizations, and to the VC-Project-Board repository for the Project Board and PM Hub. Dave is an admin of both organizations, so the invitation comes from him or your team lead.
+4. Send your GitHub username to a Manager and ask to be invited to the Sodecia-GTAC-Machines and Sodecia-GTAC organizations, and to the VC-Project-Board repository for the Project Board and PM Hub. The invitation comes from a Manager.
 5. Accept each invitation from the email, or at https://github.com/orgs/Sodecia-GTAC-Machines/invitation and https://github.com/orgs/Sodecia-GTAC/invitation. Invitations expire after 7 days.
-6. Then make your classic token below.
+6. Then make your two tokens below.
 
 ### Token
 
-Make one classic token on GitHub. It covers Sodecia-GTAC-Machines and the Sodecia-GTAC wiki.
+Make two fine-grained tokens on GitHub. A fine-grained token reaches only the repositories and permissions you pick, and it belongs to one organization, so there is one for each.
 
-1. On GitHub open Settings, Developer settings, Personal access tokens, Tokens (classic), then Generate new token (classic).
-2. Give it a note, such as GTAC VC Tools.
-3. Tick only the repo scope.
-4. Set an expiry of 30 days or less.
-5. Click Generate token and copy it. The value is shown once. It starts with ghp_.
-6. If an organization uses SSO, click Configure SSO next to the token and Authorize it for Sodecia-GTAC-Machines and Sodecia-GTAC.
+1. On GitHub open Settings, Developer settings, Personal access tokens, Fine-grained tokens, then Generate new token.
+2. **Machines token**: name GTAC VC Tools Machines, Resource owner Sodecia-GTAC-Machines, expiry 30 days or less. Repository access: All repositories, or only the cell repositories you work on. Permissions: Contents: Read-only. Nothing else.
+3. **GTAC token**: name GTAC VC Tools GTAC, Resource owner Sodecia-GTAC, expiry 30 days or less. Repository access: Only select repositories, wiki and VC-Project-Board. Permissions: Contents: Read and write, Actions: Read-only. Nothing else.
+4. Click Generate token and copy each one. The value is shown once. It starts with github_pat_.
+5. If an organization has to approve fine-grained tokens, a Manager approves it on GitHub first.
+6. If you have an older classic token (it starts with ghp_), delete it: Settings, Developer settings, Personal access tokens, Tokens (classic).
 
-The token can reach every repo you can, so keep it short-lived and never share it. A fine-grained token also works if you already use one; give it Contents: Read and write and Actions: Read on VC-Project-Board. Without Actions: Read the board and PM Hub still work, but the data note cannot tell whether the weekday export is running, so it only says when the data last changed.
+Never share a token. Without Actions: Read-only on the GTAC token the board and PM Hub still work, but the data note cannot tell whether the weekday export is running, so it only says when the data last changed.
+
+A classic token still connects, but it can read and change every repository your GitHub account can reach. After Connect the panel marks it in amber, names any other broad scopes it has, and shows How to make the tokens. A fine-grained token is marked in teal. While you type a token, an amber hint appears under the field if it starts with ghp_. The panel never shows a token.
 
 ### Connect
 
 1. Click GitHub.
 2. Paste https://github.com/Sodecia-GTAC-Machines in Repository. The address has to be real text in the box, not the gray hint.
-3. Paste the token in GitHub token (classic).
-4. Leave Wiki edit token empty. The same token is used for the wiki.
+3. Paste the Machines token in Token for Sodecia-GTAC-Machines.
+4. Paste the GTAC token in Token for Sodecia-GTAC: wiki, Project Board and PM Hub.
 5. Optional: tick Remember on this computer, only on your own PC.
 6. Click Connect.
 
@@ -464,7 +466,7 @@ Tokens stay only in that browser tab and are forgotten when the tab closes, unle
 
 What this browser keeps, in the panel, lists what stays on this PC: the token (only with Remember on this computer), the last board data and its history, the fixture reviews, the cached customer list, your tool work and your preferences. Forget token and clear this PC's cached data forgets the token and removes the board data, history, fixture reviews and cached customer list from this browser, then reloads. Tool work, PM Hub milestones and notes not yet saved to GitHub, and preferences stay. Use it on a shared PC.
 
-If GitHub refuses the token, the panel says why. For SSO, authorize the token with Configure SSO.
+If GitHub refuses a token, the panel says why. If an organization does not accept a fine-grained token yet, a Manager may still have to approve it.
 
 ### Projects
 
@@ -486,13 +488,18 @@ Edit opens the markdown for the page you are on. Save commits it to main. New pa
 
 If someone else saves the same page while you are editing, Save does not overwrite their change. A message says Someone else saved this page after you started editing, with Compare with their version, Copy my text and Open their version. Copy your text, open their version, and add your change to it.
 
-Saving uses your classic GitHub token (repo scope), since the Wiki edit token field is left empty.
+Saving uses your GTAC token. It needs Contents: Read and write on the wiki repository.
 
 ## Local Server
 
-Run a copy on Ubuntu 24.04 Desktop or Windows 11. Local Server shows the download, vc-tools-local.zip, and the install steps for each system. It needs no password. A publish does not change a Local Server that is already running. Download the zip again and follow When the app changes.
+Run a copy on Ubuntu 24.04 Desktop or Windows 11. Local Server shows the download, vc-tools-local.zip, and the install steps for each system. On its own PC it needs no password. A publish does not change a Local Server that is already running. Download the zip again and follow When the app changes.
 
-The install script installs the exact package versions in the zip and builds the app; if a step fails it stops with a message. The start script serves that build at http://localhost:8080, and only that PC can open it. To let other PCs on the plant network open it, start it with bash start-ubuntu.sh --lan on Ubuntu, or add -Lan to the Windows start command. It has no sign-in and uses plain HTTP, so share it only on the plant network, allow port 8080 from the plant subnet only, and never open it to the internet or guest Wi-Fi. INSTALL.txt in the zip has the firewall steps.
+The install script installs the exact package versions in the zip and builds the app; if a step fails it stops with a message. The start script serves that build at http://localhost:8080, and only that PC can open it. To let other PCs on the plant network open it, start it with bash start-ubuntu.sh --lan on Ubuntu, or add -Lan to the Windows start command. Everyone then signs in first:
+
+- **Access key**: the first start makes a random key and keeps it in vc-lan-access-secret.txt in the vc-tools folder. Open that file to read it; the start message never shows it. A Manager gives it to the people who use that server. Each browser asks once and stays signed in for 12 hours or until the server restarts. Ten wrong keys from one PC wait 15 minutes.
+- **Microsoft Entra ID**: once IT registers the app, people sign in with their Sodecia Microsoft account instead, and IT decides who gets in. OFFICE-SERVER-SIGN-IN.md in the app's GitHub repository has the steps for IT.
+
+With the plant's certificate (VC_TLS_CERT_FILE and VC_TLS_KEY_FILE) it uses HTTPS. Without it the connection is plain HTTP, and the start message and the sign-in page say so: share it only on the plant network, allow port 8080 from the plant subnet only, and never open it to the internet or guest Wi-Fi. INSTALL.txt in the zip has the firewall steps.
 
 ## Framework trim
 
