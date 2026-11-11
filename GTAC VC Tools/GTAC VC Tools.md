@@ -83,7 +83,7 @@ After you fix points in simulation, Upload Fixed Job from PRS takes the Process 
 
 ![Weld Point Plotting with the sample part](./images/weld-plot-part.png)
 
-Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, OBJ, or JT (see JT parts below). A Parasolid .prt or .x_t has to be exported as STEP first. Upload weld XML places each weld on the part. Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
+Plot the weld points onto the part each weld belongs to. With Sample Project on, a made-up frame shows with the sample weld points on it, and a line says it is the sample part; your own upload replaces it. Upload part CAD takes a STEP, IGES, STL, OBJ, or JT (see JT parts below). A Parasolid .prt or .x_t has to be exported as STEP first. Upload weld XML or CSV places each weld on the part; it takes a weld XML or a Process Simulate weld point CSV (Class,Name,x,y,z,rx,ry,rz). Upload weld map is the PowerPoint that labels each dot. Click a name in the list to mark that weld. Drag to rotate.
 
 The part is saved in this browser for the program that is loaded, so each project keeps its own part. It comes back after a reload, and a note under the buttons says so. A part file can be up to 200 MB. A bigger file is refused with a message, and a part saved earlier is kept. Like other saved work, it is not on another PC or in another browser.
 
@@ -100,7 +100,22 @@ The weld dots show only on a part that has loaded. A weld XML on its own does no
 
 The view frames the part and the weld points together. Clear saved work also clears the saved parts. STEP and IGES parts load on the Local Server too.
 
-#### JT parts
+#### Pick points and export a Process Simulate CSV
+
+![Three made-up weld points picked on a made-up part](./images/weld-plot-pick.png)
+
+When the part has loaded, Pick points lets you place weld points by tapping the part, for example when there is a weld map but no weld XML. The names come from the weld map, or type them (comma separated) and press Add names. With no names at all, each tap adds the next W-001, W-002…
+
+- The name to place is highlighted in blue. Tap the part where it goes; the next weld without a point is chosen by itself. Names with a point turn teal with a tick, and the count says how many are picked.
+- Each point keeps X Y Z (mm) where the part was tapped and a direction: the unit surface normal there, turned towards the side you tapped from. Picked points show as white dots with a cyan arrow, apart from the coloured weld dots.
+- Tap a name to see its values. Flip direction turns the arrow round, Pick again replaces the point with the next tap, and Delete removes it. Clear all points asks for a second tap.
+- Export CSV saves the points in the Process Simulate weld point format: the header Class,Name,x,y,z,rx,ry,rz, one PmWeldPoint row per point, X Y Z with 3 decimals and the direction with 5. Export XML saves the same points as a weld XML (without the direction).
+- For a JT, X Y Z are in the frame shown (the Process Simulate cell frame unless Assembly frame is chosen). Changing the frame converts the picked points with the JT's top-level placement, so they stay on the same spot of the part and the export always matches the frame on screen. For any other CAD they are in the part file's own coordinates.
+- Import CSV reads an exported CSV (or one from Process Simulate in the same format) back as picked points to carry on with. A CSV has no frame in it, so it is read in the frame shown at the time; a Process Simulate CSV is in the cell frame.
+- Picked points stay until the page is closed or reloaded; export the CSV to keep them. They never leave the browser.
+
+The direction is the surface normal of the part where you tapped. It is not the torch or gun direction; check it in Process Simulate.
+
 
 ![A made-up JT assembly in the Process Simulate cell frame](./images/weld-plot-jt.png)
 
