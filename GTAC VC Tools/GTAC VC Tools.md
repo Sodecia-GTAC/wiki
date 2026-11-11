@@ -75,6 +75,8 @@ Group welds into modules and download the KUKA programs.
 
 Drop the program .src and the positions .dat on Program. Both can go in at once. All robots takes one or more controller backup zips. If a zip has Sodecia/Weld_Jobs, only the programs in that folder are used. While a zip unpacks, a line under All robots shows how far it is, with Cancel. A zip can be up to 250 MB with up to 20,000 files and 512 MB unpacked; a bigger one, or one that unpacks to far more than its size (a zip bomb), is refused with a message, and the programs already loaded stay as they were.
 
+An arc-weld seam is the run of LIN and CIRC points that share a seam name ending _ls1, _ls2 or just _1, _2, such as C1X_100_200_L_1_ls1, C9_X100_200_L_R3_1_ls2 or C9_X100_200_L_R3_1_6. All its points are one weld, and the approach before it goes with it; a point of one seam never moves to the next, also when two seams follow each other with no PTP between them.
+
 My map is one module per line. Import map reads a weld-map PowerPoint or a JSON file you exported earlier. By part number skips the map and makes one module per weld family, plus All. Split job, then Download zip. Best cycle time keeps the order with the shortest travel between welds. Click Trunnion when the cell has a KP1 or KP3.
 
 After you fix points in simulation, Upload Fixed Job from PRS takes the Process Simulate file that still has the UNKNOWN MOTION FOLD lines, plus its .dat. Fix PRS comment for Arc commands turns the commented arc lines back into ArcTech. Jobs Ready for Robot saves the corrected files.
