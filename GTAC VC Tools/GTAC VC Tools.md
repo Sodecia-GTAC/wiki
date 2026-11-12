@@ -249,7 +249,7 @@ Open this when you are laying out the cell. Cabinets, robots, options, and cable
 
 #### Start a cell
 
-Pick a project in the sample list and click Load sample. That fills the tabs from a real cell. Upload PDF does the same from a cable schedule: marks that end in -ECAT become the devices, the links, and the lengths. A PDF dropped anywhere on the tool does the same as Upload PDF. With no devices yet, the page shows a card to drop or pick the PDF, and the PDF tab shows it until the cell has an EtherCAT cable. Clear puts the form back to empty.
+Pick a project in the sample list and click Load sample. That fills the tabs with a sample cell. Upload PDF does the same from a cable schedule: marks that end in -ECAT become the devices, the links, and the lengths. A PDF dropped anywhere on the tool does the same as Upload PDF. With no devices yet, the page shows a card to drop or pick the PDF, and the PDF tab shows it until the cell has an EtherCAT cable. Clear puts the form back to empty.
 
 If the PDF or the sample has no cell number on the end, the app asks for it before the serial is finished.
 
@@ -509,7 +509,7 @@ The Package tab in Controls Forge writes the keep list. The scripts trim a copy 
 
 ### Serial
 
-The serial is filled in on Package. SODG and two digits is the robot count. SSCC610 is the framework. The project number plus the cell number is the end. Four robots on 26013 cell 02 becomes SODG04_SSCC610_2601302.
+The serial is filled in on Package. SODG and two digits is the robot count. SSCC610 is the framework. The project number plus the cell number is the end. Four robots on project 99013, cell 02, becomes SODG04_SSCC610_9901302.
 
 ### One folder for the trim kit
 
