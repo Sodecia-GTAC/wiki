@@ -2,8 +2,6 @@
 
 GTAC VC Tools is the shop app for laying out a cell, trimming the SSCC61x framework, drawing the EtherCAT trunk, and generating fixture and weld outputs.
 
-Designed and built by Brandon, Dave, Mark, Mikey, and Richard, the guy that is never here.
-
 Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. Project Board, PM Hub, GitHub, Wiki, and Local Server sit in the row underneath.
 
 ![Home with the Robot and PLC sections](./images/home-sections.png)
