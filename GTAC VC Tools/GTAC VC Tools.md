@@ -14,6 +14,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
   - [ArcTech Converter](#arctech-converter)
   - [Cycle Time Analysis](#cycle-time-analysis)
   - [Strip Arc to LIN](#strip-arc-to-lin)
+  - [Program Forge](#program-forge)
   - [Seam Approach](#seam-approach)
   - [Fix S/T](#fix-st)
   - [Zone Forge](#zone-forge)
@@ -30,7 +31,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 ## Home
 
-- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Seam Approach, Fix S/T, and Zone Forge. Click the Robot heading to open Weld Splitter.
+- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Seam Approach, Fix S/T, and Zone Forge. Seam Approach and Zone Forge open Program Forge, where you pick that work or Both. Click the Robot heading to open Weld Splitter.
 - **PLC** (TwinCAT theme): Fixture Forge, TC Forge, and Controls Forge. Click the PLC heading to open Fixture Forge.
 - **Bottom row**: Project Board, PM Hub, GitHub, Wiki, and Local Server.
 
@@ -42,7 +43,7 @@ Every screen shares one look: the shop photo shows clearly behind dark, see-thro
 
 Opening the weld app lands on Weld Splitter.
 
-A bookmark such as ?app=weld, ?app=fixture, ?app=network, ?app=controls, ?app=zones, or ?app=board opens that tool. ?app=weld without a screen opens Weld Splitter.
+A bookmark such as ?app=weld, ?app=fixture, ?app=network, ?app=controls, ?app=zones, or ?app=board opens that tool. ?app=weld without a screen opens Weld Splitter. ?app=zones opens Program Forge on Zone Forge; ?app=zones&view=approach, and ?app=weld&view=approach, open Seam Approach; ?app=zones&view=both opens Both.
 
 ## Inside a tool
 
@@ -54,16 +55,16 @@ The drop-down shows the section and the tool you are in, such as ROBOT, Weld Spl
 
 ![PLC drop-down](./images/plc-menu.png)
 
-- **Guide**: Weld tools, Zone Forge, Fixture Forge, TC Forge, and Controls Forge each have their own Guide. Click it again to close it.
-- **Sample data**: The weld tools have Sample Project on the left. It loads the Front Bumper programs and that weld map. Click it again to clear it. Loading your own .src or zip turns the sample off. On Weld Point Plotting the sample also shows a made-up part. Zone Forge has its own Sample Project, a made-up two-robot cell. Fixture Forge has Load sample cell and Controls Forge has Load sample. The weld and Zone Forge samples are made up, not a real job.
-- **Change log**: the clock button lists what changed in that tool and when: Robot tools, Fixture Forge, Project Board, PM Hub and Zone Forge each have one. It opens without a password.
+- **Guide**: Weld tools, Program Forge, Fixture Forge, TC Forge, and Controls Forge each have their own Guide. Click it again to close it.
+- **Sample data**: The weld tools have Sample Project on the left. It loads the Front Bumper programs and that weld map. Click it again to clear it. Loading your own .src or zip turns the sample off. On Weld Point Plotting the sample also shows a made-up part. Program Forge has its own Sample Project, a made-up two-robot cell (with a weld seam and a shared zone when Seam Approach or Both is picked). Fixture Forge has Load sample cell and Controls Forge has Load sample. The weld and Program Forge samples are made up, not a real job.
+- **Change log**: the clock button lists what changed in that tool and when: Robot tools, Fixture Forge, Project Board, PM Hub and Program Forge each have one. It opens without a password.
 - **Saved work**: Work is saved in this browser only. It is still there after a refresh, but not on another PC or in another browser. Clear saved work resets that tool in this browser and cannot be undone.
 
 ## Robot
 
 KUKA weld programs: split, plot, convert, time, and zone them. A weld program from GitHub (src, dat, zip, or pptx) opens in Weld Splitter.
 
-The weld tools share the panel on the left (Sample Project, Guide, Program, and All robots) and one saved work. Weld Point Plotting does not use Program or All robots. Seam Approach and Fix S/T each have their own Program box on their page.
+The weld tools share the panel on the left (Sample Project, Guide, Program, and All robots) and one saved work. Weld Point Plotting does not use Program or All robots. Seam Approach opens on Program Forge and uses the files dropped there. Fix S/T has its own Program box on its page.
 
 ### Weld Splitter
 
@@ -148,11 +149,19 @@ Turn ArcOn, ArcOff, and ArcSwi into LIN moves. Load one .src and .dat, or Upload
 
 Before Download, each program's changed lines show, removed in red and added in green, and the count shows under Download, such as 572 lines removed, 225 added. If nothing changes it says so: Download would give back the same files.
 
+### Program Forge
+
+Program Forge is the Robot page for Seam Approach, Zone Forge, or Both. Pick one of those three on the page; Both runs only when you pick it. Seam Approach and Zone Forge in the Robot tile and menu open this page with that work already picked. The files are shared: drop the .src and .dat, or a zip of them, in one place. Zone Forge needs every robot's programs, so each interference zone has both robots. Only the settings for the work you picked are shown.
+
+Both runs Seam Approach on each program, then Zone Forge on the cell. A program with no Process Simulate interference comments and no confirmed trunnion-turn comments is left as Seam Approach wrote it, under its original name, and the page says which programs were skipped and why. Download names use _plc or _olp only for programs Zone Forge actually changes. The new approach and retract points, and their .dat declarations, are included.
+
+Sample Project loads a made-up two-robot cell: the zone sample when Zone Forge is picked, and a sample with a weld seam and a shared zone when Seam Approach or Both is picked. Dropping your own files replaces it. Guide lists the steps.
+
 ### Seam Approach
 
 ![Seam Approach with a made-up job](./images/seam-approach.png)
 
-Add an approach before and a retract after each weld seam of a Process Simulate job, each a PTP or a LIN, and, when asked, a PTP HOME as the first and the last move. Choose or drop the .src and its .dat together on Program on the page. A seam is a run of LIN points and arcs (CIRC) whose names share a start and end _ls1, _ls2 or just _1, _2 and so on; the two endings may mix in one seam (SEAM_1_ls5 then SEAM_1_6). The program's own order is kept, so a seam can run ls2 then ls1, or ls6 down to ls1. An arc counts by its end point (CIRC Xaux, Xend), and its auxiliary point is part of the seam too. Names must match exactly up to the number: SEAM_L_1_ls1 and SEAM_1_1_ls1 are two seams. A PTP, a point without a number at the end, or a different name ends a seam. A run named only _1, _2 needs at least two moves, so a lone LIN such as AIR_1 is not a seam.
+Add an approach before and a retract after each weld seam of a Process Simulate job, each a PTP or a LIN, and, when asked, a PTP HOME as the first and the last move. Open Seam Approach from the Robot menu; it opens Program Forge with Seam Approach picked. Drop the .src and its .dat together, or a zip of them. A seam is a run of LIN points and arcs (CIRC) whose names share a start and end _ls1, _ls2 or just _1, _2 and so on; the two endings may mix in one seam (SEAM_1_ls5 then SEAM_1_6). The program's own order is kept, so a seam can run ls2 then ls1, or ls6 down to ls1. An arc counts by its end point (CIRC Xaux, Xend), and its auxiliary point is part of the seam too. Names must match exactly up to the number: SEAM_L_1_ls1 and SEAM_1_1_ls1 are two seams. A PTP, a point without a number at the end, or a different name ends a seam. A run named only _1, _2 needs at least two moves, so a lone LIN such as AIR_1 is not a seam.
 
 - The approach goes before the first point of the seam and the retract after its last point, never between the points of a seam or between an arc's auxiliary and end points. The approach is the first seam point moved back 20 mm along its own tool Z, and the retract is the last seam point (the end point when the seam ends on an arc) moved back 50 mm, as the frame product point : {X 0,Y 0,Z -20,A 0,B 0,C 0}. Both are PTP at 100 % by default. Approach move and Retract move each choose PTP or LIN, on their own; a LIN goes at LIN Vel (m/s, 1 by default). Approach (mm), Retract (mm), PTP Vel (%) and LIN Vel (m/s) change them.
 - Each new point keeps the seam point's orientation, S and T, external axes, FDAT (tool, base and IPO_FRAME, #TCP for an external TCP) and the Tool and Base text of its fold. The fold is a full PTP or LIN inline form in the style of the program's own folds, including CONT and C_DIS. A PTP takes the PDAT of the program's PTP before the seam; a LIN takes the LDAT of the seam's own LIN (or the nearest LIN), with the same fields the program uses.
@@ -160,7 +169,7 @@ Add an approach before and a retract after each weld seam of a Process Simulate 
 - When a seam point has no S and T, the nearest earlier point that has them is used and an amber note says which. With none at all, the point has no S and T and the note says so.
 - New points are named from the next free viaNNN after the highest one in the files. Their E6POS, FDAT and PDAT (LDAT for a LIN) go at the end of the .dat, before ENDDAT, in program order. KRL names are at most 24 characters.
 - When the point just before a seam is already within 0.5 mm of the approach, or the point just after it is within 0.5 mm of the retract, the preview shows already present (in teal) and nothing is added there. Running the tool again on its own output adds nothing.
-- The preview lists each seam, its points, and each approach and retract with its name, X Y Z, and S and T. Every other line downloads byte for byte with the same line endings (CRLF stays CRLF). Download both (.zip) saves the pair; the two buttons beside it save the .src or the .dat with its own file name.
+- The preview lists each seam, its points, and each approach and retract with its name, X Y Z, and S and T. Every other line downloads byte for byte with the same line endings (CRLF stays CRLF). For one program, Download saves the .src and the .dat with their own names. For more than one program, it saves a zip.
 - A .dat that belongs to another program (its DEFDAT does not match the DEF), a seam point missing from the .dat, or folds that do not close stop the change with a red note, and nothing is saved.
 - PTP HOME (XHOME) as the first move and PTP HOME (XHOME) as the last move are two tick boxes, off by default. Each adds a PTP HOME inline form written the way Process Simulate writes it (PTP HOME Vel=100 % DEFAULT, with PDAT_ACT= PDEFAULT, FDAT_ACT= FHOME and PTP XHOME) before the program's first move or after its last, at PTP Vel. On the robot, PDEFAULT and FHOME come from $config.dat, but Process Simulate only reads the program's own .dat, so when the .dat does not already declare them they are added with the standard values (DECL PDAT PDEFAULT={VEL 100,ACC 100,APO_DIST 100,APO_MODE #CDIS,GEAR_JERK 50} and DECL FDAT FHOME={TOOL_NO 0,BASE_NO 0,IPO_FRAME #BASE,POINT2[] " "}). XHOME is not added to the .dat: it is the robot's own taught home, and Process Simulate uses the robot's home. When the first or last move already goes to HOME (PTP XHOME, PTP XHOME1, PTP $H_POS, or a fold such as PTP HOME or PTP AXIS : XHOME), nothing is added there and a teal note says so.
 - Step through every new motion in T1 before running in Auto.
@@ -191,15 +200,17 @@ Work out the S (Status) and T (Turn) of every point of a Process Simulate KUKA j
 
 ### Zone Forge
 
-Fill in the interference-zone handshakes. Drop the KUKA programs and their .dat files, with the same name for both, such as R01_Fix01.src and R01_Fix01.dat. Process Simulate marks the last point before an interference volume and the first point after it.
+Fill in the interference-zone handshakes. Open Zone Forge from the Robot menu; it opens Program Forge with Zone Forge picked. Drop the KUKA programs and their .dat files, or a zip of them, with the same name for both, such as R01_Fix01.src and R01_Fix01.dat. Zone Forge needs every robot's programs, so each zone has both robots. Process Simulate marks the last point before an interference volume and the first point after it.
 
 Pick PLC bits or OLP sync. With PLC bits, assign one bit per pair of robots. 106 is the first pair, and robot interference uses 106 to 112. Bit 105 is the trunnion, or table, turn. Change a number to match the zone on the fixture, check What gets added, then Download the programs.
 
-Each download is named for the style you picked: R01_Fix01.src comes back as R01_Fix01_plc.src or R01_Fix01_olp.src, with its .dat to match. A name that already ends in _plc or _olp is rewritten for the style, so converting again does not stack the endings. DEF, DEFDAT and the Program header inside the files are changed to the new name.
+A trunnion or table turn is marked by a comment on the point just before the turn. A full phrase such as Wait for R02 clear before turning Trunion, Turn table to 180, Rotate table or Index table is accepted. Short or non-standard wording — Turn E2 to 60, E2 60, tbl 180, Trn, rot E2, or a short comment that mentions E1–E6, table or trunnion without that full phrase — is flagged in Review trunnion comments, with the program, the line and point, and the comment text. Confirm it is a turn, edit the wording (the edit goes into the downloaded program), or ignore it as not a turn. Clear phrases stay in the list as already accepted. Download stays off until every flag is resolved. The wait for the other robots to be clear (bit 105 unless you change it) goes in before a confirmed turn, and the bit is set true after that move.
+
+Each download is named for the style you picked: R01_Fix01.src comes back as R01_Fix01_plc.src or R01_Fix01_olp.src, with its .dat to match. A name that already ends in _plc or _olp is rewritten for the style, so converting again does not stack the endings. DEF, DEFDAT and the Program header inside the files are changed to the new name. On Both, that rename applies only to programs Zone Forge actually changes; a program with no Process Simulate interference comments and no confirmed trunnion-turn comments keeps its original name.
 
 ![Zone Forge with the Sample Project](./images/zone-forge.png)
 
-Sample Project loads a made-up two-robot cell (R01_Fix01 and R02_Fix01) to try it; dropping your own programs replaces it. Guide lists the steps. The trunnion settings show only when the programs have trunnion comments; otherwise a line says there are none. When the programs already have every handshake, it says Nothing to change. Download would give back the same files.
+When Zone Forge is picked, Sample Project loads a made-up two-robot cell (R01_Fix01 and R02_Fix01) to try it; dropping your own programs replaces it. Guide lists the steps. The trunnion settings show only when the programs have trunnion comments; otherwise a line says there are none. When the programs already have every handshake, it says Nothing to change. Download would give back the same files.
 
 ## PLC
 
