@@ -31,7 +31,7 @@ Home has two sections. Robot holds the weld tools. PLC holds the TwinCAT tools. 
 
 ## Home
 
-- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Seam Approach, Fix S/T, and Zone Forge. Seam Approach and Zone Forge open Program Forge, where you pick that work or Both. Click the Robot heading to open Weld Splitter.
+- **Robot** (weld theme): Weld Splitter, Weld Point Plotting, ArcTech Converter, Cycle Time Analysis, Strip Arc to LIN, Fix S/T, and Program Forge. Program Forge opens the page where you pick Seam Approach, Zone Forge, or Both. Click the Robot heading to open Weld Splitter.
 - **PLC** (TwinCAT theme): Fixture Forge, TC Forge, and Controls Forge. Click the PLC heading to open Fixture Forge.
 - **Bottom row**: Project Board, PM Hub, GitHub, Wiki, and Local Server.
 
@@ -151,7 +151,7 @@ Before Download, each program's changed lines show, removed in red and added in 
 
 ### Program Forge
 
-Program Forge is the Robot page for Seam Approach, Zone Forge, or Both. Pick one of those three on the page; Both runs only when you pick it. Seam Approach and Zone Forge in the Robot tile and menu open this page with that work already picked. The files are shared: drop the .src and .dat, or a zip of them, in one place. Zone Forge needs every robot's programs, so each interference zone has both robots. Only the settings for the work you picked are shown.
+Program Forge is the Robot page for Seam Approach, Zone Forge, or Both. Pick one of those three on the page; Both runs only when you pick it. Program Forge in the Robot tile and menu opens this page with Zone Forge picked. The old Zone Forge and Seam Approach addresses still open this page in that mode. The files are shared: drop the .src and .dat, or a zip of them, in one place. Zone Forge needs every robot's programs, so each interference zone has both robots. Only the settings for the work you picked are shown.
 
 Both runs Seam Approach on each program, then Zone Forge on the cell. A program with no Process Simulate interference comments and no confirmed trunnion-turn comments is left as Seam Approach wrote it, under its original name, and the page says which programs were skipped and why. Download names use _plc or _olp only for programs Zone Forge actually changes. The new approach and retract points, and their .dat declarations, are included.
 
@@ -161,7 +161,7 @@ Sample Project loads a made-up two-robot cell: the zone sample when Zone Forge i
 
 ![Seam Approach with a made-up job](./images/seam-approach.png)
 
-Add an approach before and a retract after each weld seam of a Process Simulate job, each a PTP or a LIN, and, when asked, a PTP HOME as the first and the last move. Open Seam Approach from the Robot menu; it opens Program Forge with Seam Approach picked. Drop the .src and its .dat together, or a zip of them. A seam is a run of LIN points and arcs (CIRC) whose names share a start and end _ls1, _ls2 or just _1, _2 and so on; the two endings may mix in one seam (SEAM_1_ls5 then SEAM_1_6). The program's own order is kept, so a seam can run ls2 then ls1, or ls6 down to ls1. An arc counts by its end point (CIRC Xaux, Xend), and its auxiliary point is part of the seam too. Names must match exactly up to the number: SEAM_L_1_ls1 and SEAM_1_1_ls1 are two seams. A PTP, a point without a number at the end, or a different name ends a seam. A run named only _1, _2 needs at least two moves, so a lone LIN such as AIR_1 is not a seam.
+Add an approach before and a retract after each weld seam of a Process Simulate job, each a PTP or a LIN, and, when asked, a PTP HOME as the first and the last move. Open Program Forge from the Robot menu and pick Seam Approach. Drop the .src and its .dat together, or a zip of them. A seam is a run of LIN points and arcs (CIRC) whose names share a start and end _ls1, _ls2 or just _1, _2 and so on; the two endings may mix in one seam (SEAM_1_ls5 then SEAM_1_6). The program's own order is kept, so a seam can run ls2 then ls1, or ls6 down to ls1. An arc counts by its end point (CIRC Xaux, Xend), and its auxiliary point is part of the seam too. Names must match exactly up to the number: SEAM_L_1_ls1 and SEAM_1_1_ls1 are two seams. A PTP, a point without a number at the end, or a different name ends a seam. A run named only _1, _2 needs at least two moves, so a lone LIN such as AIR_1 is not a seam.
 
 - The approach goes before the first point of the seam and the retract after its last point, never between the points of a seam or between an arc's auxiliary and end points. The approach is the first seam point moved back 20 mm along its own tool Z, and the retract is the last seam point (the end point when the seam ends on an arc) moved back 50 mm, as the frame product point : {X 0,Y 0,Z -20,A 0,B 0,C 0}. Both are PTP at 100 % by default. Approach move and Retract move each choose PTP or LIN, on their own; a LIN goes at LIN Vel (m/s, 1 by default). Approach (mm), Retract (mm), PTP Vel (%) and LIN Vel (m/s) change them.
 - Each new point keeps the seam point's orientation, S and T, external axes, FDAT (tool, base and IPO_FRAME, #TCP for an external TCP) and the Tool and Base text of its fold. The fold is a full PTP or LIN inline form in the style of the program's own folds, including CONT and C_DIS. A PTP takes the PDAT of the program's PTP before the seam; a LIN takes the LDAT of the seam's own LIN (or the nearest LIN), with the same fields the program uses.
@@ -200,7 +200,7 @@ Work out the S (Status) and T (Turn) of every point of a Process Simulate KUKA j
 
 ### Zone Forge
 
-Fill in the interference-zone handshakes. Open Zone Forge from the Robot menu; it opens Program Forge with Zone Forge picked. Drop the KUKA programs and their .dat files, or a zip of them, with the same name for both, such as R01_Fix01.src and R01_Fix01.dat. Zone Forge needs every robot's programs, so each zone has both robots. Process Simulate marks the last point before an interference volume and the first point after it.
+Fill in the interference-zone handshakes. Open Program Forge from the Robot menu; Zone Forge is already picked. Drop the KUKA programs and their .dat files, or a zip of them, with the same name for both, such as R01_Fix01.src and R01_Fix01.dat. Zone Forge needs every robot's programs, so each zone has both robots. Process Simulate marks the last point before an interference volume and the first point after it.
 
 Pick PLC bits or OLP sync. With PLC bits, assign one bit per pair of robots. 106 is the first pair, and robot interference uses 106 to 112. Bit 105 is the trunnion, or table, turn. Change a number to match the zone on the fixture, check What gets added, then Download the programs.
 
