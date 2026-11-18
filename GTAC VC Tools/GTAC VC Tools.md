@@ -80,6 +80,8 @@ A Process Simulate download with no weld comments that starts each weld with a p
 
 My map is one module per line. Import map reads a weld-map PowerPoint or a JSON file you exported earlier. By part number skips the map and makes one module per weld family, plus All. Split job, then Download zip. Best cycle time keeps the order with the shortest travel between welds. Click Trunnion when the cell has a KP1 or KP3.
 
+Drag a gold weld onto another (or press Alt+Left or Alt+Right) to change the order in a module. On All, AllSubs or a module made from others (UNION: or PREFIX:), the welds show gold in program order; Best cycle time orders every weld that module takes, and a drag moves one of them. The module line then lists its welds in that order, such as All: 10_1 10_3 10_2, and its program is written that way; type the line it had, such as All: ALL, to follow the program again. The other modules keep their own order. Loading a weld map laid out by cell shows the open program's own fixture job, so its welds are gold in their modules and can be dragged.
+
 After you fix points in simulation, Upload Fixed Job from PRS takes the Process Simulate file that still has the UNKNOWN MOTION FOLD lines, plus its .dat. Fix PRS comment for Arc commands turns the commented arc lines back into ArcTech. Jobs Ready for Robot saves the corrected files.
 
 ### Weld Point Plotting
