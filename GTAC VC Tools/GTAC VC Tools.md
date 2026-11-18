@@ -76,6 +76,8 @@ Drop the program .src and the positions .dat on Program. Both can go in at once.
 
 An arc-weld seam is the run of LIN and CIRC points that share a seam name ending _ls1, _ls2 or just _1, _2, such as C1X_100_200_L_1_ls1, C9_X100_200_L_R3_1_ls2 or C9_X100_200_L_R3_1_6. All its points are one weld, and the approach before it goes with it; a point of one seam never moves to the next, also when two seams follow each other with no PTP between them.
 
+A Process Simulate download with no weld comments that starts each weld with a path comment, such as ;# --------- START PATH : 10_1 ---------, splits at those comments: each weld runs from its comment to the next one. Signal lines (# SetSignal …) and a HOME move at the very start of the first weld go in every module, and the last HOME move, the ;SIM lines just before it and the end of the program close every module. Programs with weld comments split by their weld comments. On a weld map laid out by cell, Split all, and opening a program from a zip, use the job of the program's own fixture: R01_FIX01_ALL uses Cell1_Fix01.
+
 My map is one module per line. Import map reads a weld-map PowerPoint or a JSON file you exported earlier. By part number skips the map and makes one module per weld family, plus All. Split job, then Download zip. Best cycle time keeps the order with the shortest travel between welds. Click Trunnion when the cell has a KP1 or KP3.
 
 After you fix points in simulation, Upload Fixed Job from PRS takes the Process Simulate file that still has the UNKNOWN MOTION FOLD lines, plus its .dat. Fix PRS comment for Arc commands turns the commented arc lines back into ArcTech. Jobs Ready for Robot saves the corrected files.
@@ -140,6 +142,21 @@ Before Download, each program's changed lines show, removed in red and added in 
 ### Cycle Time Analysis
 
 Seam and travel time from the weld map and the programs. Upload weld map and choose the PowerPoint. The seam time uses the millimetres on each weld label, such as 6041_96-25mm, divided by the weld speed. Load the program and the .dat on the left for a second table that adds travel between the points. Download analysis saves the tables as an Excel file. Blending and acceleration are not included, so a real cycle runs a bit longer.
+
+A weld map can also be laid out by cell and fixture, with slide titles such as Cell1 – Fix1(OP10) or Fix2(Sub H) and labels such as #10-1-40mm, A1-1-14mm or #G-3-13.5mm (a group, the weld number and the length). Words that PowerPoint splits over several pieces still read whole. Each cell and fixture is one job, such as Cell1_Fix01, with a module for each operation in brackets; #10-1-40mm shows as 10_1-40mm in the map box. Cells are kept apart, and inside a cell each weld counts once: a weld shown on more than one slide counts on the slide without a "Moved to" note, and a weld that sits with a note such as "Moved to Fix02(OP20)" counts on that fixture and operation. After the upload the message lists the cells and their fixtures and how many welds were repeated or moved.
+
+Each program uses the labels of its own fixture, by the Fix number in its name: R01_FIX02_ALL uses Fix02, and a program whose fixture is not in the map gets no labels. Seam points named after a label, such as 10_1_2 and 10_1_3 for #10-1, take that label's length, so the program table shows the weld length for those seams. Point names with more on the end read the same way: 10_1_1_ls1, 10_1_App_2 and 10_1_2_1 are all weld 10_1, and a CIRC help point such as 10_1_1_ls1_10_1_1_ls2 is too. Retract points (10_1_Ret, 10_1_1_Ret) and approach points with no number (10_1_1_App) are travel, not weld. So a program whose point names carry no length is timed with the weld map lengths. The table From the weld map, by fixture lists each fixture that has a loaded program, with its cell, programs, welds, length, weld time and how many labels have a seam in the programs; when no seam name matches, use that fixture total for the weld time. Fixtures with no loaded program are named and not counted. Download analysis adds the same table as a Fixtures sheet.
+
+Weld Splitter (under the map box) and Cycle Time Analysis (under Upload weld map) have two ticks, both on at first and remembered in this browser: Weld map labels end in a length (…-40mm) and Robot program weld names end in a length (W053_25mm_1). Where the length comes from:
+
+| Map labels | Program names | Weld length |
+|---|---|---|
+| On | On | The mm on the map label; when the map has none, the mm on the program's weld name |
+| Off | On | The mm on the program's weld name, or the measured seam path between the program's points |
+| On | Off | The mm on the map label, or the measured seam path |
+| Off | Off | The measured seam path only |
+
+With map labels off, W131-40mm or #10-1-40mm is only the weld name (W131, 10_1), and importing a weld map also reads labels with no length, such as #10-1 or W131; upload the map again after changing the tick. With program names off, a seam point name is used whole, so W053_25mm_1 is the weld W053_25MM. A weld with no length shows as unknown, and weld time leaves it out. When a program has no arc on and no seam name the app knows, its seams are read from the point names: W053_25mm_1 and W053_25mm_2 are one weld, and vias, HOME and pounce points are not seams.
 
 ### Strip Arc to LIN
 
